@@ -1,0 +1,42 @@
+@import "../../../../styles/variables.scss";
+
+// .nav {
+//   display: flex;
+
+// }
+
+.navList {
+  // box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  list-style: none;
+  // gap: 32px;
+  cursor: pointer;
+  justify-content: space-between;
+  // width: 100%;
+  flex-grow: 1;
+  // height: 64px;
+  
+
+}
+
+.navItem {
+// padding: 0 50px;
+flex-basis: calc(100% / 3);
+border-bottom: solid 1px $dark-grey-color;
+border-right: solid 1px $dark-grey-color;
+
+flex-grow: 1;
+display: flex;
+justify-content: center;
+align-items: center;
+height: 64px;
+// height: 100%;
+
+&:hover {
+  color: $white-color;
+  background-color: $main-color ;
+}
+
+}
