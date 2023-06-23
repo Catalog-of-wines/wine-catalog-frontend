@@ -2,24 +2,25 @@
 // import "./App.css";
 // import { Link, Navigate, Route, Routes } from "react-router-dom";
 import './styles/global.scss'
-import { Navigate, Route, Routes } from "react-router-dom";
-import { HomePage } from "./pages/HomePage";
-import { Catalog } from "./pages/Catalog";
+// import { Navigate, Route, Routes } from "react-router-dom";
+// import { HomePage } from "./pages/HomePage";
+// import { Catalog } from "./pages/Catalog";
 import styles from "./App.module.scss";
 import { Header } from "./components/Header";
-import { Footer } from "./components/Footer";
+import { Footer } from './components/Footer';
+// import { Footer } from "./components/Footer";
 
 const App: React.FC = () => {
   return (
     <div className={styles.app}>
       <Header />
 
-      <main className="container">
+      {/* <main className="container">
         <Routes>
            <Route path="/" element={<HomePage />} />
            <Route path="/wines" element={<Catalog />} />
            <Route path="*" element={<p>Page not found</p>} />
-           <Route path="/home" element={<Navigate to="/" replace />} />
+           <Route path="/home" element={<Navigate to="/" replace />} /> */}
           {/* <Route path="/" element={<HomePage /> } />
           <Route path="/home" element={<Navigate to="/" replace />} />
 
@@ -38,9 +39,10 @@ const App: React.FC = () => {
           <Route path='/team' element={<Contacts />} />
 
           <Route path="" element={<NotFoundPage /> } /> */}
-        </Routes>
+        {/* </Routes>
       </main>
 
+      <Footer /> */}
       <Footer />
     </div>
   );

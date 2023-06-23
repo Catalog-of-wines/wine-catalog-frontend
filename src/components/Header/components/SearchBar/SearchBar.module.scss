@@ -1,0 +1,71 @@
+@import '../../../../styles/variables.scss';
+
+
+// .container {
+//   // box-sizing: border-box;
+//   // width: 348px;
+//   // display: flex;
+//   // justify-content: space-between;
+// }
+
+.form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 348px;
+  background-color: $black-color;
+  // border: solid 1px red;
+  // height: 64px;
+  
+}
+
+.search {
+  background-color: $black-color;
+  padding: 0px 20px 0px;
+  border: none;
+  align-items: center;
+  justify-content: center;
+  flex-grow: 1;
+ 
+  &:focus {
+    background-color: $black-color;
+    border: none;
+    outline: none;
+    outline-width: 0;
+    box-shadow: none;
+  }
+
+  &:hover {
+    background-color: $black-color;
+
+  }
+
+  &::placeholder {
+    color: $white-color;
+    font-size: 16px;
+    font-weight: 400;
+  }
+}
+
+.text {
+  font-weight: 400;
+  color: $white-color;
+  font-size: 16px;
+}
+
+.button {
+  display: flex;
+  background-color: $black-color;
+  border: none;
+  height: 64px;
+  width: 64px;
+  align-items: center;
+  justify-content: center;
+  padding: 0px;
+  // border-bottom: solid 1px $dark-grey-color;
+  // border-left: solid 1px $dark-grey-color;
+
+  &:hover {
+    background-color: $main-color;
+  }
+}
