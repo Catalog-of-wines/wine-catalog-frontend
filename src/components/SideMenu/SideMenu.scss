@@ -1,0 +1,47 @@
+@import '../../styles/variables.scss';
+@import '../../styles/extends.scss';
+
+.side-menu {
+  &__title {
+    display: flex;
+    padding: 20px 0px;
+
+    align-items: center;
+    gap: 8px;
+    border-bottom: solid 1px $dark-grey-color;
+  }
+
+  &__title-icon {
+    @extend %iconPropperty;
+    background-image: url('../../images/ph_sliders.svg');
+  }
+
+  &__title-text {
+    color: #FFF;
+    font-size: 24px;
+    font-family: Manrope;
+    font-weight: 500;
+    line-height: 100%;
+    text-transform: uppercase;
+  }
+
+  &__filter {
+    display: flex;
+    padding: 20px 0px;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: solid 1px $dark-grey-color;
+  }
+
+  &__filter-text {
+    color: #FFF;
+    font-size: 24px;
+    font-family: Manrope;
+    line-height: 1;
+  }
+
+  &__filter-icon {
+    @extend %iconPropperty;
+    background-image: url('../../images/Icon_down.svg');
+  }
+}

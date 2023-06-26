@@ -1,0 +1,93 @@
+@import '../../styles/variables.scss';
+@import '../../styles/extends.scss';
+
+.catalog {
+  padding-top: 64px;
+}
+
+.catalogWineFilter {
+  margin-bottom: 20px;
+}
+
+.catalogWineSort {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  margin-bottom: 64px;
+}
+
+.wineFilterBtn {
+  display: flex;
+  width: 100%;
+  padding: 20px 10px;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid $dark-grey-color;
+  background-color: $black-color;
+
+  // &NotLast {
+  //   border-bottom-width: 0;
+  // }
+}
+
+.wineFilterText {
+  color: $white-color;
+  text-align: center;
+  font-size: 24px;
+  font-family: Manrope;
+  font-weight: 500;
+  line-height: 100%;
+  text-transform: uppercase;
+}
+
+.wineFilterBtnGroup {
+  display: flex;
+}
+
+.wineSort {
+  display: flex;
+  padding: 12px 16px;
+  justify-content: space-between;
+  align-items: flex-start;
+  border-bottom: 1px solid $dark-grey-color;
+}
+
+.wineSortTitle {
+  color: $light-grey-color;
+  font-size: 16px;
+  font-family: Manrope;
+  line-height: 1.5;
+}
+
+.wineSortCategory {
+  color: #FFF;
+  font-size: 16px;
+  font-family: Manrope;
+  line-height: 150%;
+}
+
+.wineCards {
+  display: grid;
+  box-sizing: border-box;
+  grid-template-columns: repeat(auto-fill, minmax(332px, 1fr));
+  
+  gap: 20px 16px;
+  margin-bottom: 32px;
+}
+
+.ShowMoreBtn {
+  display: flex;
+  width: 100%;
+  padding: 12px 16px;
+  justify-content: center;
+  align-items: center;
+  background-color: $black-color;
+  border: 1px solid $white-color;
+}
+
+.ShowMoreBtnText {
+  color: $white-color;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 150%;
+}

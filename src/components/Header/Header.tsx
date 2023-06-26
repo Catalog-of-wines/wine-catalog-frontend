@@ -6,7 +6,7 @@ import { SearchBar } from "./components/SearchBar";
 import { Navigation } from "./components/Navigation";
 // import { IconLink } from "./components/IconLink";
 import { BiCart, BiUserCircle } from "react-icons/bi";
-import { Container } from "../Container";
+// import { Container } from "../Container";
 
 
 export const Header: React.FC = () => {
@@ -16,7 +16,7 @@ export const Header: React.FC = () => {
   };
 
   return (
-  <Container >
+  // <Container >
     <div className={styles.headerFlex}>
       <div className={`${styles.logo} `} >
       <LogoLink 
@@ -39,6 +39,6 @@ export const Header: React.FC = () => {
       </div>
 
     </div>
-  </Container>
+  // </Container>
     );
 };

@@ -10,11 +10,12 @@ export const testCall = () => {
 };
 
 
-export const getWines = () => {
-  return client.get<Wine[]>('/wine');
+export const getCatalog = () => {
+  return client.get<Wine[]>('/catalog');
 };
 
-// export const getOneWine = (wineId: number) => {
-//   return client.get<Wine[]>(`/wine?wineId=${wineId}`);
-// };
+export const getOneWine = (wineId: string) => {
+  return client.get<Wine>(`/catalog/${wineId}`);
+};
+
 
