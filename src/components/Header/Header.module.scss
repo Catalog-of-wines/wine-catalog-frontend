@@ -16,6 +16,8 @@
   display: flex;
   align-items: center;
   height: 64px;
+  max-width: $max-width;
+  margin: 0 auto;
   // grid-template-columns: repeat(12, 1fr);
 
 }
@@ -56,7 +58,6 @@
   border-right: solid 1px $dark-grey-color;
   // height: 64px;
   height: 100%;
-  
 }
 
 // .navigation {
