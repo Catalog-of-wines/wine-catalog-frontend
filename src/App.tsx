@@ -49,11 +49,11 @@ const App: React.FC = () => {
 
             <Route path="" element={<NotFoundPage /> } /> */}
           </Routes>
+  
         </Container>
       </main>
-
-      {/* <Footer /> */}
       <Footer />
+
     </div>
   );
 };
