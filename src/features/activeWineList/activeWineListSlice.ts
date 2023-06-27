@@ -14,8 +14,8 @@ const initialState: UsersState = {
   hasError: '',
 };
 
-export const initActiveWineList = createAsyncThunk('wines/fetch', () => {
-  return getCatalog();
+export const initActiveWineList = createAsyncThunk('wines/fetch', (query: string) => {
+  return getCatalog(query);
 });
 
 const activeWineListSlice = createSlice({
