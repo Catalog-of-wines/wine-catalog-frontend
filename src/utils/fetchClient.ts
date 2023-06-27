@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-const BASE_URL = 'http://localhost:8000';
+export const BASE_URL = 'http://localhost:8000';
 // const BASE_URL = 'http://127.0.0.1:8000';
 
 
@@ -23,7 +23,7 @@ function request<T>(
     options.headers = {
       'Content-Type': 'application/json; charset=UTF-8',
     };
-  }
+  }  
 
   return wait(300)
     .then(() => fetch(BASE_URL + url, options))

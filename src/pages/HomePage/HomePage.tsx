@@ -39,6 +39,8 @@ export const HomePage: React.FC = () => {
     getDataFromServer();
   }, [])
 
+  // console.log('logg>>>>', data);
+  
   return (
     <>
        <p>HomePage</p>

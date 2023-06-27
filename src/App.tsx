@@ -2,12 +2,14 @@
 // import "./App.css";
 // import { Link, Navigate, Route, Routes } from "react-router-dom";
 import './styles/global.scss'
-// import { Navigate, Route, Routes } from "react-router-dom";
-// import { HomePage } from "./pages/HomePage";
-// import { Catalog } from "./pages/Catalog";
+import { Navigate, Route, Routes } from "react-router-dom";
+import { HomePage } from "./pages/HomePage";
+import { Catalog } from "./pages/Catalog";
 import styles from "./App.module.scss";
 import { Header } from "./components/Header";
 import { Footer } from './components/Footer';
+import { ItemPage } from './pages/ItemPage';
+import { Container } from './components/Container';
 // import { Footer } from "./components/Footer";
 
 const App: React.FC = () => {
@@ -15,35 +17,43 @@ const App: React.FC = () => {
     <div className={styles.app}>
       <Header />
 
-      {/* <main className="container">
-        <Routes>
-           <Route path="/" element={<HomePage />} />
-           <Route path="/wines" element={<Catalog />} />
-           <Route path="*" element={<p>Page not found</p>} />
-           <Route path="/home" element={<Navigate to="/" replace />} /> */}
-          {/* <Route path="/" element={<HomePage /> } />
-          <Route path="/home" element={<Navigate to="/" replace />} />
+      <main 
+        // className="container"
+      >
+        <Container>
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+              {/* <Route path="/wines" element={<Catalog />} /> */}
+              <Route path="/catalog" >
+                <Route index element={<Catalog /> } />
+                <Route path=":wineId" element={<ItemPage /> } />
+              </Route>
+            <Route path="*" element={<p>Page not found</p>} />
+            <Route path="/home" element={<Navigate to="/" replace />} />
+            {/* <Route path="/" element={<HomePage /> } />
+            <Route path="/home" element={<Navigate to="/" replace />} />
 
-          <Route path="/phones" >
-            <Route index element={<PhonesPage /> } />
-            <Route path=":phoneId" element={<ProductPage /> } />
-          </Route>
+            <Route path="/phones" >
+              <Route index element={<PhonesPage /> } />
+              <Route path=":phoneId" element={<ProductPage /> } />
+            </Route>
 
-          <Route path='/tablets' element={<TabletsPage />} />
-          <Route path='/accessories' element={<AccessoriesPage />} />
+            <Route path='/tablets' element={<TabletsPage />} />
+            <Route path='/accessories' element={<AccessoriesPage />} />
 
-          <Route path="/favorites" element={<FavoritesPage /> } />
-          <Route path="/cart" element={<CartPage /> } />
-          { <Route path='/contacts' element={<Contacts />} />}
+            <Route path="/favorites" element={<FavoritesPage /> } />
+            <Route path="/cart" element={<CartPage /> } />
+            { <Route path='/contacts' element={<Contacts />} />}
 
-          <Route path='/team' element={<Contacts />} />
+            <Route path='/team' element={<Contacts />} />
 
-          <Route path="" element={<NotFoundPage /> } /> */}
-        {/* </Routes>
+            <Route path="" element={<NotFoundPage /> } /> */}
+          </Routes>
+  
+        </Container>
       </main>
-
-      <Footer /> */}
       <Footer />
+
     </div>
   );
 };

@@ -1,0 +1,48 @@
+@import '../../styles/extends.scss';
+@import '../../styles/variables.scss';
+
+.checkbox {
+  display: flex;
+  width: max-content;
+  align-items: center;
+  gap: 10px;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+
+  margin-bottom: 20px;
+}
+
+.label {
+  font-size: 16px;
+  color: $white-color;
+}
+
+.real {
+  position: absolute;
+  left: -100%;
+
+  &:checked ~ .custom {
+    &::before {
+      opacity: 1;
+    }
+  }
+}
+
+.custom {
+  @extend %centered;
+  
+  width: $checkbox-size;
+  height: $checkbox-size;
+  border: 1px solid $white-color;
+  border-radius: $checkbo-border-radius;
+
+  &:before {
+    content: '';
+    width: $checkbox-size / 2;
+    height: $checkbox-size / 2;
+    border-radius: $checkbo-border-radius / 2;
+    background-color: $white-color;
+    opacity: 0;
+  }
+}

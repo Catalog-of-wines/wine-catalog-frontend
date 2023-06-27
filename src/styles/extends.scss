@@ -1,0 +1,14 @@
+@import './variables.scss';
+
+%iconPropperty {
+  width: $icon-size;
+  height: $icon-size;
+  background-repeat: no-repeat;
+  align-self: center;
+}
+
+%centered {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
