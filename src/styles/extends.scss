@@ -6,3 +6,9 @@
   background-repeat: no-repeat;
   align-self: center;
 }
+
+%centered {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
