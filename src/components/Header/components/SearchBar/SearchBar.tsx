@@ -15,7 +15,6 @@ export const SearchBar:React.FC<Props> = ({ className }) => {
 
   return (
     <div className={className}>
-      {/* <div className={styles.container}> */}
         <form className={styles.form}>
           <input type="text" className={`${styles.search} ${styles.text}`} placeholder="Що ви шукаєте?"/>
        
@@ -23,9 +22,6 @@ export const SearchBar:React.FC<Props> = ({ className }) => {
           <BiSearch style={iconStyle}/>
         </button>
         </form>
-      {/* </div> */}
     </div>
-
-
   )
 }
