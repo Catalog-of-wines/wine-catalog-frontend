@@ -13,7 +13,7 @@ type Props = {
 };
 
 export const WineCard: React.FC<Props> = ({ wineId, name, price, image }) => {
-  console.log('wineId', wineId);
+  // console.log('wineId', wineId);
   
   return (
     <div className={styles.card}>

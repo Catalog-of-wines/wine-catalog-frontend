@@ -1,26 +1,51 @@
-// import './Catalog.scss';
 import styles from './Catalog.module.scss';
 import '../../styles/grid.scss';
 import { SideMenu } from '../../components/SideMenu';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import * as wineActions from '../../features/activeWineList/activeWineListSlice';
 import { WineCard } from '../../components/WineCard';
-import { Button } from '../../components/Button';
 import { ChampagneIcon } from '../../components/Icons/ChampagneIcon';
 import { WineIcon } from '../../components/Icons/WineIcon';
 import { DownIcon } from '../../components/Icons/DownIcon';
+import { useSearchParams } from 'react-router-dom';
+import { EndPoint } from '../../types/EndPoint';
 
 export const Catalog: React.FC = () => {
   const dispatch = useAppDispatch();
   const { items: wines } = useAppSelector(state => state.activeWineList);
+  const [searchParams, setSearchParams] = useSearchParams();
+  const [endPoint, setEndpoint] = useState(EndPoint.CATALOG);
+
 
   useEffect(() => {
-    dispatch(wineActions.initActiveWineList());
-  }, [dispatch]);
+    const skip = searchParams.get('skip');
 
-  console.log('test>>>', wines);
-  
+    const query = skip ? `${endPoint}?skip=${skip}` : endPoint;
+    dispatch(wineActions.initActiveWineList(query));
+  }, [dispatch, endPoint, searchParams]);
+
+  const handleShowMore = (): void => {
+    const skip = searchParams.get('skip') || '0';
+
+    setSearchParams({skip: `${+skip + 9}`});
+  };
+
+  const handleShowAll = (): void => {
+    setEndpoint(EndPoint.CATALOG);
+    searchParams.delete('skip');
+  };
+
+  const handleShowChampagne = (): void => {
+    setEndpoint(EndPoint.CHAMPAGNE);
+    searchParams.delete('skip');
+  };
+
+  const handleShowWine = (): void => {
+    setEndpoint(EndPoint.WINE);
+    searchParams.delete('skip');
+  };
+
   return (
     <div className={styles.catalog}>
       <div className="grid">
@@ -30,20 +55,22 @@ export const Catalog: React.FC = () => {
 
         <div className="grid__item grid__item--desktop-4-12">
           <div className={styles.catalogWineFilter}>
-            <Button className={styles.wineFilterBtn}>
+            <button type='button' className={styles.wineFilterBtn} onClick={handleShowAll}>
               <ChampagneIcon />
               <div className={styles.wineFilterText}>Все</div>
               <WineIcon />
-            </Button>
+            </button>
+
             <div className={styles.wineFilterBtnGroup}>
-              <Button className={styles.wineFilterBtn}>
+              <button type='button' className={styles.wineFilterBtn} onClick={handleShowChampagne}>
                 <ChampagneIcon />
                 <div className={styles.wineFilterText}>Шампанське та ігристе</div>
-              </Button>
-              <Button className={styles.wineFilterBtn}>
+              </button>
+
+              <button type='button' className={styles.wineFilterBtn} onClick={handleShowWine}>
                 <div className={styles.wineFilterText}>Вино</div>
                 <WineIcon />
-              </Button>
+              </button>
             </div>
           </div>
 
@@ -59,11 +86,11 @@ export const Catalog: React.FC = () => {
             <div className={styles.wineCards}>
               {wines.map(wine => (
                   <WineCard 
-                    key={wine._id} 
-                    wineId={wine._id} 
-                    name={wine.name} 
-                    price={wine.price} 
-                    image={wine.image_url} 
+                    key={wine._id}
+                    wineId={wine._id}
+                    name={wine.name}
+                    price={wine.price}
+                    image={wine.image_url}
                   />
               ))}
             </div>
@@ -71,9 +98,9 @@ export const Catalog: React.FC = () => {
         </div>
 
         <div className="grid__item grid__item--desktop-7-9">
-          <Button className={styles.ShowMoreBtn}>
+          <button type='button' className={styles.ShowMoreBtn} onClick={handleShowMore}>
             <p className={styles.ShowMoreBtnText}>Показати більше</p>
-          </Button>
+          </button>
         </div>
       </div>
     </div>
