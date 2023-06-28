@@ -1,11 +1,14 @@
 @import '../../styles/variables.scss';
 @import '../../styles/extends.scss';
+@import '../../styles/mixins.scss';
 
 .card {
   justify-self: center;
   width: 332px;
   height: 448px;
   border: 1px solid $dark-grey-color;
+  // background-color: $main-color;
+  @include hover(background-color, $main-color);
 }
 
 .header {
@@ -24,7 +27,7 @@
 .rate {
   color: $light-grey-color;
   font-size: 16px;
-  font-family: Manrope;
+  // font-family: Manrope;
   font-weight: 500;
   line-height: 1;
   align-self: center;
@@ -39,11 +42,11 @@
   padding: 0 20px;
   color: #FFF;
   font-size: 20px;
-  font-family: Manrope;
   font-weight: 500;
   line-height: 1;
   text-decoration: none;
   text-align: center;
+  background-color: inherit;
 }
 
 .price {
@@ -51,10 +54,10 @@
   padding: 0 45px;
   color: #FFF;
   font-size: 24px;
-  font-family: Manrope;
   font-weight: 500;
   line-height: 1;
   text-align: center;
+  background-color: inherit;
 }
 
 .image {
