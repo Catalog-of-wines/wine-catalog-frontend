@@ -10,12 +10,16 @@ import { WineIcon } from '../../components/Icons/WineIcon';
 import { DownIcon } from '../../components/Icons/DownIcon';
 import { useSearchParams } from 'react-router-dom';
 import { EndPoint } from '../../types/EndPoint';
+import { Button } from '../../components/Button';
+import classNames from "classnames";
+
 
 export const Catalog: React.FC = () => {
   const dispatch = useAppDispatch();
   const { items: wines } = useAppSelector(state => state.activeWineList);
   const [searchParams, setSearchParams] = useSearchParams();
   const [endPoint, setEndpoint] = useState(EndPoint.CATALOG);
+  const [activeFilter, setActiveFilter] = useState(EndPoint.CATALOG)
 
 
   useEffect(() => {
@@ -33,16 +37,19 @@ export const Catalog: React.FC = () => {
 
   const handleShowAll = (): void => {
     setEndpoint(EndPoint.CATALOG);
+    setActiveFilter(EndPoint.CATALOG);
     searchParams.delete('skip');
   };
 
   const handleShowChampagne = (): void => {
     setEndpoint(EndPoint.CHAMPAGNE);
+    setActiveFilter(EndPoint.CHAMPAGNE);
     searchParams.delete('skip');
   };
 
   const handleShowWine = (): void => {
     setEndpoint(EndPoint.WINE);
+    setActiveFilter(EndPoint.WINE);
     searchParams.delete('skip');
   };
 
@@ -55,22 +62,62 @@ export const Catalog: React.FC = () => {
 
         <div className="grid__item grid__item--desktop-4-12">
           <div className={styles.catalogWineFilter}>
-            <button type='button' className={styles.wineFilterBtn} onClick={handleShowAll}>
+            <Button 
+              className={classNames({
+                [styles.wineFilterBtn]: activeFilter,
+                [styles.wineFilterBtnActive]: activeFilter === EndPoint.CATALOG,
+                [styles.wineFilterBtnBorder]: activeFilter,
+              })} 
+              onClick={handleShowAll}
+            >
               <ChampagneIcon />
-              <div className={styles.wineFilterText}>Все</div>
+              <div 
+                className={classNames({
+                  [styles.wineFilterText]: activeFilter,
+                  [styles.wineFilterTextActive]: activeFilter === EndPoint.CATALOG
+                })}
+              >
+                Все
+              </div>
               <WineIcon />
-            </button>
+            </Button>
 
             <div className={styles.wineFilterBtnGroup}>
-              <button type='button' className={styles.wineFilterBtn} onClick={handleShowChampagne}>
+              <Button 
+                className={classNames({
+                  [styles.wineFilterBtn]: activeFilter,
+                  [styles.wineFilterBtnActive]: activeFilter === EndPoint.CHAMPAGNE
+                })} 
+                onClick={handleShowChampagne}
+              >
                 <ChampagneIcon />
-                <div className={styles.wineFilterText}>Шампанське та ігристе</div>
-              </button>
+                <div 
+                  className={classNames({
+                    [styles.wineFilterText]: activeFilter,
+                    [styles.wineFilterTextActive]: activeFilter === EndPoint.CHAMPAGNE
+                  })}
+                >
+                  Шампанське та ігристе
+                </div>
+              </Button>
 
-              <button type='button' className={styles.wineFilterBtn} onClick={handleShowWine}>
-                <div className={styles.wineFilterText}>Вино</div>
+              <Button 
+                className={classNames({
+                  [styles.wineFilterBtn]: activeFilter,
+                  [styles.wineFilterBtnActive]: activeFilter === EndPoint.WINE
+                })} 
+                onClick={handleShowWine}
+              >
+                <div 
+                  className={classNames({
+                    [styles.wineFilterText]: activeFilter,
+                    [styles.wineFilterTextActive]: activeFilter === EndPoint.WINE
+                  })}
+                >
+                  Вино
+                </div>
                 <WineIcon />
-              </button>
+              </Button>
             </div>
           </div>
 
@@ -98,9 +145,9 @@ export const Catalog: React.FC = () => {
         </div>
 
         <div className="grid__item grid__item--desktop-7-9">
-          <button type='button' className={styles.ShowMoreBtn} onClick={handleShowMore}>
+          <Button className={styles.ShowMoreBtn} onClick={handleShowMore}>
             <p className={styles.ShowMoreBtnText}>Показати більше</p>
-          </button>
+          </Button>
         </div>
       </div>
     </div>

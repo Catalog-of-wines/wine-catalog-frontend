@@ -1,5 +1,6 @@
 @import '../../styles/variables.scss';
 @import '../../styles/extends.scss';
+@import '../../styles/mixins.scss';
 
 .catalog {
   padding-top: 64px;
@@ -16,28 +17,36 @@
 }
 
 .wineFilterBtn {
-  display: flex;
+  @extend %centered;
   width: 100%;
   padding: 20px 10px;
-  justify-content: center;
-  align-items: center;
   gap: 8px;
   border: 1px solid $dark-grey-color;
   background-color: $black-color;
+  cursor: pointer;
+  @include hover(background-color, $main-color);
+}
 
-  // &NotLast {
-  //   border-bottom-width: 0;
-  // }
+.wineFilterBtnActive {
+  background-color: $white-color;
+  @include hover(background-color, $white-color);
+}
+
+.wineFilterBtnBorder {
+  border-bottom-width: 0;
 }
 
 .wineFilterText {
   color: $white-color;
   text-align: center;
   font-size: 24px;
-  font-family: Manrope;
   font-weight: 500;
   line-height: 100%;
   text-transform: uppercase;
+}
+
+.wineFilterTextActive {
+  color: $black-color;
 }
 
 .wineFilterBtnGroup {
@@ -55,14 +64,12 @@
 .wineSortTitle {
   color: $light-grey-color;
   font-size: 16px;
-  font-family: Manrope;
   line-height: 1.5;
 }
 
 .wineSortCategory {
   color: #FFF;
   font-size: 16px;
-  font-family: Manrope;
   line-height: 150%;
 }
 
@@ -76,14 +83,20 @@
 }
 
 .ShowMoreBtn {
-  display: flex;
+  @extend %centered;
+
+  // display: flex;
+  // justify-content: center;
+  // align-items: center;
   width: 100%;
   padding: 12px 16px;
-  justify-content: center;
-  align-items: center;
   background-color: $black-color;
   border: 1px solid $white-color;
   margin-bottom: 112px;
+
+  cursor: pointer;
+  @include hover(background-color, $main-color);
+  @include hover(border-color, $light-grey-color);
 }
 
 .ShowMoreBtnText {
@@ -91,4 +104,5 @@
   font-size: 16px;
   font-weight: 500;
   line-height: 150%;
+  background-color: inherit;
 }
