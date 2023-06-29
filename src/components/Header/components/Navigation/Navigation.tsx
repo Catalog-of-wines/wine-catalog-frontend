@@ -14,13 +14,13 @@ export const Navigation: React.FC = () => {
         </div>
         <div className={styles.navItem}>
           <NavigationLink
-            to="/vine"
+            to="/wine"
             text="Вино"
           />
         </div>
         <div className={styles.navItem}>
           <NavigationLink
-            to="/shampain"
+            to="/champagne"
             text="Шампанське"
           />
         </div>
