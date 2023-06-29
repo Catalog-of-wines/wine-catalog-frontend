@@ -1,4 +1,3 @@
-import './SideMenu.scss';
 import styles from './SideMenu.module.scss';
 import { Category, CategoriesList } from './components/index';
 import { getAromaCategories } from '../../api/catalog';
