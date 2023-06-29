@@ -1,10 +1,6 @@
 @import '../../styles/variables.scss';
 @import '../../styles/extends.scss';
 
-.sideMenu {
-
-}
-
 .title {
   display: flex;
   padding: 20px 0px;
@@ -16,6 +12,7 @@
 
 .icon {
   @extend %iconPropperty;
+  
   background-image: url('../../images/ph_sliders.svg'); 
 }
 
