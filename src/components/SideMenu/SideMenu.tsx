@@ -1,11 +1,10 @@
 import './SideMenu.scss';
 import styles from './SideMenu.module.scss';
 import { Category, CategoriesList } from './components/index';
-import { getAromaCategories, getFoodCategories } from '../../api/catalog';
+import { getAromaCategories } from '../../api/catalog';
 import { useEffect, useState } from 'react';
 
 const moodData = ['Святковий', 'Романтичний'];
-// const tasteData = ['Риба', 'Мясо'];
 
 export const SideMenu = () => {
   const [taste, setTaste] = useState<string[]>([]);
@@ -20,20 +19,8 @@ export const SideMenu = () => {
     }
   };
 
-  const getFood = async () => {
-    try {
-      const food = await getFoodCategories();
-
-      console.log(food);
-
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
   useEffect(() => {
     getAroma();
-    getFood();
   }, []);
 
   const categories = [
