@@ -1,5 +1,5 @@
 import React, { type DetailedHTMLProps } from 'react';
-import { BASE_URL } from '../../utils/fetchClient';
+// import { BASE_URL } from '../../utils/fetchClient';
 
 // eslint-disable-next-line max-len
 interface Props extends DetailedHTMLProps<React.ImgHTMLAttributes<HTMLImageElement>, HTMLImageElement> {
@@ -9,7 +9,7 @@ interface Props extends DetailedHTMLProps<React.ImgHTMLAttributes<HTMLImageEleme
 
 export const Image: React.FC<Props> = ({ src, alt, ...props }) => (
   <img
-    src={`${BASE_URL}${src}`}
+    src={`${src}`}
     alt={alt}
     {...props}
   />

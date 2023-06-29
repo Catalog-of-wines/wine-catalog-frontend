@@ -2,26 +2,27 @@ import styles from './Catalog.module.scss';
 import '../../styles/grid.scss';
 import { SideMenu } from '../../components/SideMenu';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import * as wineActions from '../../features/activeWineList/activeWineListSlice';
+import * as setEndPoint from '../../features/endPoint/endPointSlice';
 import { WineCard } from '../../components/WineCard';
 import { ChampagneIcon } from '../../components/Icons/ChampagneIcon';
 import { WineIcon } from '../../components/Icons/WineIcon';
 import { DownIcon } from '../../components/Icons/DownIcon';
-import { useSearchParams } from 'react-router-dom';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 import { EndPoint } from '../../types/EndPoint';
 import { Button } from '../../components/Button';
 import classNames from "classnames";
 
-
 export const Catalog: React.FC = () => {
   const dispatch = useAppDispatch();
   const { items: wines } = useAppSelector(state => state.activeWineList);
+  const endPoint = useAppSelector(state => state.endPoint);
   const [searchParams, setSearchParams] = useSearchParams();
-  const [endPoint, setEndpoint] = useState(EndPoint.CATALOG);
-  const [activeFilter, setActiveFilter] = useState(EndPoint.CATALOG)
+  const navigate = useNavigate();
 
-
+  // console.log('endPoint>>>', endPoint);
+  
   useEffect(() => {
     const skip = searchParams.get('skip');
 
@@ -36,21 +37,21 @@ export const Catalog: React.FC = () => {
   };
 
   const handleShowAll = (): void => {
-    setEndpoint(EndPoint.CATALOG);
-    setActiveFilter(EndPoint.CATALOG);
-    searchParams.delete('skip');
+    setSearchParams({});
+    dispatch(setEndPoint.set(EndPoint.CATALOG));
+    navigate(`/${EndPoint.CATALOG}`);
   };
 
   const handleShowChampagne = (): void => {
-    setEndpoint(EndPoint.CHAMPAGNE);
-    setActiveFilter(EndPoint.CHAMPAGNE);
-    searchParams.delete('skip');
+    setSearchParams({});
+    dispatch(setEndPoint.set(EndPoint.CHAMPAGNE));
+    navigate(`/${EndPoint.CHAMPAGNE}`);
   };
 
   const handleShowWine = (): void => {
-    setEndpoint(EndPoint.WINE);
-    setActiveFilter(EndPoint.WINE);
-    searchParams.delete('skip');
+    setSearchParams({});
+    dispatch(setEndPoint.set(EndPoint.WINE));
+    navigate(`/${EndPoint.WINE}`);
   };
 
   return (
@@ -61,21 +62,21 @@ export const Catalog: React.FC = () => {
         </div>
 
         <div className="grid__item grid__item--desktop-4-12">
-          <div className={styles.catalogWineFilter}>
+        <div className={styles.catalogWineFilter}>
             <Button 
-              className={classNames({
-                [styles.wineFilterBtn]: activeFilter,
-                [styles.wineFilterBtnActive]: activeFilter === EndPoint.CATALOG,
-                [styles.wineFilterBtnBorder]: activeFilter,
-              })} 
+              className={classNames(
+                styles.wineFilterBtn,
+                styles.wineFilterBtnBorder,
+                {[styles.wineFilterBtnActive]: endPoint === EndPoint.CATALOG}
+              )} 
               onClick={handleShowAll}
             >
               <ChampagneIcon />
               <div 
-                className={classNames({
-                  [styles.wineFilterText]: activeFilter,
-                  [styles.wineFilterTextActive]: activeFilter === EndPoint.CATALOG
-                })}
+                className={classNames(
+                  styles.wineFilterText,
+                  {[styles.wineFilterTextActive]: endPoint === EndPoint.CATALOG}
+                )}
               >
                 Все
               </div>
@@ -84,35 +85,35 @@ export const Catalog: React.FC = () => {
 
             <div className={styles.wineFilterBtnGroup}>
               <Button 
-                className={classNames({
-                  [styles.wineFilterBtn]: activeFilter,
-                  [styles.wineFilterBtnActive]: activeFilter === EndPoint.CHAMPAGNE
-                })} 
+                className={classNames(
+                  styles.wineFilterBtn,
+                  {[styles.wineFilterBtnActive]: endPoint === EndPoint.CHAMPAGNE}
+                )}
                 onClick={handleShowChampagne}
               >
                 <ChampagneIcon />
                 <div 
-                  className={classNames({
-                    [styles.wineFilterText]: activeFilter,
-                    [styles.wineFilterTextActive]: activeFilter === EndPoint.CHAMPAGNE
-                  })}
+                  className={classNames(
+                    styles.wineFilterText,
+                    {[styles.wineFilterTextActive]: endPoint === EndPoint.CHAMPAGNE}
+                  )}
                 >
                   Шампанське та ігристе
                 </div>
               </Button>
 
               <Button 
-                className={classNames({
-                  [styles.wineFilterBtn]: activeFilter,
-                  [styles.wineFilterBtnActive]: activeFilter === EndPoint.WINE
-                })} 
+                className={classNames(
+                  styles.wineFilterBtn,
+                  {[styles.wineFilterBtnActive]: endPoint === EndPoint.WINE}
+                )} 
                 onClick={handleShowWine}
               >
                 <div 
-                  className={classNames({
-                    [styles.wineFilterText]: activeFilter,
-                    [styles.wineFilterTextActive]: activeFilter === EndPoint.WINE
-                  })}
+                  className={classNames(
+                    styles.wineFilterText,
+                    {[styles.wineFilterTextActive]: endPoint === EndPoint.WINE}
+                  )}
                 >
                   Вино
                 </div>

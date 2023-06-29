@@ -10,7 +10,11 @@ import { Header } from "./components/Header";
 import { Footer } from './components/Footer';
 import { ItemPage } from './pages/ItemPage';
 import { Container } from './components/Container';
+// import { useAppSelector } from './app/hooks';
 // import { Footer } from "./components/Footer";
+// import { EndPoint } from './types/EndPoint';
+import { FavoritesPage } from './pages/FavoritesPage';
+import { CartPage } from './pages/CartPage';
 
 const App: React.FC = () => {
   return (
@@ -23,11 +27,20 @@ const App: React.FC = () => {
         <Container>
           <Routes>
             <Route path="/" element={<HomePage />} />
-              {/* <Route path="/wines" element={<Catalog />} /> */}
-              <Route path="/catalog" >
-                <Route index element={<Catalog /> } />
-                <Route path=":wineId" element={<ItemPage /> } />
-              </Route>
+
+            <Route path="/catalog" >
+              <Route index element={<Catalog /> } />
+              <Route path=":wineId" element={<ItemPage /> } />
+            </Route>
+
+            <Route path="/champagne" element={<Catalog /> } />
+            <Route path="/wine" element={<Catalog /> } />
+            <Route path="/aroma" element={<Catalog /> } />
+            <Route path="/food" element={<Catalog /> } />
+ 
+            <Route path="/favorites" element={<FavoritesPage /> } />
+            <Route path="/cart" element={<CartPage /> } />
+            
             <Route path="*" element={<p>Page not found</p>} />
             <Route path="/home" element={<Navigate to="/" replace />} />
             {/* <Route path="/" element={<HomePage /> } />
@@ -41,8 +54,7 @@ const App: React.FC = () => {
             <Route path='/tablets' element={<TabletsPage />} />
             <Route path='/accessories' element={<AccessoriesPage />} />
 
-            <Route path="/favorites" element={<FavoritesPage /> } />
-            <Route path="/cart" element={<CartPage /> } />
+            
             { <Route path='/contacts' element={<Contacts />} />}
 
             <Route path='/team' element={<Contacts />} />

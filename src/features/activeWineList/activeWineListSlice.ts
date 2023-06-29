@@ -1,14 +1,18 @@
-import { PayloadAction, createAsyncThunk, createSlice} from '@reduxjs/toolkit';
+import { 
+  // PayloadAction, 
+  createAsyncThunk, 
+  createSlice
+} from '@reduxjs/toolkit';
 import { Wine } from '../../types/Wine';
 import { getCatalog } from '../../api/catalog';
 
-export interface UsersState {
+export interface WinesState {
   items: Wine[];
   loaded: boolean;
   hasError: string;
 }
 
-const initialState: UsersState = {
+const initialState: WinesState = {
   items: [],
   loaded: false,
   hasError: '',
@@ -22,9 +26,9 @@ const activeWineListSlice = createSlice({
   name: 'wines',
   initialState,
   reducers: {
-    clear: (state, action: PayloadAction<Wine[]>) => {
-      state.items = action.payload;
-    },
+    // clear: (state, action: PayloadAction<Wine[]>) => {
+    //   state.items = action.payload;
+    // },
   },
   extraReducers: (builder) => {
     builder.addCase(initActiveWineList.pending, (state) => {
@@ -44,4 +48,4 @@ const activeWineListSlice = createSlice({
 });
 
 export default activeWineListSlice.reducer;
-export const { clear } = activeWineListSlice.actions;
+// export const { clear } = activeWineListSlice.actions;
