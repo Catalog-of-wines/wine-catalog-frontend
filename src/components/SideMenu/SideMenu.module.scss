@@ -1,0 +1,25 @@
+@import '../../styles/variables.scss';
+@import '../../styles/extends.scss';
+
+.title {
+  display: flex;
+  padding: 20px 0px;
+
+  align-items: center;
+  gap: 8px;
+  border-bottom: solid 1px $dark-grey-color;
+}
+
+.icon {
+  @extend %iconPropperty;
+  
+  background-image: url('../../images/ph_sliders.svg'); 
+}
+
+.text {
+  color: $white-color;
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 100%;
+  text-transform: uppercase;
+}

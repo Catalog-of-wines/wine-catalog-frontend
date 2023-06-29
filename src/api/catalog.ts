@@ -20,4 +20,6 @@ export const getOneWine = (wineId: string) => {
   return client.get<Wine>(`/catalog/${wineId}`);
 };
 
-
+export const getAromaCategories = () => {
+  return client.get<string[]>('/aroma_mappings');
+}

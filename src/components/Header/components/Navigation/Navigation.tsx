@@ -4,7 +4,6 @@ import { NavigationLink } from "../NavigationLink/NavigationLink";
 
 export const Navigation: React.FC = () => {
   return (
-    // <nav className={styles.nav}>
       <div className={styles.navList}>
         <div className={styles.navItem}>
           <NavigationLink
@@ -14,17 +13,16 @@ export const Navigation: React.FC = () => {
         </div>
         <div className={styles.navItem}>
           <NavigationLink
-            to="/wine"
+            to="/wine/"
             text="Вино"
           />
         </div>
         <div className={styles.navItem}>
           <NavigationLink
-            to="/champagne"
+            to="/champagne/"
             text="Шампанське"
           />
         </div>
       </div>
-    // </nav>
   )
 }
