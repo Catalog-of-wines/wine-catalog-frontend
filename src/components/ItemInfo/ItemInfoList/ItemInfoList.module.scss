@@ -1,0 +1,16 @@
+@import '../../../styles/variables.scss';
+
+.list {
+  font-size: 16px;
+  display: flex;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.term {
+  color: $light-grey-color;
+}
+
+.definition {
+  color: $white-color;
+}

@@ -7,6 +7,7 @@ export interface Wine {
   capacity: string
   package: string
   country: string
+  region: string
   brand: string
   alcohol_percentage: string
   producer: string
