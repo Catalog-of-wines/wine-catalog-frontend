@@ -1,0 +1,34 @@
+@import '../../../../styles/variables.scss';
+@import '../../../../styles/extends.scss';
+
+.category {
+  border-bottom: solid 1px $dark-grey-color;
+  box-sizing: border-box;
+}
+
+.title {
+  color: $white-color;
+  font-size: 24px;
+  line-height: 100%;
+}
+
+.head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 0;
+  cursor: pointer;
+}
+
+.arrow {
+  @extend %iconPropperty;
+
+  display: block;
+  background-image: url('../../../../images/Icon_down.svg');
+  transition: rotate .2s linear;
+  transform-origin: center;
+
+  &.active {
+    rotate: 180deg;
+  }
+}
