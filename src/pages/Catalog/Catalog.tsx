@@ -1,18 +1,14 @@
-import styles from './Catalog.module.scss';
-import '../../styles/grid.scss';
-import { SideMenu } from '../../components/SideMenu';
-import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { useEffect } from 'react';
 import * as wineActions from '../../features/activeWineList/activeWineListSlice';
 import * as setEndPoint from '../../features/endPoint/endPointSlice';
-import { WineCard } from '../../components/WineCard';
-import { ChampagneIcon } from '../../components/Icons/ChampagneIcon';
-import { WineIcon } from '../../components/Icons/WineIcon';
-import { DownIcon } from '../../components/Icons/DownIcon';
 import { useNavigate, useSearchParams } from 'react-router-dom';
+import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { EndPoint } from '../../types/EndPoint';
-import { Button } from '../../components/Button';
+import { WineIcon, ChampagneIcon, DownIcon } from '../../components/icons';
+import { Button, SideMenu, WineCard } from '../../components';
 import classNames from "classnames";
+import '../../styles/grid.scss';
+import styles from './Catalog.module.scss';
 
 export const Catalog: React.FC = () => {
   const dispatch = useAppDispatch();
@@ -21,8 +17,6 @@ export const Catalog: React.FC = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const navigate = useNavigate();
 
-  // console.log('endPoint>>>', endPoint);
-  
   useEffect(() => {
     const skip = searchParams.get('skip');
 
