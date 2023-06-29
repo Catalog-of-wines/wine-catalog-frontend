@@ -1,6 +1,6 @@
 import { NavLink } from 'react-router-dom';
 import styles from './ItemHead.module.scss';
-import { Arrow } from '../../icons';
+import { Arrow } from '../../components/icons';
 
 export const ItemHead = () => (
   <div className={styles.itemHead}>
