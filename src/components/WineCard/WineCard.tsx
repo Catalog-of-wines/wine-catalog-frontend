@@ -1,8 +1,7 @@
 // import './WineCard.scss';
 import styles from './WineCard.module.scss';
 import { Image } from '../../components/Image';
-import { StarIcon } from '../icons/StarIcon'
-import { HeartIcon } from '../icons/HeartIcon'
+import { StarIcon, HeartIcon } from '../icons';
 import { Link } from 'react-router-dom';
 
 type Props = {
