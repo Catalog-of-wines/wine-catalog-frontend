@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import { Wine } from '../../types/Wine';
 import styles from './ItemInfo.module.scss';
-import { Like } from '../../components/icons';
+import { Like } from '../icons';
 import { ItemInfoList } from './ItemInfoList';
 // @ts-ignore
 import ReactReadMoreReadLess from 'react-read-more-read-less';
