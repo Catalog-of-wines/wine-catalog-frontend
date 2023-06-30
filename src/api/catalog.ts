@@ -10,10 +10,10 @@ export const testCall = () => {
 };
 
 
-export const getCatalog = (query: string) => {
-  console.log(`/${query}`);
+export const getWines = (query: string) => {
+  console.log(query);
   
-  return client.get<Wine[]>(`/${query}`);
+  return client.get<Wine[]>(query);
 };
 
 export const getOneWine = (wineId: string) => {

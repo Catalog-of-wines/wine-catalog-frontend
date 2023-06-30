@@ -1,8 +1,9 @@
-// import './WineCard.scss';
 import styles from './WineCard.module.scss';
 import { Image } from '../../components/Image';
-import { StarIcon, HeartIcon } from '../icons';
+import { StarIcon, HeartIcon, FilledHeartIcon } from '../icons';
 import { Link } from 'react-router-dom';
+import { useAppDispatch, useAppSelector } from '../../app/hooks';
+import * as favoritesActions from '../../features/favorites/favoritesSlice';
 
 type Props = {
   wineId: string;
@@ -12,8 +13,20 @@ type Props = {
 };
 
 export const WineCard: React.FC<Props> = ({ wineId, name, price, image }) => {
-  // console.log('wineId', wineId);
-  
+  const dispatch = useAppDispatch();
+  const favorites = useAppSelector(state => state.favorites);
+
+  const isFavorites = favorites.includes(wineId);
+
+  const handleClick = () => {
+    if (isFavorites) {
+      dispatch(favoritesActions.removeFromFavorites(wineId));
+      
+      return;
+    }
+    dispatch(favoritesActions.addFavorites(wineId));
+  }
+
   return (
     <div className={styles.card}>
       <div className={styles.header}>
@@ -21,13 +34,16 @@ export const WineCard: React.FC<Props> = ({ wineId, name, price, image }) => {
           <StarIcon />
           <div className={styles.rate}>4.5</div>
         </div>
-          <HeartIcon />
+
+        <div className={styles.heart} onClick={handleClick}>
+          {isFavorites
+            ? <FilledHeartIcon />
+            : <HeartIcon />}
+        </div>
       </div>
 
       <Link
         to={`/catalog/${wineId}`}
-        // to={`${user.id}`}
-        // className={styles.name}
       >
         <Image
           src={image}
@@ -35,8 +51,6 @@ export const WineCard: React.FC<Props> = ({ wineId, name, price, image }) => {
           className={styles.image}
         />
       </Link>
-
-      {/* <img src="src/images/img_wine.png" alt="dddddd" className={styles.image} /> */}
 
       <Link
         to={`/catalog/${wineId}`}
