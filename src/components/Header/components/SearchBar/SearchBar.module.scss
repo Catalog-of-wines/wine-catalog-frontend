@@ -51,6 +51,7 @@
   align-items: center;
   justify-content: center;
   padding: 0px;
+  border-bottom: solid 1px $dark-grey-color;
 
   &:hover {
     background-color: $main-color;
