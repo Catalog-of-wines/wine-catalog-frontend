@@ -1,0 +1,34 @@
+@import '../../styles/variables.scss';
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 28px;
+  gap: 32px;
+}
+
+.heading {
+  font-size: 24px;
+  color: $white-color;
+}
+
+.iconLike {
+  width: 28px;
+  height: 28px;
+}
+
+.itemInfoListWrap {
+  margin-bottom: 28px;
+}
+
+.description {
+  margin-bottom: 28px;
+  font-size: 14px;
+  color: $light-grey-color;
+
+  span {
+    color: $white-color;
+    font-weight: 600;
+  }
+}

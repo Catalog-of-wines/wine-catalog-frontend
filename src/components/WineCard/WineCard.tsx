@@ -1,8 +1,7 @@
 import styles from './WineCard.module.scss';
 import { Image } from '../../components/Image';
-import { StarIcon } from '../Icons/StarIcon'
-import { HeartIcon } from '../Icons/HeartIcon'
 import { FilledHeartIcon } from '../Icons/FilledHeartIcon';
+import { StarIcon, HeartIcon } from '../icons';
 import { Link } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import * as favoritesActions from '../../features/favorites/favoritesSlice';
