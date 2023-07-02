@@ -1,5 +1,6 @@
 import { FC } from 'react';
 import styles from './Checkbox.module.scss';
+import { OnChange } from '../../types/events';
 
 export interface CheckboxProps {
   id: string;
@@ -7,7 +8,8 @@ export interface CheckboxProps {
   checked?: boolean;
   label?: string;
   name: string;
-  onChange: (value: string, name: string) => void;
+  categoryName: string;
+  onChange: (e: OnChange) => void;
 }
 
 export const Checkbox: FC<CheckboxProps> = ({
@@ -16,6 +18,7 @@ export const Checkbox: FC<CheckboxProps> = ({
   disabled,
   checked,
   name,
+  categoryName,
   onChange,
 }) => (
   <label className={styles.checkbox}>
@@ -27,7 +30,8 @@ export const Checkbox: FC<CheckboxProps> = ({
       className={styles.real}
       disabled={disabled}
       checked={checked}
-      onChange={() => onChange(id, name)}
+      onChange={onChange}
+      data-category={categoryName}
     />
     <div className={styles.custom} />
     <span className={styles.label}>{label}</span>

@@ -1,13 +1,22 @@
 import styles from './SideMenu.module.scss';
-import { Category, CategoriesList } from './components/index';
+import { Category, CategoriesList } from './components';
 import { getAromaCategories } from '../../api/catalog';
-import { useEffect, useState } from 'react';
+import { FC, useEffect, useState } from 'react';
+import { OnChange } from '../../types/events';
+
+interface Props {
+  handleOnChange: (e: OnChange) => void;
+  selectedCategories: string[];
+}
 
 const moodData = ['Святковий', 'Романтичний'];
 
-export const SideMenu = () => {
-  const [taste, setTaste] = useState<string[]>([]);
-  
+export const SideMenu: FC<Props> = ({
+  selectedCategories,
+  handleOnChange,
+}) => {
+  const [taste, setTaste] = useState<string[]>([]); 
+
   const getAroma = async () => {
     try {
       const data = await getAromaCategories();
@@ -25,11 +34,28 @@ export const SideMenu = () => {
   const categories = [
     {
       title: 'Настрій',
-      children: <CategoriesList type="radio" list={moodData} name="mood" />,
+      children: (
+        <CategoriesList
+          type="radio"
+          list={moodData}
+          name="mood"
+          categoryName="Настрій"
+          handleOnChange={handleOnChange}
+          selectedCategories={selectedCategories}
+        />
+      ),
     },
     {
       title: 'Смак',
-      children: <CategoriesList type="checkbox" list={taste} />,
+      children: (
+        <CategoriesList
+          categoryName="Смак"
+          type="checkbox"
+          list={taste}
+          handleOnChange={handleOnChange}
+          selectedCategories={selectedCategories}
+        />
+      ),
     },
   ];
 
