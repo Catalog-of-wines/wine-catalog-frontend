@@ -1,5 +1,5 @@
 import React, { type DetailedHTMLProps } from 'react';
-// import { BASE_URL } from '../../utils/fetchClient';
+import image from '../../images/img_wine.png';
 
 // eslint-disable-next-line max-len
 interface Props extends DetailedHTMLProps<React.ImgHTMLAttributes<HTMLImageElement>, HTMLImageElement> {
@@ -9,22 +9,8 @@ interface Props extends DetailedHTMLProps<React.ImgHTMLAttributes<HTMLImageEleme
 
 export const Image: React.FC<Props> = ({ src, alt, ...props }) => (
   <img
-    src={`${src}`}
+    src={image}
     alt={alt}
     {...props}
   />
 );
-// import React, { type DetailedHTMLProps } from 'react';
-// import { API_URL } from '../../../api/constants';
-
-// // eslint-disable-next-line max-len
-// interface Props extends DetailedHTMLProps<React.ImgHTMLAttributes<HTMLImageElement>, HTMLImageElement> {
-//   src: string,
-// }
-
-// export const Image: React.FC<Props> = ({ src, ...props }) => (
-//   <img
-//     src={`${API_URL}/${src}`}
-//     {...props}
-//   />
-// );
