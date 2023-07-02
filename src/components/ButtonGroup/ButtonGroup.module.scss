@@ -1,0 +1,44 @@
+@import '../../styles/variables.scss';
+@import '../../styles/extends.scss';
+@import '../../styles/mixins.scss';
+
+.catalogWineFilter {
+  margin-bottom: 20px;
+}
+
+.wineFilterBtn {
+  @extend %centered;
+  width: 100%;
+  padding: 20px 10px;
+  gap: 8px;
+  border: 1px solid $dark-grey-color;
+  background-color: $black-color;
+  cursor: pointer;
+  @include hover(background-color, $main-color);
+}
+
+.wineFilterBtnBorder {
+  border-bottom-width: 0;
+}
+
+.wineFilterBtnActive {
+  background-color: $white-color;
+  @include hover(background-color, $white-color);
+}
+
+.wineFilterText {
+  color: $white-color;
+  text-align: center;
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 100%;
+  text-transform: uppercase;
+}
+
+.wineFilterTextActive {
+  color: $black-color;
+}
+
+.wineFilterBtnGroup {
+  display: flex;
+}

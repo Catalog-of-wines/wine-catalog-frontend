@@ -1,47 +1,35 @@
-// import React from "react";
-// import "./App.css";
-// import { Link, Navigate, Route, Routes } from "react-router-dom";
 import './styles/global.scss'
 import { Navigate, Route, Routes } from "react-router-dom";
-import { HomePage } from "./pages/HomePage";
-import { Catalog } from "./pages/Catalog";
 import styles from "./App.module.scss";
-import { Header } from "./components/Header";
-import { Footer } from './components/Footer';
-import { ItemPage } from './pages/ItemPage';
-import { Container } from './components/Container';
-// import { useAppSelector } from './app/hooks';
-// import { Footer } from "./components/Footer";
-// import { EndPoint } from './types/EndPoint';
-import { FavoritesPage } from './pages/FavoritesPage';
-import { CartPage } from './pages/CartPage';
+import { CartPage, Catalog, FavoritesPage, HomePage, ItemPage, ErrorPage } from './pages';
+import { Container, Header, Footer } from './components';
 
 const App: React.FC = () => {
   return (
     <div className={styles.app}>
-      <Header />
+      <div>
+        <Header />
+      </div>
 
-      <main 
-        // className="container"
-      >
+      <main className={styles.main}>
         <Container>
           <Routes>
             <Route path="/" element={<HomePage />} />
 
             <Route path="/catalog" >
-              <Route index element={<Catalog /> } />
-              <Route path=":wineId" element={<ItemPage /> } />
+              <Route index element={<Catalog />} />
+              <Route path=":wineId" element={<ItemPage />} />
             </Route>
 
-            <Route path="/champagne" element={<Catalog /> } />
-            <Route path="/wine" element={<Catalog /> } />
-            <Route path="/aroma" element={<Catalog /> } />
-            <Route path="/food" element={<Catalog /> } />
- 
-            <Route path="/favorites" element={<FavoritesPage /> } />
-            <Route path="/cart" element={<CartPage /> } />
-            
-            <Route path="*" element={<p>Page not found</p>} />
+            <Route path="/champagne" element={<Catalog />} />
+            <Route path="/wine" element={<Catalog />} />
+            <Route path="/aroma" element={<Catalog />} />
+            <Route path="/food" element={<Catalog />} />
+
+            <Route path="/favorites" element={<FavoritesPage />} />
+            <Route path="/cart" element={<CartPage />} />
+
+            <Route path="*" element={<ErrorPage />} />
             <Route path="/home" element={<Navigate to="/" replace />} />
             {/* <Route path="/" element={<HomePage /> } />
             <Route path="/home" element={<Navigate to="/" replace />} />
@@ -61,11 +49,13 @@ const App: React.FC = () => {
 
             <Route path="" element={<NotFoundPage /> } /> */}
           </Routes>
-  
+
         </Container>
       </main>
-      <Footer />
 
+      <div>
+        <Footer />
+      </div>
     </div>
   );
 };

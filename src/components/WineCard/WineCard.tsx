@@ -1,9 +1,9 @@
-import styles from './WineCard.module.scss';
-import { Image } from '../../components/Image';
-import { StarIcon, HeartIcon, FilledHeartIcon } from '../icons';
+import React from 'react';
 import { Link } from 'react-router-dom';
-import { useAppDispatch, useAppSelector } from '../../app/hooks';
-import * as favoritesActions from '../../features/favorites/favoritesSlice';
+import { Image, HeartComponent } from '../../components';
+import { StarIcon } from '../icons';
+
+import styles from './WineCard.module.scss';
 
 type Props = {
   wineId: string;
@@ -12,21 +12,7 @@ type Props = {
   image: string;
 };
 
-export const WineCard: React.FC<Props> = ({ wineId, name, price, image }) => {
-  const dispatch = useAppDispatch();
-  const favorites = useAppSelector(state => state.favorites);
-
-  const isFavorites = favorites.includes(wineId);
-
-  const handleClick = () => {
-    if (isFavorites) {
-      dispatch(favoritesActions.removeFromFavorites(wineId));
-      
-      return;
-    }
-    dispatch(favoritesActions.addFavorites(wineId));
-  }
-
+export const WineCard = React.memo<Props>(({ wineId, name, price, image }) => {
   return (
     <div className={styles.card}>
       <div className={styles.header}>
@@ -35,11 +21,7 @@ export const WineCard: React.FC<Props> = ({ wineId, name, price, image }) => {
           <div className={styles.rate}>4.5</div>
         </div>
 
-        <div className={styles.heart} onClick={handleClick}>
-          {isFavorites
-            ? <FilledHeartIcon />
-            : <HeartIcon />}
-        </div>
+        <HeartComponent wineId={wineId} />
       </div>
 
       <Link
@@ -61,4 +43,4 @@ export const WineCard: React.FC<Props> = ({ wineId, name, price, image }) => {
       <p className={styles.price}>{price}</p>
     </div>
   )
-}
+})

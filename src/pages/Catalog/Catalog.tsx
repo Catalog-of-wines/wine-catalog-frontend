@@ -1,19 +1,18 @@
 import { useEffect } from 'react';
-import * as wineActions from '../../features/activeWineList/activeWineListSlice';
-import { useLocation, useNavigate, useSearchParams } from 'react-router-dom';
+import { useLocation, useSearchParams } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
-import { WineIcon, ChampagneIcon, DownIcon } from '../../components/icons';
-import { Button, SideMenu, WineCard } from '../../components';
-import classNames from 'classnames';
-import '../../styles/grid.scss';
+import { Button, ButtonGroup, SideMenu, WineCard } from '../../components';
+
+import * as wineActions from '../../features/activeWineList/activeWineListSlice';
+
 import styles from './Catalog.module.scss';
+import '../../styles/grid.scss';
 import { useFilterCategory } from '../../hooks';
 
 export const Catalog: React.FC = () => {
   const dispatch = useAppDispatch();
   const { items: wines } = useAppSelector((state) => state.activeWineList);
   const [searchParams, setSearchParams] = useSearchParams();
-  const navigate = useNavigate();
   const { pathname } = useLocation();
   const { categories, handleOnChange } = useFilterCategory();
 
@@ -30,11 +29,6 @@ export const Catalog: React.FC = () => {
     setSearchParams({ skip: `${+skip + 9}` });
   };
 
-  const handleTopFilter = (point: string): void => {
-    setSearchParams({});
-    navigate(point);
-  };
-
   return (
     <div className={styles.catalog}>
       <div className="grid">
@@ -46,68 +40,16 @@ export const Catalog: React.FC = () => {
         </div>
 
         <div className="grid__item grid__item--desktop-4-12">
-          <div className={styles.catalogWineFilter}>
-            <Button
-              className={classNames(
-                styles.wineFilterBtn,
-                styles.wineFilterBtnBorder,
-                { [styles.wineFilterBtnActive]: pathname === '/catalog' }
-              )}
-              onClick={() => handleTopFilter('/catalog')}
-            >
-              <ChampagneIcon />
-              <div
-                className={classNames(styles.wineFilterText, {
-                  [styles.wineFilterTextActive]: pathname === '/catalog',
-                })}
-              >
-                Все
-              </div>
-              <WineIcon />
-            </Button>
 
-            <div className={styles.wineFilterBtnGroup}>
-              <Button
-                className={classNames(styles.wineFilterBtn, {
-                  [styles.wineFilterBtnActive]: pathname === '/champagne',
-                })}
-                onClick={() => handleTopFilter('/champagne')}
-              >
-                <ChampagneIcon />
-                <div
-                  className={classNames(styles.wineFilterText, {
-                    [styles.wineFilterTextActive]: pathname === '/champagne',
-                  })}
-                >
-                  Шампанське та ігристе
-                </div>
-              </Button>
+          <ButtonGroup setSearchParams={setSearchParams} />
 
-              <Button
-                className={classNames(styles.wineFilterBtn, {
-                  [styles.wineFilterBtnActive]: pathname === '/wine',
-                })}
-                onClick={() => handleTopFilter('/wine')}
-              >
-                <div
-                  className={classNames(styles.wineFilterText, {
-                    [styles.wineFilterTextActive]: pathname === '/wine',
-                  })}
-                >
-                  Вино
-                </div>
-                <WineIcon />
-              </Button>
-            </div>
-          </div>
-
-          <div className={styles.catalogWineSort}>
+          {/* <div className={styles.catalogWineSort}>
             <div className={styles.wineSort}>
               <div className={styles.wineSortTitle}>Сортування:</div>
               <div className={styles.wineSortCategory}>Популярність</div>
               <DownIcon />
             </div>
-          </div>
+          </div> */}
 
           <div>
             <div className={styles.wineCards}>
