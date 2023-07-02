@@ -7,3 +7,5 @@ export * from './FilledHeartIcon';
 export * from './StarIcon';
 export * from './Like';
 export * from './Arrow';
+export * from './Minus';
+export * from './Plus';
