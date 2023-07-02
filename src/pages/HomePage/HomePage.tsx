@@ -1,52 +1,76 @@
-// import classNames from "classnames";
-// import "./TrainRoutesList.css";
-// import React, { useContext, useState } from "react";
-// import { Link } from "react-router-dom";
-// import { SortType } from "../../types/SortType";
-// import { filterRoutes } from "../../utils/filterTrains";
-// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-// import {
-//   faEdit,
-//   faTrash,
-//   faToggleOff,
-//   faToggleOn,
-//   faCheck,
-// } from "@fortawesome/free-solid-svg-icons";
-// import { RouteContext } from "../../RouteProvider";
+import React from "react";
+import { Image } from "../../components/Image"; 
+import wineHomePage from "../../images/img_wine_homepage.png";
+import styles from "./HomePage.module.scss";
+import { Button, WineCard } from "../../components";
+import { ChampagneIcon, WineIcon } from "../../components/icons";
 
 
-
-import { useEffect, useState } from "react";
-import { testCall } from "../../api/wines";
-
-interface Message {
-  message: string;
-}
 
 export const HomePage: React.FC = () => {
-  const [data, setData] = useState<Message>();
+  const handleToCatalog = (): void => {
 
-  const getDataFromServer = async () => {
-    try {
-      const dataFromServer = await testCall();
-      setData(dataFromServer);
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  }
 
-  useEffect(() => {
-    getDataFromServer();
-  }, [])
-
-  // console.log('logg>>>>', data);
-  
   return (
     <>
-       <p>HomePage</p>
+      <div className={styles.container}>
+        <div className={styles.grid}>
+          <div className={styles.gridItem}>
+            <Image
+              src={wineHomePage}
+              alt={"Bottle of wine"}
+              className={styles.image}
+            />
+          </div>
 
-       {data && <p>{data.message}</p>}
-       
+          <div className={styles.text}>
+            <div className={styles.textGroup}>
+              <h1 className={styles.textTitle}>хочеш?</h1>
+              <h1 className={styles.textSubTitle}>відкрий!</h1>
+              <Button className={styles.button} onClick={handleToCatalog}>
+                <p className={styles.buttonText}>Каталог</p>
+              </Button>
+            </div>
+          </div>
+
+          <div className={styles.containerAboutUs}>
+            <div className={styles.aboutUs}>
+              <h1 className={styles.aboutUsTitle}>про нас</h1>
+              <p className={styles.aboutUsTextMain}>
+              WineBox – гіпермаркет вин, що пропонує широкий асортимент різноманітних видів вин та шампанських на будь-який випадок життя. Ми ваш персональний сомельє, що допоможе легко знайти напій на ваш смак.
+              </p>
+              <p className={styles.aboutUsSubText}>
+              Не важливо шукаєте ви ігристе чи тихе, солодке чи сухе, на WineBox знайдеться все!
+              </p>
+            </div>
+          </div>
+
+          <div className={styles.wine}>
+            <WineCard wineId={""} name={""} price={""} image={""} />
+            <WineCard wineId={""} name={""} price={""} image={""} />
+          </div>
+
+            <div className={styles.сhoice}>
+              <h1 className={styles.choiceText}>обирай</h1>
+              <div className={styles.choiceButtonsContainer}>
+              <Button className={styles.choiceButtonChampagne} onClick={handleToCatalog}>
+                <ChampagneIcon width="100" height="100"/>
+                <p className={styles.choiceSubText}>на свято</p>
+              </Button>
+              <Button className={styles.choiceButtonWine} onClick={handleToCatalog}>
+                <WineIcon width="100" height="100"/>
+                <p className={styles.choiceSubText}>на вечір</p>
+              </Button>
+              </div>
+            </div>
+
+          <div>
+
+          </div>
+        </div>
+
+      </div>
     </>
 
   );

@@ -7,15 +7,16 @@ import * as wineActions from '../../features/activeWineList/activeWineListSlice'
 
 import styles from './Catalog.module.scss';
 import '../../styles/grid.scss';
+import { useFilterCategory } from '../../hooks';
 
 export const Catalog: React.FC = () => {
   const dispatch = useAppDispatch();
-  const { items: wines } = useAppSelector(state => state.activeWineList);
+  const { items: wines } = useAppSelector((state) => state.activeWineList);
   const [searchParams, setSearchParams] = useSearchParams();
   const { pathname } = useLocation();
+  const { categories, handleOnChange } = useFilterCategory();
 
   useEffect(() => {
-
     const skip = searchParams.get('skip');
 
     const query = skip ? `${pathname}?skip=${skip}` : pathname;
@@ -32,7 +33,10 @@ export const Catalog: React.FC = () => {
     <div className={styles.catalog}>
       <div className="grid">
         <div className="grid__item grid__item--desktop-1-3">
-          <SideMenu />
+          <SideMenu
+            handleOnChange={handleOnChange}
+            selectedCategories={categories}
+          />
         </div>
 
         <div className="grid__item grid__item--desktop-4-12">
@@ -49,7 +53,7 @@ export const Catalog: React.FC = () => {
 
           <div>
             <div className={styles.wineCards}>
-              {wines.map(wine => (
+              {wines.map((wine) => (
                 <WineCard
                   key={wine._id}
                   wineId={wine._id}
