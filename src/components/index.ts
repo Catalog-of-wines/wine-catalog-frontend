@@ -13,3 +13,4 @@ export * from './Radio';
 export * from './SideMenu';
 export * from './SmallPageTitle';
 export * from './WineCard';
+export * from './WineList';

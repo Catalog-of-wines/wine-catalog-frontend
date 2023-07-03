@@ -11,7 +11,7 @@ export const testCall = () => {
 
 
 export const getWines = (query: string) => {
-  console.log(query);
+  console.log('query>>', query);
   
   return client.get<Wine[]>(query);
 };

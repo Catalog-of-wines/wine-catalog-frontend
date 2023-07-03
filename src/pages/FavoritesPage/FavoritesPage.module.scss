@@ -2,16 +2,6 @@
 @import '../../styles/extends.scss';
 @import '../../styles/mixins.scss';
 
-.catalog {
-  padding-top: 64px;
-}
-
-.catalogWineSort {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  margin-bottom: 64px;
-}
-
 .wineCards {
   @extend %cardsLayout;
   margin-bottom: 32px;
@@ -20,10 +10,14 @@
 .showMoreBtn {
   @extend %centered;
   @extend %showMoreBtn;
-  
+
   margin-bottom: 112px;
 }
 
 .showMoreBtnText {
   @extend %showMoreBtnText;
+}
+
+.loader {
+  margin: 0 auto 100px;
 }
