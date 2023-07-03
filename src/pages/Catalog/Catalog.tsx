@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
-import { useLocation, useSearchParams } from 'react-router-dom';
+import { useLocation, useNavigate, useSearchParams } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
-import { Button, ButtonGroup, SideMenu, WineCard } from '../../components';
+import { Button, ButtonGroup, SideMenu, WineList } from '../../components';
 
 import * as wineActions from '../../features/activeWineList/activeWineListSlice';
 
@@ -15,6 +15,8 @@ export const Catalog: React.FC = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const { pathname } = useLocation();
   const { categories, handleOnChange } = useFilterCategory();
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     const skip = searchParams.get('skip');
@@ -53,22 +55,17 @@ export const Catalog: React.FC = () => {
 
           <div>
             <div className={styles.wineCards}>
-              {wines.map((wine) => (
-                <WineCard
-                  key={wine._id}
-                  wineId={wine._id}
-                  name={wine.name}
-                  price={wine.price}
-                  image={wine.image_url}
-                />
-              ))}
+              <WineList wines={wines} />
             </div>
           </div>
         </div>
 
+        {/* temporary button */}
+        <Button onClick={() => navigate('/favorites')}><p className={styles.showMoreBtnText}>to favorites</p></Button>
+
         <div className="grid__item grid__item--desktop-7-9">
-          <Button className={styles.ShowMoreBtn} onClick={handleShowMore}>
-            <p className={styles.ShowMoreBtnText}>Показати більше</p>
+          <Button className={styles.showMoreBtn} onClick={handleShowMore}>
+            <p className={styles.showMoreBtnText}>Показати більше</p>
           </Button>
         </div>
       </div>

@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './SmallPageTitle.module.scss';
 
-interface Props {
+type Props = {
   children: string,
 }
 
