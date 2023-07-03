@@ -3,8 +3,7 @@ import { useParams } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import * as selectedWineActions from '../../features/selectedWine/selectedWineSlice';
 import styles from './ItemPage.module.scss';
-import { ItemHead, ItemInfo } from '../../components';
-// import { ItemPurchase } from '../../components/ItemPurchase';
+import { ItemHead, ItemInfo, ItemPurchase } from '../../components';
 
 export const ItemPage: React.FC = () => {
   const dispatch = useAppDispatch();
@@ -22,8 +21,7 @@ export const ItemPage: React.FC = () => {
   console.log('wineId>>>>>', wineId);
   console.log('selectedWine>>>>>', wine);
 
-  // const { name, price } = wine;
-  const { name } = wine;
+  const { name, price } = wine;
 
   return (
     <div className={styles.itemPage}>
@@ -44,7 +42,7 @@ export const ItemPage: React.FC = () => {
           <ItemInfo wine={wine} />
           <div className="grid">
             <div className="grid__item grid__item--desktop-1-10">
-              {/* <ItemPurchase priceData={price} /> */}
+              <ItemPurchase priceData={price} />
             </div>
           </div>
         </div>
