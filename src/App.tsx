@@ -1,8 +1,16 @@
-import './styles/global.scss'
 import { Navigate, Route, Routes } from "react-router-dom";
-import styles from "./App.module.scss";
-import { CartPage, Catalog, FavoritesPage, HomePage, ItemPage, ErrorPage } from './pages';
 import { Container, Header, Footer } from './components';
+import {
+  CartPage,
+  Catalog,
+  FavoritesPage,
+  HomePage,
+  ItemPage,
+  ErrorPage
+} from './pages';
+
+import './styles/global.scss'
+import styles from "./App.module.scss";
 
 const App: React.FC = () => {
   return (
@@ -25,29 +33,14 @@ const App: React.FC = () => {
             <Route path="/wine" element={<Catalog />} />
             <Route path="/aroma" element={<Catalog />} />
             <Route path="/food" element={<Catalog />} />
+            <Route path="/festive" element={<Catalog />} />
+            <Route path="/romantic" element={<Catalog />} />
 
             <Route path="/favorites" element={<FavoritesPage />} />
             <Route path="/cart" element={<CartPage />} />
 
             <Route path="*" element={<ErrorPage />} />
             <Route path="/home" element={<Navigate to="/" replace />} />
-            {/* <Route path="/" element={<HomePage /> } />
-            <Route path="/home" element={<Navigate to="/" replace />} />
-
-            <Route path="/phones" >
-              <Route index element={<PhonesPage /> } />
-              <Route path=":phoneId" element={<ProductPage /> } />
-            </Route>
-
-            <Route path='/tablets' element={<TabletsPage />} />
-            <Route path='/accessories' element={<AccessoriesPage />} />
-
-            
-            { <Route path='/contacts' element={<Contacts />} />}
-
-            <Route path='/team' element={<Contacts />} />
-
-            <Route path="" element={<NotFoundPage /> } /> */}
           </Routes>
 
         </Container>
