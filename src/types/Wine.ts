@@ -1,5 +1,5 @@
 export interface Wine {
-  _id: string
+  id: string
   kind: string
   name: string
   color: string
