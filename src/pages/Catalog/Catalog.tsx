@@ -16,13 +16,26 @@ export const Catalog: React.FC = () => {
   const { pathname } = useLocation();
   const { categories, handleOnChange } = useFilterCategory();
 
+
+//   "на свято" /festive/
+// "на вечір" /romantic/
+
   const navigate = useNavigate();
 
   useEffect(() => {
+    let fullQuery = pathname;
     const skip = searchParams.get('skip');
+    const query = searchParams.get('query');
 
-    const query = skip ? `${pathname}?skip=${skip}` : pathname;
-    dispatch(wineActions.initActiveWineList(query));
+    if (skip && query) {
+      fullQuery += `?skip=${skip}&query=${query}`
+    } else if (skip) {
+      fullQuery += `?skip=${skip}`;
+    } else if (query) {
+      fullQuery += `?query=${query}`;
+    }
+
+    dispatch(wineActions.initActiveWineList(fullQuery));
   }, [dispatch, pathname, searchParams]);
 
   const handleShowMore = (): void => {
