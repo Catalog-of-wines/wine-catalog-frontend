@@ -3,9 +3,14 @@ import { Checkbox, Radio } from '../../../index';
 import styles from './CategoriesList.module.scss';
 import { OnChange } from '../../../../types/events';
 
+type ControlData = {
+  id: string,
+  label: string;
+}
+
 export interface CategoriesListProps {
-  categoryName: string;
-  list: string[];
+  title: string;
+  list: ControlData[];
   type: 'radio' | 'checkbox';
   name?: string;
   selectedCategories: string[];
@@ -13,7 +18,7 @@ export interface CategoriesListProps {
 }
 
 export const CategoriesList: FC<CategoriesListProps> = ({
-  categoryName,
+  title,
   list,
   type,
   name = '',
@@ -22,27 +27,27 @@ export const CategoriesList: FC<CategoriesListProps> = ({
 }) => (
   <ul className={styles.categoriesList}>
     {type === 'checkbox'
-      ? list.map((category) => (
-          <li className={styles.categoriesItem} key={category}>
+      ? list.map(({ id, label }) => (
+          <li className={styles.categoriesItem} key={id}>
             <Checkbox
-              checked={selectedCategories.includes(category)}
-              id={category}
-              label={category}
-              name={category}
+              checked={selectedCategories.includes(id)}
+              id={id}
+              label={label}
+              name={id}
               onChange={handleOnChange}
-              categoryName={categoryName}
+              categoryName={title}
             />
           </li>
         ))
-      : list.map((category) => (
-          <li className={styles.categoriesItem} key={category}>
+      : list.map(({ id, label }) => (
+          <li className={styles.categoriesItem} key={id}>
             <Radio
-              checked={selectedCategories.includes(category)}
-              id={category}
-              label={category}
+              checked={selectedCategories.includes(id)}
+              id={id}
+              label={label}
               name={name}
               onChange={handleOnChange}
-              categoryName={categoryName}
+              categoryName={title}
             />
           </li>
         ))}

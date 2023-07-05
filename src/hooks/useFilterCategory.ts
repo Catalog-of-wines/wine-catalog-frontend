@@ -7,30 +7,35 @@ type FilterBy = {
 }
 
 export const useFilterCategory = () => {
+  const [currentType, setCurrentType] = useState('');
   const [filterBy, setFilterBy] = useState<FilterBy>({
     category: '',
     categories: [],
   });
-  
+
   const handleOnChange = useCallback((e: OnChange) => {
     const { value, type, } = e.target;
     const { category } = e.target.dataset;
 
+    if (type !== currentType) {
+      setCurrentType(type);
+    }
+
     if (type === 'checkbox') {
       if (filterBy.categories.includes(value)) {
         setFilterBy((prev) => (
-          {...prev, categories: prev.categories.filter(elem => elem !== value)}
+          { ...prev, categories: prev.categories.filter(elem => elem !== value) }
         ));
 
         return;
       }
 
       if (category !== filterBy.category) {
-        setFilterBy(prev => ({...prev, categories: []}))
+        setFilterBy(prev => ({ ...prev, categories: [] }))
       }
 
       setFilterBy((prev) => (
-        {category: category || '', categories: [...prev.categories, value]}
+        { category: category || '', categories: [...prev.categories, value] }
       ));
 
       return;
@@ -40,11 +45,13 @@ export const useFilterCategory = () => {
       category: category || '',
       categories: [value],
     });
-  }, [filterBy.categories, filterBy.category])
+
+  }, [currentType, filterBy.categories, filterBy.category])
 
   return {
     category: filterBy.category,
     categories: filterBy.categories,
     handleOnChange,
+    type: currentType,
   };
 }
