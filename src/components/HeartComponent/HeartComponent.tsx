@@ -1,7 +1,7 @@
-import styles from './HeartComponent.module.scss';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import * as favoritesActions from '../../features/favorites/favoritesSlice';
 import { FilledHeartIcon, HeartIcon } from '../icons';
+import styles from './HeartComponent.module.scss';
 
 type Props = {
   wineId: string;
@@ -10,7 +10,6 @@ type Props = {
 export const HeartComponent: React.FC<Props> = ({ wineId }) => {
   const dispatch = useAppDispatch();
   const favorites = useAppSelector(state => state.favorites);
-
   const isFavorites = favorites.includes(wineId);
 
   const handleClick = () => {
@@ -19,8 +18,10 @@ export const HeartComponent: React.FC<Props> = ({ wineId }) => {
 
       return;
     }
+
     dispatch(favoritesActions.addFavorites(wineId));
   }
+
   return (
     <div className={styles.heart} onClick={handleClick}>
       {isFavorites

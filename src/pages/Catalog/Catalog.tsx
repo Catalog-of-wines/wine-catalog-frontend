@@ -1,21 +1,21 @@
 import { useEffect } from 'react';
-import { useLocation, useSearchParams } from 'react-router-dom';
+import { useLocation, useNavigate, useSearchParams } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { Button, ButtonGroup, SideMenu, WineList } from '../../components';
 
 import * as wineActions from '../../features/activeWineList/activeWineListSlice';
 
 import styles from './Catalog.module.scss';
-import '../../styles/grid.scss';
+// import '../../styles/grid.scss';
 import { useFilterCategory } from '../../hooks';
+import classNames from 'classnames';
 
 export const Catalog: React.FC = () => {
   const dispatch = useAppDispatch();
-  const { items: wines } = useAppSelector((state) => state.activeWineList);
+  const { items: wines, loaded } = useAppSelector((state) => state.activeWineList);
   const [searchParams, setSearchParams] = useSearchParams();
   const { pathname } = useLocation();
-  const { type, categories,  handleOnChange } = useFilterCategory();
-
+  const { type, categories, handleOnChange } = useFilterCategory();
   const navigate = useNavigate();
 
   const setUrl = () => {
@@ -27,6 +27,7 @@ export const Catalog: React.FC = () => {
 
   useEffect(() => {
     setUrl();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [categories]);
 
   useEffect(() => {
@@ -53,15 +54,15 @@ export const Catalog: React.FC = () => {
 
   return (
     <div className={styles.catalog}>
-      <div className="grid">
-        <div className="grid__item grid__item--desktop-1-3">
+      <div className={styles.grid}>
+        <div className={styles.sideMenuGrid}>
           <SideMenu
             handleOnChange={handleOnChange}
             selectedCategories={categories}
           />
         </div>
 
-        <div className="grid__item grid__item--desktop-4-12">
+        <div className={styles.contentGrid}>
 
           <ButtonGroup setSearchParams={setSearchParams} />
 
@@ -73,19 +74,23 @@ export const Catalog: React.FC = () => {
             </div>
           </div> */}
 
-          <div>
-            <div className={styles.wineCards}>
+          {loaded &&
+            < div className={styles.wineCards}>
               <WineList wines={wines} />
             </div>
-          </div>
+          }
+
+          {!loaded &&
+            <div className={classNames('loader', styles.loader)}></div>
+          }
         </div>
 
-        <div className="grid__item grid__item--desktop-7-9">
+        <div className={styles.buttonGrid}>
           <Button className={styles.showMoreBtn} onClick={handleShowMore}>
             <p className={styles.showMoreBtnText}>Показати більше</p>
           </Button>
         </div>
       </div>
-    </div>
+    </div >
   );
 };

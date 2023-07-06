@@ -21,18 +21,13 @@ export const initSelectedWine = createAsyncThunk('wine/fetch', (wineId: string) 
 const selectedWineSlise = createSlice({
   name: 'wine',
   initialState,
-  reducers: {
-    // clear: (state, action: PayloadAction<Wine>) => {
-    //   state.items = action.payload;
-    // },
-  },
+  reducers: {},
   extraReducers: (builder) => {
     builder.addCase(initSelectedWine.pending, (state) => {
       state.loaded = false;
     });
     
     builder.addCase(initSelectedWine.fulfilled, (state, action) => {
-      console.log('!!!', action.payload);
       state.item = action.payload;
       state.loaded = true;
     });
@@ -45,6 +40,3 @@ const selectedWineSlise = createSlice({
 });
 
 export default selectedWineSlise.reducer;
-// export const { clear } = selectedWineSlise.actions;
-
-

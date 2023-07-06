@@ -46,11 +46,11 @@ const App: React.FC = () => {
         </Container>
       </main>
 
-      <div>
-      <Container>
-        <Footer />
+      {/* <div> */}
+        <Container>
+          <Footer />
         </Container>
-      </div>
+      {/* </div> */}
     </div>
   );
 };

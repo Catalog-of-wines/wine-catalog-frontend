@@ -1,3 +1,29 @@
+@import '../../styles/extends.scss';
+
 .itemPage {
   padding-top: 64px;
+}
+
+.grid {
+  @extend %grid;
+}
+
+.itemHeadGrid {
+  grid-column: 2/13;
+}
+
+.imageGrid {
+  grid-column: 2/7;
+}
+
+.itemInfoGrid {
+  grid-column: 8/13;
+}
+
+.itemPurchaseGrid {
+  grid-column: 1/11;
+}
+
+.loader {
+  margin: 100px auto 100px;
 }

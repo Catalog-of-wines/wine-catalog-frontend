@@ -7,7 +7,7 @@ import { Button, SmallPageTitle, WineList } from "../../components";
 import { Wine } from "../../types/Wine";
 
 import styles from './FavoritesPage.module.scss';
-import '../../styles/grid.scss';
+// import '../../styles/grid.scss';
 
 export const FavoritesPage: React.FC = () => {
   const favorites: string[] = useAppSelector((state) => state.favorites);
@@ -42,8 +42,8 @@ export const FavoritesPage: React.FC = () => {
   }
 
   return (
-    <div className="grid">
-      <div className="grid__item grid__item--desktop-2-10">
+    <div className={styles.grid}>
+      <div className={styles.contentGrid}>
         <SmallPageTitle>
           {hasFavorites
             ? 'Обране'
@@ -52,10 +52,11 @@ export const FavoritesPage: React.FC = () => {
         </SmallPageTitle>
       </div>
 
-      <div className="grid__item grid__item--desktop-2-10">
-        {!isLoading && hasFavorites && <div className={styles.wineCards}>
-          <WineList wines={wines} />
-        </div>
+      <div className={styles.contentGrid}>
+        {!isLoading && hasFavorites &&
+          <div className={styles.wineCards}>
+            <WineList wines={wines} />
+          </div>
         }
 
         {isLoading &&
@@ -63,8 +64,10 @@ export const FavoritesPage: React.FC = () => {
         }
       </div>
 
-      {favorites.length > limit && wines.length < favorites.length &&
-        <div className="grid__item grid__item--desktop-5-7">
+      {favorites.length > limit &&
+        wines.length < favorites.length &&
+        !isLoading &&
+        <div className={styles.buttonGrid}>
           <Button className={styles.showMoreBtn} onClick={handleShowMore}>
             <p className={styles.showMoreBtnText}>Показати більше</p>
           </Button>
