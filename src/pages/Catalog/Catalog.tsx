@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { useLocation, useNavigate, useSearchParams } from 'react-router-dom';
+import { useLocation, useSearchParams } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { Button, ButtonGroup, SideMenu, WineList } from '../../components';
 
@@ -15,12 +15,6 @@ export const Catalog: React.FC = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const { pathname } = useLocation();
   const { categories, handleOnChange } = useFilterCategory();
-
-
-//   "на свято" /festive/
-// "на вечір" /romantic/
-
-  const navigate = useNavigate();
 
   useEffect(() => {
     let fullQuery = pathname;
@@ -72,9 +66,6 @@ export const Catalog: React.FC = () => {
             </div>
           </div>
         </div>
-
-        {/* temporary button */}
-        <Button onClick={() => navigate('/favorites')}><p className={styles.showMoreBtnText}>to favorites</p></Button>
 
         <div className="grid__item grid__item--desktop-7-9">
           <Button className={styles.showMoreBtn} onClick={handleShowMore}>

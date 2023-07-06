@@ -5,6 +5,8 @@ export * from './BackIcon';
 export * from './HeartIcon';
 export * from './FilledHeartIcon';
 export * from './StarIcon';
+export * from './CartIcon';
+export * from './LoginIcon';
 export * from './Like';
 export * from './Arrow';
 export * from './Minus';

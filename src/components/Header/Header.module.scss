@@ -1,13 +1,12 @@
 @import "../../styles/variables.scss";
-
+@import "../../styles/extends.scss";
 
 .headerFlex {
   display: flex;
   align-items: center;
-  height: 64px;
+  height: $header-height;
   margin: 0 auto;
   max-width: $max-width;
-
 }
 
 .logo {
@@ -16,7 +15,9 @@
   padding: 0 32px;
   border-left: solid 1px $dark-grey-color;
   border-bottom: solid 1px $dark-grey-color;
-  height: 100%;
+  height: $header-height;
+
+  @include hover(background-color, $main-color);
 }
 
 .headerFlexSearchBar {
@@ -33,19 +34,42 @@
   justify-content: space-between;
 }
 
-
 .button {
+  @extend %centered;
   background-color: $black-color;
   border: none;
-  height: 64px;
-  width: 64px;
-  align-items: center;
-  justify-content: center;
-  padding: 0px;
+  height: $header-height;
+  width: $header-height;
+  padding: 0;
   border-bottom: solid 1px $dark-grey-color;
   border-right: solid 1px $dark-grey-color;
 
-  &:hover {
-    background-color: $main-color;
-  }
+  @include hover(background-color, $main-color);
+}
+
+.text {
+  color: $white-color;
+  text-align: center;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 1;
+  background-color: inherit;
+}
+
+.active {
+  background-color: $main-color;
+}
+
+.heart {
+  width: 25px;
+  height: 22px;
+}
+
+.cart {
+  height: 23px;
+}
+
+.loginGroup {
+  flex-direction: column;
 }

@@ -1,16 +1,20 @@
 @import "../../../../styles/variables.scss";
+@import "../../../../styles/mixins.scss";
 
 .navLink {
   text-decoration: none;
   font-size: 16px;
-  font-weight: 700;
+  font-weight: 400;
   color: $dark-grey-color;
   display: flex;
   padding-bottom: 16px;
-  line-height: 150%;
+  line-height: 1.5;
   text-align: left;
 
-  &:hover {
-    color: $white-color;
-  }
+  @include hover(color, $white-color);
+}
+
+.active {
+  color: $white-color;
+  // font-weight: 700;
 }

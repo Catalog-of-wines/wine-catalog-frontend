@@ -1,26 +1,75 @@
 @import "../../styles/variables.scss";
+@import "../../styles/extends.scss";
 
 .footer {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 16px;
+  // max-width: $max-width;
+  // margin: 0 auto;
   padding-top: 48px;
   padding-bottom: 54px;
-  display: flex;
   border-top: solid 1px $dark-grey-color;
-  max-width: $max-width;
-  margin: 0 auto;
-
 }
 
 
 .logo {
-  align-items: center;
-  padding: 0 32px;
-  height: 100%;
-  flex-grow: 1;
+  grid-column: 1/2;
+  @extend %centered;
+  // flex-grow: 1;
+  border: 1px solid $white-color;
+  width: 100px;
+  height: 48px;
+  // margin-left: 28px;
+
+  @include hover(background-color, $main-color);
 }
 
-.navigation {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  flex-grow: 11;
+.navigationFooter {
+  grid-column: 6/7;
+  // display: flex;
+  // flex-direction: row;
+  // justify-content: center;
+  // flex-grow: 11;
 }
+
+.navigationInformation {
+  grid-column: 8/9;
+}
+
+
+
+
+
+
+
+// @import "../../styles/variables.scss";
+// @import "../../styles/extends.scss";
+
+// .footer {
+//   display: flex;
+//   max-width: $max-width;
+//   margin: 0 auto;
+//   padding-top: 48px;
+//   padding-bottom: 54px;
+//   border-top: solid 1px $dark-grey-color;
+// }
+
+
+// .logo {
+//   @extend %centered;
+//   flex-grow: 1;
+//   border: 1px solid $white-color;
+//   width: 100px;
+//   height: 48px;
+//   margin-left: 28px;
+
+//   @include hover(background-color, $main-color);
+// }
+
+// .navigation {
+//   display: flex;
+//   flex-direction: row;
+//   justify-content: center;
+//   flex-grow: 11;
+// }

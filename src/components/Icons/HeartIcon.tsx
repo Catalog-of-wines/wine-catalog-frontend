@@ -2,15 +2,17 @@ import { FC } from "react";
 
 interface Props {
   color?: string;
+  className?: string;
 }
 
-export const HeartIcon: FC<Props> = ({ color }) => (
+export const HeartIcon: FC<Props> = ({ className, color }) => (
   <svg
     width="28"
     height="28"
     viewBox="0 0 28 28"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
+    className={className}
   >
     <g id="Icon_heart">
       <path
