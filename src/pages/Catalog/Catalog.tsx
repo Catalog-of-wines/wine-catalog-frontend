@@ -14,7 +14,20 @@ export const Catalog: React.FC = () => {
   const { items: wines } = useAppSelector((state) => state.activeWineList);
   const [searchParams, setSearchParams] = useSearchParams();
   const { pathname } = useLocation();
-  const { categories, handleOnChange } = useFilterCategory();
+  const { type, categories,  handleOnChange } = useFilterCategory();
+
+  const navigate = useNavigate();
+
+  const setUrl = () => {
+    if (type === 'radio') {
+      const category = categories.toString();
+      navigate(`/${category}`);
+    }
+  };
+
+  useEffect(() => {
+    setUrl();
+  }, [categories]);
 
   useEffect(() => {
     let fullQuery = pathname;

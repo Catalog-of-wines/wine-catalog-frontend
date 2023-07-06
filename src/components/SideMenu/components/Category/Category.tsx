@@ -4,11 +4,11 @@ import classNames from 'classnames';
 import { CategoryMenu } from '../CategoryMenu';
 
 export interface CategoryProps {
-  title: string;
+  label: string;
   children: ReactNode;
 }
 
-export const Category: FC<CategoryProps> = ({ title, children }) => {
+export const Category: FC<CategoryProps> = ({ label, children }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleCategory = () => setIsOpen((prev) => !prev);
@@ -16,7 +16,7 @@ export const Category: FC<CategoryProps> = ({ title, children }) => {
   return (
     <li className={styles.category}>
       <div className={styles.head} onClick={toggleCategory}>
-        <span className={styles.title}>{title}</span>
+        <span className={styles.title}>{label}</span>
         <span className={classNames(
           styles.arrow,
           { [styles.active]: isOpen },

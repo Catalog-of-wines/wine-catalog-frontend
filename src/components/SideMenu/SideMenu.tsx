@@ -1,7 +1,7 @@
 import styles from './SideMenu.module.scss';
 import { Category, CategoriesList } from './components';
 import { getAromaCategories } from '../../api/catalog';
-import { FC, useEffect, useState } from 'react';
+import { FC, useEffect, useMemo, useState } from 'react';
 import { OnChange } from '../../types/events';
 
 interface Props {
@@ -9,13 +9,8 @@ interface Props {
   selectedCategories: string[];
 }
 
-const moodData = ['Святковий', 'Романтичний'];
-
-export const SideMenu: FC<Props> = ({
-  selectedCategories,
-  handleOnChange,
-}) => {
-  const [taste, setTaste] = useState<string[]>([]); 
+export const SideMenu: FC<Props> = ({ selectedCategories, handleOnChange }) => {
+  const [taste, setTaste] = useState<string[]>([]);
 
   const getAroma = async () => {
     try {
@@ -31,27 +26,42 @@ export const SideMenu: FC<Props> = ({
     getAroma();
   }, []);
 
+  const moodData = [
+    {
+      id: 'festive',
+      label: 'Святковий',
+    },
+    {
+      id: 'romantic',
+      label: 'Романтичний',
+    },
+  ];
+  const tasteData = useMemo(
+    () => taste.map((item) => ({ label: item, id: item })),
+    [taste]
+  );
+
   const categories = [
     {
-      title: 'Настрій',
+      label: 'Настрій',
       children: (
         <CategoriesList
           type="radio"
           list={moodData}
           name="mood"
-          categoryName="Настрій"
+          title="mood"
           handleOnChange={handleOnChange}
           selectedCategories={selectedCategories}
         />
       ),
     },
     {
-      title: 'Смак',
+      label: 'Смак',
       children: (
         <CategoriesList
-          categoryName="Смак"
+          title="aroma"
           type="checkbox"
-          list={taste}
+          list={tasteData}
           handleOnChange={handleOnChange}
           selectedCategories={selectedCategories}
         />
@@ -66,8 +76,8 @@ export const SideMenu: FC<Props> = ({
         <h3 className={styles.text}>Фільтри</h3>
       </li>
 
-      {categories.map(({ title, children }) => (
-        <Category title={title} children={children} key={title} />
+      {categories.map(({ label, children }) => (
+        <Category children={children} key={label} label={label} />
       ))}
     </ul>
   );
