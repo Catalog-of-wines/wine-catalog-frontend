@@ -3,21 +3,23 @@ import { Link } from "react-router-dom";
 import logo from "../../images/logo.svg";
 import { scrollToTop } from "../../utils/scrollToTop";
 
-// interface Props {
-//   className: string,
-// }
+interface Props {
+  className?: string,
+}
 
-export const LogoLink: React.FC = () => {
+export const LogoLink: React.FC<Props> = ({ className }) => {
   const handleClick = () => {
-    scrollToTop()
+    scrollToTop();
   };
 
   return (
-    <Link to="/" onClick={handleClick}>
-      <img
-        src={logo}
-        alt="logo"
-        // className={className}
-      />
-    </Link>)
+    <Link to="/" onClick={handleClick} >
+      <div className={className} >
+        <img
+          src={logo}
+          alt="logo"
+        />
+      </div>
+    </Link>
+  )
 }

@@ -8,7 +8,6 @@
   height: 448px;
   border: 1px solid $dark-grey-color;
 
-  // background-color: $main-color;
   @include hover(background-color, $main-color);
 }
 

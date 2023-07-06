@@ -4,25 +4,27 @@ import { NavigationLink } from "../NavigationLink/NavigationLink";
 
 export const Navigation: React.FC = () => {
   return (
-      <div className={styles.navList}>
-        <div className={styles.navItem}>
-          <NavigationLink
-            to="/catalog"
-            text="Каталог"
-          />
-        </div>
-        <div className={styles.navItem}>
-          <NavigationLink
-            to="/wine"
-            text="Вино"
-          />
-        </div>
-        <div className={styles.navItem}>
-          <NavigationLink
-            to="/champagne"
-            text="Шампанське"
-          />
-        </div>
-      </div>
+    <div className={styles.navList}>
+      <NavigationLink
+        to="/catalog"
+        className={styles.navItem}
+      >
+        <p className={styles.text}>Каталог</p>
+      </NavigationLink>
+
+      <NavigationLink
+        to="/wine"
+        className={styles.navItem}
+      >
+        <p className={styles.text}>Вино</p>
+      </NavigationLink>
+
+      <NavigationLink
+        to="/champagne"
+        className={styles.navItem}
+      >
+        <p className={styles.text}>Шампанське</p>
+      </NavigationLink>
+    </div>
   )
 }

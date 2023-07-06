@@ -2,6 +2,7 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import styles from "./IconLink.module.scss"
 import { BiCart } from "react-icons/bi";
+import classNames from "classnames";
 
 interface Props {
   to: string
@@ -13,10 +14,12 @@ export const IconLink: React.FC<Props> = ({
   items,
 }) => (
   <NavLink
-    className={styles.navLink}
+    className={({ isActive }) => classNames(
+      { [styles.navLink]: isActive },
+    )}
+    // className={styles.navLink}
     to={to}
   >
-
     {
       !!items && <div className={styles.counter}>
         {items > 99
@@ -27,6 +30,5 @@ export const IconLink: React.FC<Props> = ({
     <button className={styles.icon}>
       <BiCart />
     </button>
-
   </NavLink>
 );

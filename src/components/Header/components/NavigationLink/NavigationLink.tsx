@@ -1,19 +1,24 @@
+import classNames from "classnames";
 import React from "react";
 import { NavLink } from "react-router-dom";
 import styles from "./NavigationLink.module.scss"
 
 interface Props {
-  to: string
-  text: string
+  to: string;
+  children: React.ReactNode | string;
+  className?: string;
 };
 
-export const NavigationLink: React.FC<Props> = ({ to, text }) => {
+export const NavigationLink: React.FC<Props> = ({ to, children, className }) => {
   return (
     <NavLink
-      className={styles.navLink}
+      className={({ isActive }) => classNames(
+          [className],
+          { [styles.active]: isActive },
+        )}
       to={to}
     >
-      {text}
+      {children}
     </NavLink>
   );
 };
