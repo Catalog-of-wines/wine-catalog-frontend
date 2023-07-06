@@ -19,10 +19,29 @@
 .showMoreBtn {
   @extend %centered;
   @extend %showMoreBtn;
-
   margin-bottom: 112px;
 }
 
 .showMoreBtnText {
   @extend %showMoreBtnText;
+}
+
+.loader {
+  margin: 100px auto 100px;
+}
+
+.grid {
+  @extend %grid;
+}
+
+.sideMenuGrid {
+  grid-column: 1/4;
+}
+
+.contentGrid {
+  grid-column: 4/13;
+}
+
+.buttonGrid {
+  grid-column: 7/10;
 }

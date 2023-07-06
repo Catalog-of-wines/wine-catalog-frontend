@@ -1,11 +1,10 @@
 import { FC } from 'react';
 import { Wine } from '../../types/Wine';
-import styles from './ItemInfo.module.scss';
-import { Like } from '../icons';
 import { ItemInfoList } from './ItemInfoList';
+import { HeartComponent } from '../HeartComponent';
 // @ts-ignore
 import ReactReadMoreReadLess from 'react-read-more-read-less';
-import { Button } from '../Button';
+import styles from './ItemInfo.module.scss';
 
 interface Props {
   wine: Wine;
@@ -13,6 +12,7 @@ interface Props {
 
 export const ItemInfo: FC<Props> = ({ wine }) => {
   const {
+    id,
     name,
     color,
     wine_type,
@@ -45,7 +45,7 @@ export const ItemInfo: FC<Props> = ({ wine }) => {
       definition: brand,
     },
     {
-      term: 'Смаки:',
+      term: 'Смаки',
       definition: description.name,
     },
     {
@@ -53,7 +53,7 @@ export const ItemInfo: FC<Props> = ({ wine }) => {
       definition: alcohol_percentage,
     },
     {
-      term: 'Поєднання:',
+      term: 'Поєднання',
       definition: description.gastronomic,
     },
   ];
@@ -62,9 +62,7 @@ export const ItemInfo: FC<Props> = ({ wine }) => {
     <div className={styles.itemInfo}>
       <div className={styles.header}>
         <h2 className={styles.heading}>{name}</h2>
-        <Button onClick={() => {}}>
-          <Like className={styles.iconLike} />
-        </Button>
+        <HeartComponent wineId={id} />
       </div>
       <div className={styles.itemInfoListWrap}>
         {wineInfo.map(({ term, definition }) => (
