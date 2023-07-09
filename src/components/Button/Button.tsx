@@ -1,6 +1,3 @@
-// import React, { ClassAttributes} from "react";
-// import styles from "./Button.module.scss";
-
 import { DetailedHTMLProps } from "react";
 
 interface Props extends DetailedHTMLProps<React.ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement> {

@@ -1,1 +1,1 @@
-export * from "./NavigationLinkFooter"
+export * from "./NavigationLinkFooter";

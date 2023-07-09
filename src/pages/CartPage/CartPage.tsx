@@ -1,5 +1,6 @@
-export const CartPage: React.FC = () => {
-  return (
-    <p>CartPage</p>
-  )
-}
+import { SmallPageTitle } from "../../components";
+import styles from './CartPage.module.scss';
+
+export const CartPage: React.FC = () => (
+  <SmallPageTitle className={styles.title}>Coming soon</SmallPageTitle>
+)

@@ -7,11 +7,9 @@ import { Button, SmallPageTitle, WineList } from "../../components";
 import { Wine } from "../../types/Wine";
 
 import styles from './FavoritesPage.module.scss';
-// import '../../styles/grid.scss';
 
 export const FavoritesPage: React.FC = () => {
   const favorites: string[] = useAppSelector((state) => state.favorites);
-
   const [wines, setWines] = useState<Wine[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [startIndex, setStartIndex] = useState(0);
@@ -44,7 +42,7 @@ export const FavoritesPage: React.FC = () => {
   return (
     <div className={styles.grid}>
       <div className={styles.contentGrid}>
-        <SmallPageTitle>
+        <SmallPageTitle className={styles.title}>
           {hasFavorites
             ? 'Обране'
             : 'У вас покищо немає обраного'

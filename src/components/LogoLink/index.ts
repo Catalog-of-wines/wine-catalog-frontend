@@ -1,1 +1,1 @@
-export * from "./LogoLink"
+export * from "./LogoLink";

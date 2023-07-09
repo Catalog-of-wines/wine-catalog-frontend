@@ -1,20 +1,23 @@
 import { useEffect } from 'react';
 import { useLocation, useNavigate, useSearchParams } from 'react-router-dom';
-import { useAppDispatch, useAppSelector } from '../../app/hooks';
-import { Button, ButtonGroup, SideMenu, WineList } from '../../components';
-
+import classNames from 'classnames';
 import * as wineActions from '../../features/activeWineList/activeWineListSlice';
+import { useFilterCategory } from '../../hooks';
+import { useAppDispatch, useAppSelector } from '../../app/hooks';
+import {
+  Button,
+  ButtonGroup,
+  SideMenu,
+  WineList
+} from '../../components';
 
 import styles from './Catalog.module.scss';
-// import '../../styles/grid.scss';
-import { useFilterCategory } from '../../hooks';
-import classNames from 'classnames';
 
 export const Catalog: React.FC = () => {
   const dispatch = useAppDispatch();
   const { items: wines, loaded } = useAppSelector((state) => state.activeWineList);
   const [searchParams, setSearchParams] = useSearchParams();
-  const { pathname } = useLocation();
+  const { pathname, search } = useLocation();
   const { type, categories, handleOnChange } = useFilterCategory();
   const navigate = useNavigate();
 
@@ -32,19 +35,13 @@ export const Catalog: React.FC = () => {
 
   useEffect(() => {
     let fullQuery = pathname;
-    const skip = searchParams.get('skip');
-    const query = searchParams.get('query');
 
-    if (skip && query) {
-      fullQuery += `?skip=${skip}&query=${query}`
-    } else if (skip) {
-      fullQuery += `?skip=${skip}`;
-    } else if (query) {
-      fullQuery += `?query=${query}`;
+    if (search) {
+      fullQuery += search;
     }
 
     dispatch(wineActions.initActiveWineList(fullQuery));
-  }, [dispatch, pathname, searchParams]);
+  }, [dispatch, pathname, search]);
 
   const handleShowMore = (): void => {
     const skip = searchParams.get('skip') || '0';

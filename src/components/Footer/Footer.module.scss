@@ -3,9 +3,10 @@
 
 .footer {
   @extend %grid;
-  padding-top: 48px;
-  padding-bottom: 54px;
+  padding: 48px 28px 32px;
   border-top: solid 1px $dark-grey-color;
+  max-width: $max-width;
+  margin: 0 auto;
 }
 
 .logo {
@@ -24,4 +25,15 @@
 
 .navigationInformation {
   grid-column: 8/9;
+}
+
+.copyright {
+  max-width: $max-width;
+  padding: 0 28px 20px;
+  margin: 0 auto;
+  color: $dark-grey-color;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.5;
 }

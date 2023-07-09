@@ -17,7 +17,6 @@ export const IconLink: React.FC<Props> = ({
     className={({ isActive }) => classNames(
       { [styles.navLink]: isActive },
     )}
-    // className={styles.navLink}
     to={to}
   >
     {

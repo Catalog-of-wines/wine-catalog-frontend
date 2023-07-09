@@ -9,16 +9,14 @@ interface Props {
   className?: string;
 };
 
-export const NavigationLink: React.FC<Props> = ({ to, children, className }) => {
-  return (
-    <NavLink
-      className={({ isActive }) => classNames(
-          [className],
-          { [styles.active]: isActive },
-        )}
-      to={to}
-    >
-      {children}
-    </NavLink>
-  );
-};
+export const NavigationLink: React.FC<Props> = ({ to, children, className }) => (
+  <NavLink
+    className={({ isActive }) => classNames(
+      [className],
+      { [styles.active]: isActive },
+    )}
+    to={to}
+  >
+    {children}
+  </NavLink>
+);
