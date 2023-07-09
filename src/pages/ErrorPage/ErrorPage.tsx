@@ -1,5 +1,9 @@
 import React from "react";
+import { SmallPageTitle } from "../../components";
+import styles from './ErrorPage.module.scss';
 
 export const ErrorPage = React.memo(() => (
-  <h1>Page not found</h1>
+  <SmallPageTitle className={styles.title}>
+    Page not found
+  </SmallPageTitle>
 ));

@@ -11,3 +11,4 @@ export * from './Like';
 export * from './Arrow';
 export * from './Minus';
 export * from './Plus';
+export * from './ChatIcon';

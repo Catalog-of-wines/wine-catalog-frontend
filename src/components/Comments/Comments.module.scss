@@ -1,0 +1,30 @@
+@import '../../styles/extends.scss';
+
+
+.titleGroup {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 54px;
+}
+
+.title {
+  padding: 0;
+}
+
+.commentsList {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  margin-bottom: 32px;
+}
+
+.button {
+  @extend %centered;
+  @extend %showMoreBtn;
+  width: 220px;
+  margin-bottom: 132px;
+}
+
+.showMoreBtnText {
+  @extend %showMoreBtnText;
+}

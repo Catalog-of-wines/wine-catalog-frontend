@@ -15,3 +15,5 @@ export * from './SmallPageTitle';
 export * from './WineCard';
 export * from './WineList';
 export * from './ItemPurchase';
+export * from './Comments';
+export * from './CreateCommentForm';

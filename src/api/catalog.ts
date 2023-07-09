@@ -1,18 +1,7 @@
 import { Wine } from '../types/Wine';
 import { client } from '../utils/fetchClient';
 
-interface Message {
-  message: string;
-}
-
-export const testCall = () => {
-  return client.get<Message>('/');
-};
-
-
-export const getWines = (query: string) => {
-  console.log('query>>', query);
-  
+export const getWines = (query: string) => {  
   return client.get<Wine[]>(query);
 };
 

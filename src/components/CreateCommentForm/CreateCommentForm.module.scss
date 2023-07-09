@@ -1,0 +1,87 @@
+@import '../../styles/variables.scss';
+@import '../../styles/extends.scss';
+
+.form {
+  padding-top: 92px;
+}
+.textarea {
+  border: 1px solid $dark-grey-color;
+  height: 155px;
+  width: 100%;
+  padding: 16px;
+  margin-bottom: 8px;
+  color: $white-color;
+  background-color: inherit;
+  resize: none;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.5;
+  outline: none;
+
+  &::placeholder {
+    color: $light-grey-color;
+  }
+}
+
+.caption {
+  margin-bottom: 32px;
+  color: $light-grey-color;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.2;
+}
+
+.link {
+  color: $white-color;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 1.2;
+  cursor: pointer;
+}
+
+.rateBtnGroup {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 130px;
+}
+
+.rateGroup {
+  display: flex;
+  gap: 16px;
+}
+
+.rateText {
+  color: $white-color;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 1;
+}
+
+.stars {
+  display: flex;
+  gap: 4px;
+}
+
+.star {
+  cursor: pointer;
+}
+
+.button {
+  @extend %centered;
+  @extend %showMoreBtn;
+  width: 220px;
+
+  &:disabled {
+    background-color: $dark-grey-color;
+    border-width: 0;
+  }
+}
+
+.showMoreBtnText {
+  @extend %showMoreBtnText;
+}

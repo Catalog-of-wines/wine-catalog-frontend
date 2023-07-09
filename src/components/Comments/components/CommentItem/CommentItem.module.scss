@@ -1,0 +1,66 @@
+@import '../../../../styles/variables.scss';
+
+.titleGroup {
+  display: flex;
+  margin-bottom: 16px;
+}
+
+.image {
+  margin-right: 8px;
+  align-self: center;
+  object-fit: cover;
+}
+
+.userName {
+  margin-right: 16px;
+  align-self: center;
+  color: $white-color;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.star {
+  margin-right: 4px;
+  align-self: center;
+}
+
+.rate {
+  align-self: center;
+  color: $light-grey-color;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 1;
+}
+
+.text {
+  margin-bottom: 16px;
+  align-self: center;
+  color: $white-color;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1;
+}
+
+.dateGroup {
+  display: flex;
+  gap: 16px;
+}
+
+.date {
+  align-self: center;
+  color: $light-grey-color;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1;
+
+}
+
+.heart {
+  width: 16px;
+  height: 16px;
+  align-self: center;
+}

@@ -30,9 +30,3 @@ export interface Description {
   gastronomic: string
   why_buy: string
 }
-
-// export interface Wine {
-//   id: number;
-//   title: string;
-//   description: string;
-// }
