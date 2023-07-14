@@ -16,4 +16,6 @@ export * from './WineCard';
 export * from './WineList';
 export * from './ItemPurchase';
 export * from './Comments';
+export * from './Modal';
+export * from './Input';
 export * from './CreateCommentForm';

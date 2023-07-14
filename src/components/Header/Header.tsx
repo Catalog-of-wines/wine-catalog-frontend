@@ -3,13 +3,17 @@ import { Navigation, SearchBar, NavigationLink } from './components';
 import { LogoLink } from "../LogoLink";
 import { CartIcon, HeartIcon, LoginIcon } from "../icons";
 import styles from "./Header.module.scss";
+import { Button } from "../Button";
 
-export const Header: React.FC = () => (
-  <div>
-    <div className={styles.headerFlex}>
-      <LogoLink className={styles.logo} />
-      <SearchBar className={styles.headerFlexSearchBar} />
-      <Navigation />
+interface Props {
+  handleSignIn: () => void;
+}
+
+export const Header: React.FC<Props> = ({ handleSignIn }) => (
+  <div className={styles.headerFlex}>
+    <LogoLink className={styles.logo} />
+    <SearchBar className={styles.headerFlexSearchBar} />
+    <Navigation />
 
       <div className={styles.icon}>
         <NavigationLink className={styles.button} to='/cart'>
@@ -20,13 +24,15 @@ export const Header: React.FC = () => (
           <HeartIcon className={styles.heart} color="#fff" />
         </NavigationLink>
 
-        <button type="submit" className={styles.button}>
-          <div className={styles.loginGroup} >
-            <LoginIcon />
-            <p className={styles.text}>Увійти</p>
-          </div>
-        </button>
-      </div>
+      <Button
+        className={styles.button}
+        onClick={handleSignIn}
+      >
+        <div className={styles.loginGroup} >
+          <LoginIcon />
+          <p className={styles.text}>Увійти</p>
+        </div>
+      </Button>
     </div>
   </div>
 );

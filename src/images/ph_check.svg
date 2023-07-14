@@ -1,0 +1,31 @@
+<svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect width="16" height="16" fill="#F5F5F5"/>
+<g id="Modal_sing_in" clip-path="url(#clip0_0_1)">
+<rect width="1440" height="1029" transform="translate(-728 -527)" fill="#0F070A"/>
+<g id="bg">
+</g>
+<rect id="bg_blak" x="-728" y="-527" width="1440" height="2155" fill="#0F070A" fill-opacity="0.8"/>
+<g id="Modal_after_add_to_favourites">
+<rect width="1150" height="462" transform="translate(-583 -244)" fill="white"/>
+<g id="Block_create">
+<g id="text">
+<g id="Frame 67">
+<g id="Frame 64">
+<g id="ph:check">
+<path id="Vector" d="M14.8476 4.85396L6.52799 12.8534C6.4797 12.8999 6.42235 12.9367 6.35922 12.9619C6.2961 12.9871 6.22844 13 6.1601 13C6.09177 13 6.02411 12.9871 5.96098 12.9619C5.89786 12.9367 5.84051 12.8999 5.79222 12.8534L2.15238 9.35363C2.05481 9.25982 2 9.13258 2 8.99991C2 8.86723 2.05481 8.73999 2.15238 8.64618C2.24995 8.55237 2.38228 8.49966 2.52027 8.49966C2.65825 8.49966 2.79058 8.55237 2.88815 8.64618L6.1601 11.7928L14.1118 4.14652C14.2094 4.0527 14.3418 4 14.4797 4C14.6177 4 14.75 4.0527 14.8476 4.14652C14.9452 4.24033 15 4.36757 15 4.50024C15 4.63291 14.9452 4.76015 14.8476 4.85396Z" fill="#B5B2B4"/>
+</g>
+</g>
+</g>
+</g>
+</g>
+</g>
+</g>
+<g id="Group 22">
+<path id="Vector 4" d="M796.591 166V170H800.591V166H796.591ZM796.591 -1017V-1021H792.591V-1017H796.591ZM904 -1017L864 -1040.09V-993.906L904 -1017ZM-122 170H796.591V162H-122V170ZM800.591 166V-1017H792.591V166H800.591ZM796.591 -1013H868V-1021H796.591V-1013Z" fill="#5A5859"/>
+</g>
+<defs>
+<clipPath id="clip0_0_1">
+<rect width="1440" height="1029" fill="white" transform="translate(-728 -527)"/>
+</clipPath>
+</defs>
+</svg>

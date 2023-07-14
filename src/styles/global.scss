@@ -52,28 +52,6 @@ h4 {
   font-weight: 700;
 }
 
-// @include onTablet {
-//   h1 {
-//     font-size: 48px;
-//     font-weight: 800;
-//   }
-
-//   h2 {
-//     font-size: 32px;
-//     font-weight: 800;
-//   }
-
-//   h3 {
-//     font-size: 22px;
-//     font-weight: 800;
-//   }
-
-//   h4 {
-//     font-size: 20px;
-//     font-weight: 700;
-//   }
-// }
-
 button {
   font-family: 'Manrope', sans-serif;
   background: none;
@@ -81,4 +59,8 @@ button {
   padding: 0;
 
   cursor: pointer;
+}
+
+.bold {
+  font-weight: 700;
 }

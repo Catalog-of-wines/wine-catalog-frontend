@@ -1,0 +1,55 @@
+@import '../../../../styles/variables.scss';
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  gap: 16px;
+  margin: 0 -64px;
+}
+
+.form {
+  grid-column: 2 / 5;
+  display: flex;
+  flex-direction: column;
+}
+
+.input:not(:last-child) {
+  margin-bottom: 20px;
+}
+
+.input + .input {
+  margin-bottom: 32px;
+}
+
+.box {
+  grid-column: 6 / 9;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  color: $black-color;
+}
+
+.list {
+  margin: 16px 0 48px;
+  font-size: 14px;
+  line-height: 120%;
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+}
+
+.item {
+  padding-left: 20px;
+  position: relative;
+
+  &::before {
+    content: '';
+    width: 16px;
+    height: 16px;
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    background-image: url("../../../../images/ph_check.svg");
+  }
+}
