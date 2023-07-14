@@ -5,17 +5,17 @@ import { NavigationLinkFooter } from "../NavigationLinkFooter";
 export const NavigationFooter: React.FC = () => (
     <div className={styles.navList}>
       <NavigationLinkFooter
-        to="/catalog"
+        to="/catalog/"
         text="Каталог"
       />
 
       <NavigationLinkFooter
-        to="/wine"
+        to="/wine/"
         text="Вино"
       />
 
       <NavigationLinkFooter
-        to="/champagne"
+        to="/champagne/"
         text="Шампанське"
       />
     </div>

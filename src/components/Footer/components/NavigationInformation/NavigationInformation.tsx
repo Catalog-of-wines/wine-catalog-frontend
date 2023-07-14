@@ -8,17 +8,17 @@ export const NavigationInformation: React.FC = () => (
     </div>
 
     <NavigationLinkFooter
-      to="/aboutus"
+      to="/aboutus/"
       text="Про нас"
     />
 
     <NavigationLinkFooter
-      to="/authorization"
+      to="/authorization/"
       text="Авторизація"
     />
 
     <NavigationLinkFooter
-      to="/registration"
+      to="/registration/"
       text="Реєстрація"
     />
   </div>

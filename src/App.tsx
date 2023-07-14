@@ -15,26 +15,24 @@ import styles from "./App.module.scss";
 const App: React.FC = () => {
   return (
     <div className={styles.app}>
-      <div>
-        <Header />
-      </div>
+      <Header />
 
       <main className={styles.main}>
         <Container>
           <Routes>
             <Route path="/" element={<HomePage />} />
 
-            <Route path="/catalog" >
+            <Route path="/catalog/" >
               <Route index element={<Catalog />} />
               <Route path=":wineId" element={<ItemPage />} />
             </Route>
 
-            <Route path="/champagne" element={<Catalog />} />
-            <Route path="/wine" element={<Catalog />} />
-            <Route path="/aroma" element={<Catalog />} />
-            <Route path="/food" element={<Catalog />} />
-            <Route path="/festive" element={<Catalog />} />
-            <Route path="/romantic" element={<Catalog />} />
+            <Route path="/champagne/" element={<Catalog />} />
+            <Route path="/wine/" element={<Catalog />} />
+            <Route path="/aroma/" element={<Catalog />} />
+            <Route path="/food/" element={<Catalog />} />
+            <Route path="/festive/" element={<Catalog />} />
+            <Route path="/romantic/" element={<Catalog />} />
 
             <Route path="/favorites" element={<FavoritesPage />} />
             <Route path="/cart" element={<CartPage />} />
@@ -46,11 +44,7 @@ const App: React.FC = () => {
         </Container>
       </main>
 
-      <div>
-        {/* <Container> */}
-          <Footer />
-        {/* </Container> */}
-      </div>
+      <Footer />
     </div>
   );
 };

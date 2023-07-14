@@ -1,15 +1,35 @@
-import React from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { Image } from "../../../Image";
 
 import styles from './CommentItem.module.scss';
 import userPhoto from '../../../../images/user_photo.png'
 import { HeartIcon, StarIcon } from "../../../icons";
+import { OneComment } from "../../../../types/OneComment";
+import { User } from "../../../../types/User";
+import { getOneUser } from "../../../../api/user";
 
 type Props = {
-  text: string;
+  comment: OneComment;
 }
 
-export const CommentItem = React.memo<Props>(({ text }) => {
+export const CommentItem = React.memo<Props>(({ comment }) => {
+  const [user, setUser] = useState<User>();
+  const { text, rating, user_id } = comment;
+
+  const getUserName = useCallback(async () => {
+    try {
+      const data = await getOneUser(user_id);
+
+      setUser(data);
+    } catch (error) {
+      console.log(error);
+    }
+  }, [user_id]);
+
+  useEffect(() => {
+    getUserName();
+  }, [getUserName]);
+
   return (
     <div>
       <div className={styles.titleGroup}>
@@ -18,9 +38,9 @@ export const CommentItem = React.memo<Props>(({ text }) => {
           alt="userPhoto"
           className={styles.image}
         />
-        <h4 className={styles.userName}>Anonymous</h4>
+        <h4 className={styles.userName}>{user?.name ||'Anonymous'}</h4>
         <StarIcon className={styles.star} />
-        <span className={styles.rate} >4</span>
+        <span className={styles.rate} >{rating > 0 && rating}</span>
       </div>
 
       <p className={styles.text}>{text}</p>
