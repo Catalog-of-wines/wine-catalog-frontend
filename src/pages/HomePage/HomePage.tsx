@@ -25,7 +25,7 @@ export const HomePage: React.FC = () => {
   }, [startIndex, wines.length]);
 
   useEffect(() => {
-    dispatch(wineActions.initActiveWineList('/catalog'));
+    dispatch(wineActions.initActiveWineList('/catalog/'));
   }, [dispatch]);
 
   useEffect(() => {
@@ -54,7 +54,7 @@ export const HomePage: React.FC = () => {
             <h1 className={styles.textTitle}>хочеш?</h1>
             <h1 className={styles.textSubTitle}>відкрий!</h1>
 
-            <Button className={styles.button} onClick={() => navigate('/catalog')}>
+            <Button className={styles.button} onClick={() => navigate('/catalog/')}>
               <p className={styles.buttonText}>У каталог</p>
             </Button>
           </div>
@@ -81,11 +81,11 @@ export const HomePage: React.FC = () => {
         <div className={styles.choice}>
           <h1 className={styles.choiceText}>обирай</h1>
           <div className={styles.choiceButtonsContainer}>
-            <Button className={styles.choiceButtonChampagne} onClick={() => navigate('/festive')}>
+            <Button className={styles.choiceButtonChampagne} onClick={() => navigate('/festive/')}>
               <ChampagneIcon width="100" height="100" />
               <p className={styles.choiceSubText}>на свято</p>
             </Button>
-            <Button className={styles.choiceButtonWine} onClick={() => navigate('/romantic')}>
+            <Button className={styles.choiceButtonWine} onClick={() => navigate('/romantic/')}>
               <WineIcon width="100" height="100" />
               <p className={styles.choiceSubText}>на вечір</p>
             </Button>

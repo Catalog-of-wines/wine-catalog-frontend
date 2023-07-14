@@ -7,5 +7,7 @@ export const getComments = (wineId: string) => {
 };
 
 export const createComment = (data: Omit<OneComment, 'id'>) => {
-  return client.post<OneComment>('/comments', data);
+  console.log('data>>', data);
+
+  return client.post<OneComment>('/comments/', data);
 };

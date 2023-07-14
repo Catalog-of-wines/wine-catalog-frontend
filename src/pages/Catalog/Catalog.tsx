@@ -63,14 +63,6 @@ export const Catalog: React.FC = () => {
 
           <ButtonGroup setSearchParams={setSearchParams} />
 
-          {/* <div className={styles.catalogWineSort}>
-            <div className={styles.wineSort}>
-              <div className={styles.wineSortTitle}>Сортування:</div>
-              <div className={styles.wineSortCategory}>Популярність</div>
-              <DownIcon />
-            </div>
-          </div> */}
-
           {loaded &&
             < div className={styles.wineCards}>
               <WineList wines={wines} />

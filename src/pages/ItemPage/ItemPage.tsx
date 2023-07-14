@@ -13,6 +13,7 @@ import {
   ItemInfo,
   ItemPurchase
 } from '../../components';
+
 import styles from './ItemPage.module.scss';
 
 export const ItemPage: React.FC = () => {

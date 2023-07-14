@@ -32,7 +32,7 @@ export const Comments = React.memo<Props>(({ comments }) => {
       {comments.length > 0 &&
         <div className={styles.commentsList}>
           {commentsToShow.map(comment =>
-            <CommentItem text={comment.text} key={comment._id} />
+            <CommentItem comment={comment} key={comment._id} />
           )}
         </div>
       }

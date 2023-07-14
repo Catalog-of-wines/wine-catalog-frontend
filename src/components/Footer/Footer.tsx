@@ -5,7 +5,7 @@ import { NavigationInformation } from "./components/NavigationInformation";
 import styles from "./Footer.module.scss";
 
 export const Footer: React.FC = () => (
-  <>
+  <div>
     <div className={styles.footer}>
       <div>
         <LogoLink className={styles.logo} />
@@ -18,5 +18,5 @@ export const Footer: React.FC = () => (
       </div>
     </div>
     <p className={styles.copyright}>Copyright © 2023. All rights reserved.</p>
-  </>
+  </div>
 );

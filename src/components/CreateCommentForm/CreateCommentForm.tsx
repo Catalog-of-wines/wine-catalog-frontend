@@ -12,7 +12,7 @@ type Props = {
 
 export const CreateCommentForm = React.memo<Props>(({setComments, comments}) => {
   const [comment, setComment] = useState('');
-  const [rate, setRate] = useState(0);
+  const [rating, setRating] = useState(0);
   const { wineId = '0' } = useParams();
   const navigate = useNavigate();
 
@@ -23,23 +23,24 @@ export const CreateCommentForm = React.memo<Props>(({setComments, comments}) => 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    if (!comment) {
+    if (!comment.trim().length) {
       return;
     }
 
     const newComment: OneComment = {
       text: comment,
       wine_id: wineId,
-      user_id: "649c24c5adb84c19dd647271"
+      user_id: "649c24c5adb84c19dd647271",
+      rating,
     }
 
     createComment(newComment);
     setComment('');
-    setComments([...comments, newComment])
+    setComments([...comments, newComment]);
   }
 
-  const handleStarClick = (rate: number) => {
-    setRate(rate);
+  const handleStarClick = (rating: number) => {
+    setRating(rating);
   }
 
   return (
@@ -69,7 +70,7 @@ export const CreateCommentForm = React.memo<Props>(({setComments, comments}) => 
                 <div key={star} onClick={() => handleStarClick(star)}>
                   <StarIcon
                     className={styles.star}
-                    fill={star <= rate ? 'white' : '#B5B2B4'} />
+                    fill={star <= rating ? 'white' : '#B5B2B4'} />
                 </div>
               ))}
             </div>

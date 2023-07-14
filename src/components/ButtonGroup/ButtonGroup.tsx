@@ -11,12 +11,11 @@ type Props = {
   setSearchParams: SetURLSearchParams;
 };
 
-export const ButtonGroup = React.memo<Props>(({ setSearchParams }) => {
+export const ButtonGroup = React.memo<Props>(() => {
   const navigate = useNavigate();
   const { pathname } = useLocation();
 
   const handleTopFilter = (point: string): void => {
-    setSearchParams({});
     navigate(point);
   };
 
@@ -26,15 +25,15 @@ export const ButtonGroup = React.memo<Props>(({ setSearchParams }) => {
         className={classNames(
           styles.wineFilterBtn,
           styles.wineFilterBtnBorder,
-          { [styles.wineFilterBtnActive]: pathname === '/catalog' }
+          { [styles.wineFilterBtnActive]: pathname === '/catalog/' }
         )}
-        onClick={() => handleTopFilter('/catalog')}
+        onClick={() => handleTopFilter('/catalog/')}
       >
         <ChampagneIcon />
         <div
           className={classNames(
             styles.wineFilterText,
-            { [styles.wineFilterTextActive]: pathname === '/catalog' }
+            { [styles.wineFilterTextActive]: pathname === '/catalog/' }
           )}
         >
           Все
@@ -46,15 +45,15 @@ export const ButtonGroup = React.memo<Props>(({ setSearchParams }) => {
         <Button
           className={classNames(
             styles.wineFilterBtn,
-            { [styles.wineFilterBtnActive]: pathname === '/champagne' }
+            { [styles.wineFilterBtnActive]: pathname === '/champagne/' }
           )}
-          onClick={() => handleTopFilter('/champagne')}
+          onClick={() => handleTopFilter('/champagne/')}
         >
           <ChampagneIcon />
           <div
             className={classNames(
               styles.wineFilterText,
-              { [styles.wineFilterTextActive]: pathname === '/champagne' }
+              { [styles.wineFilterTextActive]: pathname === '/champagne/' }
             )}
           >
             Шампанське та ігристе
@@ -64,14 +63,14 @@ export const ButtonGroup = React.memo<Props>(({ setSearchParams }) => {
         <Button
           className={classNames(
             styles.wineFilterBtn,
-            { [styles.wineFilterBtnActive]: pathname === '/wine' }
+            { [styles.wineFilterBtnActive]: pathname === '/wine/' }
           )}
-          onClick={() => handleTopFilter('/wine')}
+          onClick={() => handleTopFilter('/wine/')}
         >
           <div
             className={classNames(
               styles.wineFilterText,
-              { [styles.wineFilterTextActive]: pathname === '/wine' }
+              { [styles.wineFilterTextActive]: pathname === '/wine/' }
             )}
           >
             Вино
