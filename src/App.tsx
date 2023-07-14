@@ -1,4 +1,4 @@
-import { Navigate, Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes } from 'react-router-dom';
 import { Container, Header, Footer } from './components';
 import {
   CartPage,
@@ -6,16 +6,29 @@ import {
   FavoritesPage,
   HomePage,
   ItemPage,
-  ErrorPage
+  ErrorPage,
 } from './pages';
 
-import './styles/global.scss'
-import styles from "./App.module.scss";
+import './styles/global.scss';
+import styles from './App.module.scss';
+import Modal from './components/Modal/Modal';
+import { LoginModalContent } from './components/Modal/content/LoginModalContent';
+import { SignupModalContent } from './components/Modal/content/SignupModalContent';
+import { useModal } from './hooks';
 
 const App: React.FC = () => {
+  const {
+    isOpenSignInModal,
+    isOpenSignUpModal,
+    handleSignIn,
+    setIsOpenSignInModal,
+    handleSignUp,
+    setIsOpenSignUpModal,
+  } = useModal();
+
   return (
     <div className={styles.app}>
-      <Header />
+      <Header handleSignIn={handleSignIn}/>
 
       <main className={styles.main}>
         <Container>
@@ -40,11 +53,23 @@ const App: React.FC = () => {
             <Route path="*" element={<ErrorPage />} />
             <Route path="/home" element={<Navigate to="/" replace />} />
           </Routes>
-
         </Container>
       </main>
 
       <Footer />
+      <Modal
+        size="lg"
+        open={isOpenSignInModal}
+        onClose={() => setIsOpenSignInModal(false)}
+      >
+        <LoginModalContent handleSignUp={handleSignUp} />
+      </Modal>
+      <Modal
+        open={isOpenSignUpModal}
+        onClose={() => setIsOpenSignUpModal(false)}
+      >
+        <SignupModalContent handleSignIn={handleSignIn} />
+      </Modal>
     </div>
   );
 };
