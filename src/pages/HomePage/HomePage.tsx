@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
 import * as wineActions from '../../features/activeWineList/activeWineListSlice';
 
@@ -81,14 +81,14 @@ export const HomePage: React.FC = () => {
         <div className={styles.choice}>
           <h1 className={styles.choiceText}>обирай</h1>
           <div className={styles.choiceButtonsContainer}>
-            <Button className={styles.choiceButtonChampagne} onClick={() => navigate('/festive/')}>
+            <Link to='/festive/' className={styles.choiceButtonChampagne}>
               <ChampagneIcon width="100" height="100" />
               <p className={styles.choiceSubText}>на свято</p>
-            </Button>
-            <Button className={styles.choiceButtonWine} onClick={() => navigate('/romantic/')}>
+            </Link>
+            <Link to='/romantic/' className={styles.choiceButtonWine}>
               <WineIcon width="100" height="100" />
               <p className={styles.choiceSubText}>на вечір</p>
-            </Button>
+            </Link>
           </div>
         </div>
         <div>

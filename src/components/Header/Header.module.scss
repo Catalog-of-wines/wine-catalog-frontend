@@ -2,6 +2,7 @@
 @import "../../styles/extends.scss";
 
 .headerFlex {
+  width: 100%;
   display: flex;
   align-items: center;
   height: $header-height;
@@ -36,7 +37,9 @@
 
 .button {
   @extend %centered;
+
   border: none;
+  background: transparent;
   height: $header-height;
   width: $header-height;
   padding: 0;
@@ -44,6 +47,7 @@
   border-right: solid 1px $dark-grey-color;
 
   @include hover(background-color, $main-color);
+  @include hover(border-color, $dark-grey-color);
 }
 
 .text {
