@@ -18,19 +18,27 @@ export const Catalog: React.FC = () => {
   const { items: wines, loaded } = useAppSelector((state) => state.activeWineList);
   const [searchParams, setSearchParams] = useSearchParams();
   const { pathname, search } = useLocation();
-  const { type, categories, handleOnChange } = useFilterCategory();
+  const { type, category, categories, handleOnChange } = useFilterCategory();
   const navigate = useNavigate();
 
   const setUrl = () => {
     if (type === 'radio') {
       const category = categories.toString();
+
       navigate(`/${category}`);
+    }
+
+    if (type === 'checkbox') {
+      const params = categories.join(',');
+
+      navigate(`/${category}?query=${params}`)
+
+      console.log(categories);
     }
   };
 
   useEffect(() => {
     setUrl();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [categories]);
 
   useEffect(() => {
