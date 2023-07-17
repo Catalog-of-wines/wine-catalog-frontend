@@ -2,7 +2,7 @@ import { Wine } from '../types/Wine';
 import { client } from '../utils/fetchClient';
 
 export const getWines = (query: string) => { 
-  console.log('query>>>', query);
+  // console.log('query>>>', query);
   
   return client.get<Wine[]>(query);
 };

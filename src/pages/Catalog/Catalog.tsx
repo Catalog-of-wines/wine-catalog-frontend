@@ -29,11 +29,9 @@ export const Catalog: React.FC = () => {
     }
 
     if (type === 'checkbox') {
-      const params = categories.join(',');
+      const params = categories.map(param => ` ${param}`).join(',').trim();
 
       navigate(`/${category}?query=${params}`)
-
-      console.log(categories);
     }
   };
 
