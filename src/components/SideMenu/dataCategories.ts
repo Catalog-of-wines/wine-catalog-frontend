@@ -135,8 +135,8 @@ export const countryData = [
 
 export const foodData = [
   {
-    id: 'аперетив',
-    label: 'аперетив',
+    id: 'аперитив',
+    label: 'аперитив',
   },
   {
     id: `м'ясо червоне`,

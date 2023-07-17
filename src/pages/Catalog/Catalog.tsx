@@ -26,13 +26,13 @@ export const Catalog: React.FC = () => {
     if (type === 'radio') {
       const category = categories.toString();
 
-      navigate(`/${category}`);
+      navigate(`/${category}/`);
     }
 
     if (type === 'checkbox') {
       const params = categories.map(param => ` ${param}`).join(',').trim();
 
-      navigate(`/${category}?query=${params}`);
+      navigate(`/${category}/?query=${params}`);
     }
   };
 
