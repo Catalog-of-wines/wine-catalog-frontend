@@ -3,6 +3,7 @@ import { Category, CategoriesList } from './components';
 import { getAromaCategories } from '../../api/catalog';
 import { FC, useEffect, useMemo, useState } from 'react';
 import { OnChange } from '../../types/events';
+import { capacityData, colorData, countryData, foodData, moodData, wineTypeData } from './dataCategories';
 
 interface Props {
   handleOnChange: (e: OnChange) => void;
@@ -26,16 +27,6 @@ export const SideMenu: FC<Props> = ({ selectedCategories, handleOnChange }) => {
     getAroma();
   }, []);
 
-  const moodData = [
-    {
-      id: 'festive',
-      label: 'Святковий',
-    },
-    {
-      id: 'romantic',
-      label: 'Романтичний',
-    },
-  ];
   const tasteData = useMemo(
     () => taste.map((item) => ({ label: item, id: item })),
     [taste]
@@ -62,6 +53,66 @@ export const SideMenu: FC<Props> = ({ selectedCategories, handleOnChange }) => {
           title="aroma"
           type="checkbox"
           list={tasteData}
+          handleOnChange={handleOnChange}
+          selectedCategories={selectedCategories}
+        />
+      ),
+    },
+    {
+      label: 'Поєднання з їжею',
+      children: (
+        <CategoriesList
+          title="food"
+          type="checkbox"
+          list={foodData}
+          handleOnChange={handleOnChange}
+          selectedCategories={selectedCategories}
+        />
+      ),
+    },
+    {
+      label: 'Колір',
+      children: (
+        <CategoriesList
+          title="by-color"
+          type="checkbox"
+          list={colorData}
+          handleOnChange={handleOnChange}
+          selectedCategories={selectedCategories}
+        />
+      ),
+    },
+    {
+      label: 'Країна',
+      children: (
+        <CategoriesList
+          title="by-country"
+          type="checkbox"
+          list={countryData}
+          handleOnChange={handleOnChange}
+          selectedCategories={selectedCategories}
+        />
+      ),
+    },
+    {
+      label: 'Солодкість',
+      children: (
+        <CategoriesList
+          title="by-wine-type"
+          type="checkbox"
+          list={wineTypeData}
+          handleOnChange={handleOnChange}
+          selectedCategories={selectedCategories}
+        />
+      ),
+    },
+    {
+      label: `Об'єм`,
+      children: (
+        <CategoriesList
+          title="by-capacity"
+          type="checkbox"
+          list={capacityData}
           handleOnChange={handleOnChange}
           selectedCategories={selectedCategories}
         />
