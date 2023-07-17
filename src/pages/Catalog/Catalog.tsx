@@ -8,6 +8,7 @@ import {
   Button,
   ButtonGroup,
   SideMenu,
+  SmallPageTitle,
   WineList
 } from '../../components';
 
@@ -51,8 +52,11 @@ export const Catalog: React.FC = () => {
 
   const handleShowMore = (): void => {
     const skip = searchParams.get('skip') || '0';
+    const params = new URLSearchParams(searchParams);
 
-    setSearchParams({ skip: `${+skip + 9}` });
+    params.set('skip', `${+skip + 9}`)
+
+    setSearchParams(params);
   };
 
   return (
@@ -70,9 +74,15 @@ export const Catalog: React.FC = () => {
           <ButtonGroup setSearchParams={setSearchParams} />
 
           {loaded &&
-            < div className={styles.wineCards}>
+            <div className={styles.wineCards}>
               <WineList wines={wines} />
             </div>
+          }
+
+          {loaded && wines.length === 0 &&
+            <SmallPageTitle className={styles.text}>
+              Немає вин, які відповідають даній категорії
+            </SmallPageTitle>
           }
 
           {!loaded &&
@@ -80,11 +90,13 @@ export const Catalog: React.FC = () => {
           }
         </div>
 
-        <div className={styles.buttonGrid}>
-          <Button className={styles.showMoreBtn} onClick={handleShowMore}>
-            <p className={styles.showMoreBtnText}>Показати більше</p>
-          </Button>
-        </div>
+        {wines.length > 0 &&
+          <div className={styles.buttonGrid}>
+            <Button className={styles.showMoreBtn} onClick={handleShowMore}>
+              <p className={styles.showMoreBtnText}>Показати більше</p>
+            </Button>
+          </div>
+        }
       </div>
     </div >
   );
