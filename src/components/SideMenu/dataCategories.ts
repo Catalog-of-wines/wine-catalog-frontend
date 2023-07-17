@@ -38,16 +38,16 @@ export const moodData = [
 
 export const colorData = [
   {
-    id: 'pink',
-    label: 'рожеве',
+    id: 'Рожеве',
+    label: 'Рожеве',
   },
   {
-    id: 'red',
-    label: 'червоне',
+    id: 'Червоне',
+    label: 'Червоне',
   },
   {
-    id: 'white',
-    label: 'біле',
+    id: 'Біле',
+    label: 'Біле',
   },
 ];
 

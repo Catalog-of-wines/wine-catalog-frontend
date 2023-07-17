@@ -46,6 +46,11 @@ const App: React.FC = () => {
             <Route path="/food/" element={<Catalog />} />
             <Route path="/festive/" element={<Catalog />} />
             <Route path="/romantic/" element={<Catalog />} />
+            <Route path="/food/" element={<Catalog />} />
+            <Route path="/by-color/" element={<Catalog />} />
+            <Route path="/by-wine-type/" element={<Catalog />} />
+            <Route path="/by-capacity/" element={<Catalog />} />
+            <Route path="/by-country/" element={<Catalog />} />
 
             <Route path="/favorites" element={<FavoritesPage />} />
             <Route path="/cart" element={<CartPage />} />
