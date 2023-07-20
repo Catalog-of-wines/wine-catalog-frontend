@@ -15,19 +15,11 @@
   align-items: center;
   padding: 0 32px;
   border-left: solid 1px $dark-grey-color;
+  border-right: solid 1px $dark-grey-color;
   border-bottom: solid 1px $dark-grey-color;
   height: $header-height;
 
   @include hover(background-color, $main-color);
-}
-
-.headerFlexSearchBar {
-  display: flex;
-  width: 348px;
-  border-bottom: solid 1px $dark-grey-color;
-  border-left: solid 1px $dark-grey-color;
-  border-right: solid 1px $dark-grey-color;
-  height: 100%;
 }
 
 .icon {

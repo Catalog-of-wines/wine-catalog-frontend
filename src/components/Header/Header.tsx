@@ -1,5 +1,5 @@
 import { FC, memo } from 'react';
-import { Navigation, SearchBar, NavigationLink } from './components';
+import { Navigation, NavigationLink } from './components';
 import { LogoLink } from '../LogoLink';
 import { CartIcon, HeartIcon, LoginIcon } from '../icons';
 import styles from './Header.module.scss';
@@ -25,7 +25,6 @@ export const Header: FC<Props> = memo(({ handleSignIn }) => {
   return (
     <div className={styles.headerFlex}>
       <LogoLink className={styles.logo} />
-      <SearchBar className={styles.headerFlexSearchBar} />
       <Navigation />
 
       <div className={styles.icon}>

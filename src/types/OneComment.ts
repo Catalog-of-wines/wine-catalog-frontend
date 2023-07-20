@@ -4,4 +4,5 @@ export interface OneComment {
   wine_id: string
   text: string
   rating: number
+  date: string
 }

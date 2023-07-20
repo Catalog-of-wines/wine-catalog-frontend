@@ -30,8 +30,9 @@ export const CreateCommentForm = React.memo<Props>(({setComments, comments}) => 
     const newComment: OneComment = {
       text: comment,
       wine_id: wineId,
-      user_id: "649c24c5adb84c19dd647271",
+      user_id: "64b9194a891484555ec6e890",
       rating,
+      date: "2023-07-24"
     }
 
     createComment(newComment);
@@ -69,7 +70,7 @@ export const CreateCommentForm = React.memo<Props>(({setComments, comments}) => 
               {[1, 2, 3, 4, 5].map((star) => (
                 <div key={star} onClick={() => handleStarClick(star)}>
                   <StarIcon
-                    className={styles.star}
+                    className={star <= rating ? styles.choosenStar : styles.star}
                     fill={star <= rating ? 'white' : '#B5B2B4'} />
                 </div>
               ))}
