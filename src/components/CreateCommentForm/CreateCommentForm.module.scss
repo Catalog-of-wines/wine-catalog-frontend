@@ -4,6 +4,7 @@
 .form {
   padding-top: 92px;
 }
+
 .textarea {
   border: 1px solid $dark-grey-color;
   height: 155px;
@@ -68,6 +69,11 @@
 }
 
 .star {
+  cursor: pointer;
+}
+
+.choosenStar {
+  background: radial-gradient(ellipse at center, $white-color , $black-color 50%);
   cursor: pointer;
 }
 
