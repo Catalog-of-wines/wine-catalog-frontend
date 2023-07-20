@@ -1,5 +1,5 @@
 import React from "react";
-import { Navigation, SearchBar, NavigationLink } from './components';
+import { Navigation, NavigationLink } from './components';
 import { LogoLink } from "../LogoLink";
 import { CartIcon, HeartIcon, LoginIcon } from "../icons";
 import styles from "./Header.module.scss";
@@ -12,7 +12,6 @@ interface Props {
 export const Header: React.FC<Props> = ({ handleSignIn }) => (
   <div className={styles.headerFlex}>
     <LogoLink className={styles.logo} />
-    <SearchBar className={styles.headerFlexSearchBar} />
     <Navigation />
 
       <div className={styles.icon}>
