@@ -11,27 +11,30 @@ import styles from './FavoritesPage.module.scss';
 export const FavoritesPage: React.FC = () => {
   const favorites: string[] = useAppSelector((state) => state.favorites);
   const [wines, setWines] = useState<Wine[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
   const [startIndex, setStartIndex] = useState(0);
   const hasFavorites = favorites.length !== 0;
   const limit = 6;
 
-  useEffect(() => {
+  const fetchData = async (): Promise<void> => {
+    const skip = startIndex + limit;
+    setIsLoading(true);
+
     try {
-      const skip = startIndex + limit;
-      const fetchData = async (): Promise<void> => {
-        const fetchedProducts = await Promise.all(
-          favorites.slice(startIndex, skip).map(id => getOneWine(id))
-        );
-
-        setWines(current => [...current, ...fetchedProducts]);
-        setIsLoading(false);
-      };
-
-      void fetchData();
+      const fetchedProducts = await Promise.all(
+        favorites.slice(startIndex, skip).map(id => getOneWine(id))
+      );
+  
+      setWines(current => [...current, ...fetchedProducts]);
     } catch (error) {
       console.log('error>>>', error);
+    } finally {
+      setIsLoading(false);
     }
+  };
+
+  useEffect(() => {
+    fetchData();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [startIndex]);
 

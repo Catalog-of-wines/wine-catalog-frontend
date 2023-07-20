@@ -3,10 +3,11 @@ import classNames from "classnames";
 import styles from './Button.module.scss';
 
 interface Props {
-  onClick: () => void;
+  onClick?: () => void;
   children: React.ReactNode | string;
   style?: 'outlined' | 'outlined-black' | 'primary';
   className?: string;
+  type?: 'button' | 'submit';
 }
 
 export const Button: React.FC<Props> = ({
@@ -14,6 +15,7 @@ export const Button: React.FC<Props> = ({
   onClick,
   style = 'primary',
   className,
+  type='button',
   ...props
 }) => (
   <button
@@ -22,7 +24,7 @@ export const Button: React.FC<Props> = ({
       styles[style],
       className,
     )}
-    type='button'
+    type={type}
     onClick={onClick}
     {...props}
   >
