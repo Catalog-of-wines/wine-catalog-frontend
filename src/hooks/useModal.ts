@@ -18,7 +18,7 @@ export const useModal = () => {
     }
 
     setIsOpenSignInModal(true);
-  }, [isOpenSignUpModal]);
+  }, []);
 
   return {
     isOpenSignInModal,

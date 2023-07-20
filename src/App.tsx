@@ -73,7 +73,10 @@ const App: React.FC = () => {
         open={isOpenSignUpModal}
         onClose={() => setIsOpenSignUpModal(false)}
       >
-        <SignupModalContent handleSignIn={handleSignIn} />
+        <SignupModalContent
+          handleSignIn={handleSignIn}
+          onClose={() => setIsOpenSignUpModal(false)}
+          />
       </Modal>
     </div>
   );
