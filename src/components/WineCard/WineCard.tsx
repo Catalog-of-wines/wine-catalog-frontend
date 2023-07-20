@@ -24,7 +24,7 @@ export const WineCard = React.memo<Props>(({ wineId, name, price, image }) => {
   const [comments, setComments] = useState<OneComment[]>([]);
 
   const rating = useMemo(() => {
-    const hasRating = comments.filter(comment => comment.rating !== 0);
+    const hasRating = comments.filter(comment => comment.rating);
 
     const rate: number = hasRating
       .map(comment => comment.rating)
