@@ -32,6 +32,7 @@ export const CreateCommentForm = React.memo<Props>(({setComments, comments}) => 
       wine_id: wineId,
       user_id: "649c24c5adb84c19dd647271",
       rating,
+      date: String(new Date()),
     }
 
     createComment(newComment);

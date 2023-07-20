@@ -12,6 +12,9 @@ type Props = {
 export const Comments = React.memo<Props>(({ comments }) => {
   const [commentsToShow, setCommentsToShow] = useState<OneComment[]>([]);
 
+  console.log(commentsToShow);
+  
+
   const handleClick = () => {
     setCommentsToShow(comments);
   }
