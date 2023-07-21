@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-export const BASE_URL = 'http://3.123.93.54';
+export const BASE_URL = 'http://wine-catalog.pp.ua';
+// export const BASE_URL = 'http://3.123.93.54';
 
 function wait(delay: number) {
   return new Promise(resolve => {
