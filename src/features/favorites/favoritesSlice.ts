@@ -1,6 +1,6 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 
-const initialState = (() => {
+const initialState = (): string[] => {
   try {
     const item = window.localStorage.getItem('favorites');
 
@@ -9,7 +9,7 @@ const initialState = (() => {
   } catch {
     return [];
   }
-});
+};
 
 const favoritesSlise = createSlice({
   name: 'favorites',
