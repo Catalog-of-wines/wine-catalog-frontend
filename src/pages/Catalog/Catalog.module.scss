@@ -47,6 +47,6 @@
 }
 
 .text {
-  place-content: center;
-  padding: 100px 0 100px;
+  @extend %centered;
+  padding: 100px 0;
 }
