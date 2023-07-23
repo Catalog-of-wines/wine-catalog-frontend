@@ -1,7 +1,8 @@
 import { FC } from 'react';
-import { Button, Input } from '../../../index';
+import { Button } from '../../../index';
 import stylesModal from '../../Modal.module.scss';
 import stylesContent from './LoginModalContent.module.scss';
+import LoginForm from './LoginForm/LoginForm';
 
 interface Props {
   handleSignUp: () => void;
@@ -9,25 +10,12 @@ interface Props {
 
 export const LoginModalContent: FC<Props> = ({ handleSignUp }) => (
   <div className={stylesContent.grid}>
-    <form className={stylesContent.form}>
+    <div className={stylesContent.form}>
       <h2 className={stylesModal.heading}>
         Для виконання дії увійдіть в кабінет
       </h2>
-      <Input
-        label="Логін"
-        placeholder="Телефон або емейл"
-        className={stylesContent.input}
-      />
-      <Input
-        label="Пароль"
-        placeholder="Введіть пароль"
-        className={stylesContent.input}
-        type="password"
-      />
-      <Button onClick={() => console.log('Увійти')} className="className">
-        Увійти
-      </Button>
-    </form>
+      <LoginForm />
+    </div>
     <div className={stylesContent.box}>
       <p className="bold">
         Ще не маєте акаунту? <br /> Зареєструйтесь, щоб:{' '}
@@ -41,10 +29,7 @@ export const LoginModalContent: FC<Props> = ({ handleSignUp }) => (
           <strong>знижки</strong>
         </li>
       </ul>
-      <Button
-        onClick={handleSignUp}
-        style="outlined-black"
-      >
+      <Button onClick={handleSignUp} style="outlined-black">
         Створити акаунт
       </Button>
     </div>

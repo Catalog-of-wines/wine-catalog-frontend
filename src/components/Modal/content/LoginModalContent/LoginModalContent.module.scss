@@ -13,14 +13,6 @@
   flex-direction: column;
 }
 
-.input:not(:last-child) {
-  margin-bottom: 20px;
-}
-
-.input + .input {
-  margin-bottom: 32px;
-}
-
 .box {
   grid-column: 6 / 9;
   display: flex;
