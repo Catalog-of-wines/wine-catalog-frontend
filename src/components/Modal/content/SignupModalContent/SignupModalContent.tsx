@@ -15,13 +15,10 @@ export const SignupModalContent: FC<Props> = ({ handleSignIn, onClose }) => {
     try {
       const response = await signUp(user);
 
-      const { access_token } = response;
+      if (response) {
+        onClose();
+      }
 
-      localStorage.setItem('token', JSON.stringify(access_token));
-
-      //  here need to add token and user.name to the store
-
-      onClose();
     } catch (error) {
       console.log(error);
     }

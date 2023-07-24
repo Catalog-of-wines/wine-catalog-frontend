@@ -28,7 +28,7 @@ const App: React.FC = () => {
 
   return (
     <div className={styles.app}>
-      <Header handleSignIn={handleSignIn}/>
+      <Header handleSignIn={handleSignIn} />
 
       <main className={styles.main}>
         <Container>
@@ -67,7 +67,10 @@ const App: React.FC = () => {
         open={isOpenSignInModal}
         onClose={() => setIsOpenSignInModal(false)}
       >
-        <LoginModalContent handleSignUp={handleSignUp} />
+        <LoginModalContent
+          handleSignUp={handleSignUp}
+          onClose={() => setIsOpenSignInModal(false)}
+        />
       </Modal>
       <Modal
         open={isOpenSignUpModal}
@@ -76,7 +79,7 @@ const App: React.FC = () => {
         <SignupModalContent
           handleSignIn={handleSignIn}
           onClose={() => setIsOpenSignUpModal(false)}
-          />
+        />
       </Modal>
     </div>
   );

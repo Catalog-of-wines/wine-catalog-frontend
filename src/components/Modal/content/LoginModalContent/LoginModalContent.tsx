@@ -6,15 +6,16 @@ import LoginForm from './LoginForm/LoginForm';
 
 interface Props {
   handleSignUp: () => void;
+  onClose: () => void;
 }
 
-export const LoginModalContent: FC<Props> = ({ handleSignUp }) => (
+export const LoginModalContent: FC<Props> = ({ handleSignUp, onClose }) => (
   <div className={stylesContent.grid}>
     <div className={stylesContent.form}>
       <h2 className={stylesModal.heading}>
         Для виконання дії увійдіть в кабінет
       </h2>
-      <LoginForm />
+      <LoginForm onClose={onClose} />
     </div>
     <div className={stylesContent.box}>
       <p className="bold">
