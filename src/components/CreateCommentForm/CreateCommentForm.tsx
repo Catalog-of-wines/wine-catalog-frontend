@@ -4,13 +4,15 @@ import { createComment } from "../../api/commets";
 import { StarIcon } from "../icons";
 import { OneComment } from "../../types/OneComment";
 import styles from './CreateCommentForm.module.scss';
+import { useAppSelector } from "../../app/hooks";
 
 type Props = {
   setComments: (comments: OneComment[]) => void,
   comments: OneComment[],
 }
 
-export const CreateCommentForm = React.memo<Props>(({setComments, comments}) => {
+export const CreateCommentForm = React.memo<Props>(({ setComments, comments }) => {
+  const user = useAppSelector(state => state.auth);
   const [comment, setComment] = useState('');
   const [rating, setRating] = useState(0);
   const { wineId = '0' } = useParams();
@@ -27,15 +29,19 @@ export const CreateCommentForm = React.memo<Props>(({setComments, comments}) => 
       return;
     }
 
+    if (!user) {
+      return;
+    }
+
     const newComment: OneComment = {
       text: comment,
       wine_id: wineId,
-      user_id: "64b9194a891484555ec6e890",
+      user_id: user.user_id,
       rating,
       date: "2023-07-24"
     }
-
-    createComment(newComment);
+    
+    createComment(newComment, user.access_token);
     setComment('');
     setComments([...comments, newComment]);
   }
