@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.f0204fc2.css",
-    "main.js": "/static/js/main.d20b4755.js",
+    "main.css": "/static/css/main.ba5ac05e.css",
+    "main.js": "/static/js/main.6ba3ca62.js",
     "static/js/787.a28de649.chunk.js": "/static/js/787.a28de649.chunk.js",
     "static/media/img_wine_homepage.png": "/static/media/img_wine_homepage.44bdb6944f6b777efc77.png",
     "static/media/logo.svg": "/static/media/logo.726f2ae2a18e27fff25cde9c7f7d3c53.svg",
@@ -9,12 +9,12 @@
     "static/media/ph_check.svg": "/static/media/ph_check.33de4eb10791605e128d.svg",
     "static/media/Icon_down.svg": "/static/media/Icon_down.55a6c60afc3bac8f9af6.svg",
     "index.html": "/index.html",
-    "main.f0204fc2.css.map": "/static/css/main.f0204fc2.css.map",
-    "main.d20b4755.js.map": "/static/js/main.d20b4755.js.map",
+    "main.ba5ac05e.css.map": "/static/css/main.ba5ac05e.css.map",
+    "main.6ba3ca62.js.map": "/static/js/main.6ba3ca62.js.map",
     "787.a28de649.chunk.js.map": "/static/js/787.a28de649.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.f0204fc2.css",
-    "static/js/main.d20b4755.js"
+    "static/css/main.ba5ac05e.css",
+    "static/js/main.6ba3ca62.js"
   ]
 }
