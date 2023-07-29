@@ -1,9 +1,11 @@
 import { FC } from 'react';
+import { signUp } from '../../../../api/registartion';
+import { useAppDispatch } from '../../../../app/hooks';
+import * as authactions from '../../../../features/auth/authSlice';
+import { SignUpForm } from './SignUpForm/index';
+import { NewUser } from '../../../../types/User';
 import stylesModal from '../../Modal.module.scss';
 import stylesContent from './SignupModalContent.module.scss';
-import { signUp } from '../../../../api/registartion';
-import { NewUser } from '../../../../types/User';
-import { SignUpForm } from './SignUpForm/index';
 
 interface Props {
   handleSignIn: () => void;
@@ -11,11 +13,15 @@ interface Props {
 }
 
 export const SignupModalContent: FC<Props> = ({ handleSignIn, onClose }) => {
+  const dispatch = useAppDispatch();
   const createAccount = async (user: NewUser) => {
     try {
       const response = await signUp(user);
 
-      if (response) {
+      if (response.statusText === 'OK') {
+        console.log('MYresponse>>', response);
+        
+        dispatch(authactions.addUser(response.data));
         onClose();
       }
 

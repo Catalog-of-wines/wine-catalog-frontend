@@ -24,7 +24,7 @@ export const FavoritesPage: React.FC = () => {
       const fetchedProducts = await Promise.all(
         favorites.slice(startIndex, skip).map(id => getOneWine(id))
       );
-  
+
       setWines(current => [...current, ...fetchedProducts]);
     } catch (error) {
       console.log('error>>>', error);

@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { OneComment } from '../../types/OneComment';
 import { ChatIcon } from "../icons";
 import { CommentItem } from "./components/CommentItem";
 import { Button, SmallPageTitle } from "../../components";
+import { OneComment } from '../../types/OneComment';
 import styles from './Comments.module.scss';
 
 type Props = {
@@ -11,9 +11,6 @@ type Props = {
 
 export const Comments = React.memo<Props>(({ comments }) => {
   const [commentsToShow, setCommentsToShow] = useState<OneComment[]>([]);
-
-  console.log(commentsToShow);
-  
 
   const handleClick = () => {
     setCommentsToShow(comments);

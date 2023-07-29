@@ -1,7 +1,6 @@
 import React, {
   useCallback,
   useEffect,
-  useMemo,
   useState
 } from 'react';
 
@@ -12,6 +11,7 @@ import { StarIcon } from '../icons';
 import styles from './WineCard.module.scss';
 import { OneComment } from '../../types/OneComment';
 import { getComments } from '../../api/commets';
+import { averageRating } from '../../utils/averageRating';
 
 type Props = {
   wineId: string;
@@ -22,16 +22,6 @@ type Props = {
 
 export const WineCard = React.memo<Props>(({ wineId, name, price, image }) => {
   const [comments, setComments] = useState<OneComment[]>([]);
-
-  const rating = useMemo(() => {
-    const hasRating = comments.filter(comment => comment.rating);
-
-    const rate: number = hasRating
-      .map(comment => comment.rating)
-      .reduce((prev, next) => prev + next, 0) / hasRating.length;
-
-    return Math.round(rate * 10) / 10;
-  }, [comments])
 
   const getAllComments = useCallback(async () => {
     try {
@@ -52,7 +42,7 @@ export const WineCard = React.memo<Props>(({ wineId, name, price, image }) => {
       <div className={styles.header}>
         <div className={styles.rateGroup}>
           <StarIcon />
-          <div className={styles.rate}>{rating ? rating : ''}</div>
+          <div className={styles.rate}>{averageRating(comments) || ''}</div>
         </div>
 
         <HeartComponent wineId={wineId} />

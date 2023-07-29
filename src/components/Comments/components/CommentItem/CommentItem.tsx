@@ -1,12 +1,12 @@
 import React, { useCallback, useEffect, useState } from "react";
+import { getOneUser } from "../../../../api/user";
 import { Image } from "../../../Image";
-
-import styles from './CommentItem.module.scss';
-import userPhoto from '../../../../images/user_photo.png'
 import { StarIcon } from "../../../icons";
 import { OneComment } from "../../../../types/OneComment";
 import { User } from "../../../../types/User";
-import { getOneUser } from "../../../../api/user";
+
+import userPhoto from '../../../../images/user_photo.png'
+import styles from './CommentItem.module.scss';
 
 type Props = {
   comment: OneComment;
@@ -38,7 +38,7 @@ export const CommentItem = React.memo<Props>(({ comment }) => {
           alt="userPhoto"
           className={styles.image}
         />
-        <h4 className={styles.userName}>{user?.name ||'Anonymous'}</h4>
+        <h4 className={styles.userName}>{user?.name || 'Anonymous'}</h4>
         <StarIcon className={styles.star} />
         <span className={styles.rate} >{rating || ''}</span>
       </div>

@@ -4,7 +4,12 @@ import { NavigationFooter } from "./components/NavigationFooter";
 import { NavigationInformation } from "./components/NavigationInformation";
 import styles from "./Footer.module.scss";
 
-export const Footer: React.FC = () => (
+type Props = {
+  handleSignUp: () => void,
+  handleSignIn: () => void,
+}
+
+export const Footer: React.FC<Props> = ({ handleSignUp, handleSignIn }) => (
   <div>
     <div className={styles.footer}>
       <div>
@@ -14,7 +19,7 @@ export const Footer: React.FC = () => (
         <NavigationFooter />
       </div>
       <div className={styles.navigationInformation}>
-        <NavigationInformation />
+        <NavigationInformation handleSignUp={handleSignUp} handleSignIn={handleSignIn} />
       </div>
     </div>
     <p className={styles.copyright}>Copyright © 2023. All rights reserved.</p>

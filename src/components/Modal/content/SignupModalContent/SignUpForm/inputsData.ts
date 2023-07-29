@@ -25,8 +25,8 @@ export const inputsData = [
 ];
 
 export const initialValues = {
-  name: 'Denys',
-  email: 'testemail1@gmail.com',
-  password: 'Dnipro19181',
-  phone: '380634917271',
+  name: '',
+  email: '',
+  password: '',
+  phone: '',
 }

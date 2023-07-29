@@ -1,12 +1,13 @@
 import axios from 'axios';
-import { BASE_URL } from './fetchClient';
+
+export const BASE_URL = 'https://wine-catalog.pp.ua';
 
 const instance = axios.create({
   baseURL: BASE_URL,
 });
 
 const addAccessToken = (accessToken: string) => {
-  instance.defaults.headers.common['Authorization'] = `Bearer ${accessToken}`;
+  instance.defaults.headers.common['token'] = `${accessToken}`;
 };
 
 export const client = {
@@ -16,11 +17,14 @@ export const client = {
     return response.data;
   },
 
-  async post<T>(url: string, data: any, accessToken: string) {
-    addAccessToken(accessToken);
+  async post<T>(url: string, data: any, accessToken?: string) {
+    if (accessToken) {
+      addAccessToken(accessToken);
+    }
+    
     const response = await instance.post<T>(url, data);
 
-    return response.data;
+    return response;
   },
 };
 

@@ -4,7 +4,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 28px;
+  margin-bottom: 8px;
   gap: 32px;
 }
 
@@ -31,4 +31,27 @@
     color: $white-color;
     font-weight: 600;
   }
+}
+
+.rateGroup {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  height: $icon-size;
+  margin-bottom: 28px;
+}
+
+.rate {
+  color: $light-grey-color;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1;
+  align-self: center;
+}
+
+.response {
+  padding-left: 4px;
+  color: $light-grey-color;
+  font-size: 12px;
+  font-weight: 400;
 }

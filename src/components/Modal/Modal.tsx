@@ -1,9 +1,8 @@
 import { FC } from 'react'
 import { createPortal } from 'react-dom'
-import styles from './Modal.module.scss';
-import { Close } from '../icons';
 import classNames from 'classnames';
-
+import { Close } from '../icons';
+import styles from './Modal.module.scss';
 
 interface Props {
   open: boolean
