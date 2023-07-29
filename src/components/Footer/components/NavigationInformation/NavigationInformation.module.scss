@@ -1,12 +1,5 @@
 @import "../../../../styles/variables.scss";
-
-.navTitle {
-  padding-bottom: 16px;
-  color: $white-color;
-  font-size: 16px;
-  font-weight: 700;
-  line-height: 150%;
-}
+@import "../../../../styles/mixins.scss";
 
 .navList {
   display: flex;
@@ -14,4 +7,21 @@
   align-items: start;
   list-style: none;
   justify-content: space-between;
+}
+
+.button {
+  padding: 0;
+  border-width: 0;
+}
+
+.text {
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 400;
+  color: $dark-grey-color;
+  padding-bottom: 16px;
+  line-height: 1.5;
+  text-align: left;
+
+  @include hover(color, $white-color);
 }

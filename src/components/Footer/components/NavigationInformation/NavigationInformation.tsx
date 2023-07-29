@@ -1,25 +1,25 @@
+import { Button } from "../../../Button"
 import { NavigationLinkFooter } from "../NavigationLinkFooter"
 import styles from "./NavigationInformation.module.scss"
 
-export const NavigationInformation: React.FC = () => (
-  <div className={styles.navList}>
-    <div className={styles.navTitle}>
-      <p> Інше </p>
-    </div>
+type Props = {
+  handleSignUp: () => void,
+  handleSignIn: () => void,
+}
 
+export const NavigationInformation: React.FC<Props> = ({ handleSignUp, handleSignIn }) => (
+  <div className={styles.navList}>
     <NavigationLinkFooter
       to="/aboutus/"
       text="Про нас"
     />
 
-    <NavigationLinkFooter
-      to="/authorization/"
-      text="Авторизація"
-    />
+    <Button className={styles.button} onClick={handleSignIn} >
+      <p className={styles.text}>Авторизація</p>
+    </Button>
 
-    <NavigationLinkFooter
-      to="/registration/"
-      text="Реєстрація"
-    />
+    <Button className={styles.button} onClick={handleSignUp} >
+      <p className={styles.text}>Реєстрація</p>
+    </Button>
   </div>
 )

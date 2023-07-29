@@ -1,5 +1,9 @@
 import { Navigate, Route, Routes } from 'react-router-dom';
 import { Container, Header, Footer } from './components';
+import { useModal } from './hooks';
+import Modal from './components/Modal/Modal';
+import { LoginModalContent } from './components/Modal/content/LoginModalContent';
+import { SignupModalContent } from './components/Modal/content/SignupModalContent';
 import {
   CartPage,
   Catalog,
@@ -11,10 +15,6 @@ import {
 
 import './styles/global.scss';
 import styles from './App.module.scss';
-import Modal from './components/Modal/Modal';
-import { LoginModalContent } from './components/Modal/content/LoginModalContent';
-import { SignupModalContent } from './components/Modal/content/SignupModalContent';
-import { useModal } from './hooks';
 
 const App: React.FC = () => {
   const {
@@ -37,7 +37,7 @@ const App: React.FC = () => {
 
             <Route path="/catalog/" >
               <Route index element={<Catalog />} />
-              <Route path=":wineId" element={<ItemPage />} />
+              <Route path=":wineId" element={<ItemPage handleSignIn={handleSignIn} />} />
             </Route>
 
             <Route path="/champagne/" element={<Catalog />} />
@@ -61,7 +61,7 @@ const App: React.FC = () => {
         </Container>
       </main>
 
-      <Footer />
+      <Footer handleSignUp={handleSignUp} handleSignIn={handleSignIn} />
       <Modal
         size="lg"
         open={isOpenSignInModal}

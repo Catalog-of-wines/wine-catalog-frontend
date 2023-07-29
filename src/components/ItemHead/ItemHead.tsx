@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
-import styles from './ItemHead.module.scss';
 import { Arrow } from '../icons';
+import styles from './ItemHead.module.scss';
 
 export const ItemHead = () => {
   const goBack = () => {

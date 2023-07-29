@@ -2,6 +2,7 @@ export interface User {
   id: string
   name: string
 }
+
 export interface AuthUser {
   user_id: string
   access_token: string

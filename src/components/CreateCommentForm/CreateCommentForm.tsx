@@ -4,32 +4,32 @@ import { createComment } from "../../api/commets";
 import { StarIcon } from "../icons";
 import { OneComment } from "../../types/OneComment";
 import styles from './CreateCommentForm.module.scss';
-import { useAppSelector } from "../../app/hooks";
+import { useAppDispatch, useAppSelector } from "../../app/hooks";
+import * as authActions from "../../features/auth/authSlice";
+import { getCurrentDate } from "../../utils/getCurrentDate";
 
 type Props = {
   setComments: (comments: OneComment[]) => void,
+  handleSignIn: () => void,
   comments: OneComment[],
 }
 
-export const CreateCommentForm = React.memo<Props>(({ setComments, comments }) => {
+export const CreateCommentForm = React.memo<Props>(({ setComments, handleSignIn, comments }) => {
   const user = useAppSelector(state => state.auth);
   const [comment, setComment] = useState('');
   const [rating, setRating] = useState(0);
   const { wineId = '0' } = useParams();
   const navigate = useNavigate();
+  const dispatch = useAppDispatch();
 
   const handleChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
     setComment(event.target.value);
   };
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    if (!comment.trim().length) {
-      return;
-    }
-
-    if (!user) {
+    if (!comment.trim().length || !user) {
       return;
     }
 
@@ -38,12 +38,21 @@ export const CreateCommentForm = React.memo<Props>(({ setComments, comments }) =
       wine_id: wineId,
       user_id: user.user_id,
       rating,
-      date: "2023-07-24"
+      date: getCurrentDate(),
     }
-    
-    createComment(newComment, user.access_token);
-    setComment('');
-    setComments([...comments, newComment]);
+
+    try {
+      const responce = await createComment(newComment, user.access_token);
+
+      if (responce.statusText === 'OK') {
+        setComment('');
+        setComments([...comments, newComment]);
+      }
+
+    } catch (error) {
+      dispatch(authActions.removeUser());
+      handleSignIn();
+    }
   }
 
   const handleStarClick = (rating: number) => {

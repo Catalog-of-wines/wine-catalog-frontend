@@ -1,12 +1,12 @@
-import { Field, Form, Formik } from 'formik';
-import styles from './LoginForm.module.scss';
-import { initialValues, inputsData } from './inputsData';
-import { Button } from '../../../../Button';
 import { FC, Fragment } from 'react';
+import { Field, Form, Formik } from 'formik';
+import { loginUser } from '../../../../../api/login';
 import { useAppDispatch } from '../../../../../app/hooks';
 import * as authActions from '../../../../../features/auth/authSlice';
+import { initialValues, inputsData } from './inputsData';
+import { Button } from '../../../../Button';
 import { NewUser } from '../../../../../types/User';
-import { loginUser } from '../../../../../api/login';
+import styles from './LoginForm.module.scss';
 
 interface Props {
   onClose: () => void;
@@ -19,7 +19,7 @@ const LoginForm: FC<Props> = ({ onClose }) => {
     try {
       const response = await loginUser(user);
 
-      dispatch(authActions.addUser(response));
+      dispatch(authActions.addUser(response.data));
 
       onClose();
     } catch (error) {

@@ -78,9 +78,9 @@
 }
 
 .button {
+  width: 220px;
   @extend %centered;
   @extend %showMoreBtn;
-  width: 220px;
 
   &:disabled {
     background-color: $dark-grey-color;

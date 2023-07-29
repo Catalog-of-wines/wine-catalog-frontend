@@ -16,7 +16,11 @@ import {
 
 import styles from './ItemPage.module.scss';
 
-export const ItemPage: React.FC = () => {
+type Props = {
+  handleSignIn: () => void,
+}
+
+export const ItemPage: React.FC<Props> = ({ handleSignIn }) => {
   const dispatch = useAppDispatch();
   const { wineId = '0' } = useParams();
   const { item: wine, loaded } = useAppSelector((state) => state.selectedWine);
@@ -66,7 +70,7 @@ export const ItemPage: React.FC = () => {
               />
             </div>
             <div className={styles.itemInfoGrid}>
-              <ItemInfo wine={wine} />
+              <ItemInfo wine={wine} comments={comments} />
               <div className={styles.grid}>
                 <div className={styles.itemPurchaseGrid}>
                   <ItemPurchase priceData={price} />
@@ -80,7 +84,11 @@ export const ItemPage: React.FC = () => {
               <Comments comments={comments} />
             </div>
             <div className={styles.itemInfoGrid}>
-              <CreateCommentForm comments={comments} setComments={setComments} />
+              <CreateCommentForm
+                comments={comments}
+                setComments={setComments}
+                handleSignIn={handleSignIn}
+              />
             </div>
           </div>
         </>

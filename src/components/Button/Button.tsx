@@ -1,5 +1,4 @@
 import classNames from "classnames";
-// import { DetailedHTMLProps } from "react";
 import styles from './Button.module.scss';
 
 interface Props {

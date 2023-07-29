@@ -1,9 +1,9 @@
+import { FC, Fragment } from 'react';
 import { Field, Form, Formik } from 'formik';
-import styles from './SignUpForm.module.scss';
 import { initialValues, inputsData } from './inputsData';
 import { Button } from '../../../../Button';
 import { NewUser } from '../../../../../types/User';
-import { FC, Fragment } from 'react';
+import styles from './SignUpForm.module.scss';
 
 interface Props {
   createAccount: (user: NewUser) => void;
