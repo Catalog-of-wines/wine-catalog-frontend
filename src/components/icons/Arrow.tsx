@@ -1,10 +1,8 @@
-import { FC } from 'react';
-
 interface Props {
   className?: string;
 }
 
-export const Arrow: FC<Props> = ({ className }) => (
+export const Arrow:React.FC<Props> = ({ className }) => (
   <svg
     className={className}
     viewBox="0 0 28 28"

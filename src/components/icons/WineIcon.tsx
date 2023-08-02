@@ -1,11 +1,15 @@
-export const WineIcon = ({ ...props }) => (
+interface Props {
+  className?: string;
+}
+
+export const WineIcon: React.FC<Props> = ({ className }) => (
   <svg
     width="20"
     height="20"
     viewBox="0 0 20 20"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
-    {...props}
+    className={className}
   >
     <g id="ph:wine">
       <path

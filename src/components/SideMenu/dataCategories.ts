@@ -203,3 +203,10 @@ export const foodData = [
     label: 'для коктейлів',
   },
 ];
+
+export const packageData = [
+  {
+    id: 'Подарункова упаковка',
+    label: 'Подарункова упаковка',
+  },
+];

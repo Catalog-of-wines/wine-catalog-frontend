@@ -1,18 +1,16 @@
-import { FC } from "react";
-
 interface Props {
   color?: string;
   className?: string;
 }
 
-export const HeartIcon: FC<Props> = ({ className, color }) => (
+export const HeartIcon: React.FC<Props> = ({ className, color }) => (
   <svg
+    className={className}
     width="28"
     height="28"
     viewBox="0 0 28 28"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
-    className={className}
   >
     <g id="Icon_heart">
       <path

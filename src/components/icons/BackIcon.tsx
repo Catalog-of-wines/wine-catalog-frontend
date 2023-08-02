@@ -1,11 +1,15 @@
-export const BackIcon = ({ ...props }) => (
+interface Props {
+  className?: string;
+}
+
+export const BackIcon: React.FC<Props> = ({ className }) => (
   <svg
+    className={className}
     width="28"
     height="28"
     viewBox="0 0 28 28"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
-    {...props}
   >
     <g id="Icon_back">
       <path

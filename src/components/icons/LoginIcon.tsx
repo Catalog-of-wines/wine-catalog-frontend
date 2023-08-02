@@ -1,10 +1,8 @@
-import { FC } from 'react';
-
 interface Props {
   className?: string;
 }
 
-export const LoginIcon: FC<Props> = ({ className }) => (
+export const LoginIcon: React.FC<Props> = ({ className }) => (
   <svg
     className={className}
     width="23"

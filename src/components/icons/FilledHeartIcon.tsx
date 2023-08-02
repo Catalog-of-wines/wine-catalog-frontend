@@ -1,11 +1,15 @@
-export const FilledHeartIcon = ({ ...props }) => (
+interface Props {
+  className?: string;
+}
+
+export const FilledHeartIcon: React.FC<Props> = ({ className }) => (
   <svg
+    className={className}
     width="28"
     height="28"
     viewBox="0 0 27 27"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
-    {...props}
   >
     <g id="Icon_heart_filled">
       <path

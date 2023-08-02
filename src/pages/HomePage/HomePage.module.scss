@@ -174,3 +174,8 @@ padding-top: 112px;
   @include hover(border-color, $light-grey-color);
 }
 
+.icon {
+  width: 100px;
+  height: 100px;
+}
+

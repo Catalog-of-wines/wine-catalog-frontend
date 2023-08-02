@@ -1,10 +1,8 @@
-import { FC } from 'react';
-
 interface Props {
   className?: string;
 }
 
-export const Plus: FC<Props> = ({ className }) => (
+export const Plus: React.FC<Props> = ({ className }) => (
   <svg
     className={className}
     viewBox="0 0 21 20"

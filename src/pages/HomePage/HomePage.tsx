@@ -87,11 +87,11 @@ export const HomePage: React.FC = () => {
           <h1 className={styles.choiceText}>обирай</h1>
           <div className={styles.choiceButtonsContainer}>
             <Link to='/festive/' className={styles.choiceButtonChampagne}>
-              <ChampagneIcon width="100" height="100" />
+              <ChampagneIcon className={styles.icon} />
               <p className={styles.choiceSubText}>на свято</p>
             </Link>
             <Link to='/romantic/' className={styles.choiceButtonWine}>
-              <WineIcon width="100" height="100" />
+              <WineIcon className={styles.icon} />
               <p className={styles.choiceSubText}>на вечір</p>
             </Link>
           </div>

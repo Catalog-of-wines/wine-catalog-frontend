@@ -10,13 +10,19 @@
 
 .titleGroup {
   display: flex;
+  justify-content: start;
   align-items: center;
   gap: 50px;
-  margin-bottom: 20px;
+  margin-bottom: 40px;
+}
+
+.title {
+  text-transform: none;
+  margin-right: 120px;
 }
 
 .listItem {
-margin-bottom: 10px;
+  margin-bottom: 10px;
 }
 
 .contact {
@@ -27,4 +33,9 @@ margin-bottom: 10px;
 
   @include hover(border-bottom-color, $white-color);
   @include hover(color, $white-color);
+}
+
+.role {
+  font-size: 16px;
+  color: $light-grey-color;
 }

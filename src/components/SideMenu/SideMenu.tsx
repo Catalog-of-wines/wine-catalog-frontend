@@ -3,7 +3,7 @@ import { Category, CategoriesList } from './components';
 import { getAromaCategories } from '../../api/catalog';
 import { FC, useEffect, useMemo, useState } from 'react';
 import { OnChange } from '../../types/events';
-import { capacityData, colorData, countryData, foodData, moodData, wineTypeData } from './dataCategories';
+import { capacityData, colorData, countryData, foodData, moodData, packageData, wineTypeData } from './dataCategories';
 
 interface Props {
   handleOnChange: (e: OnChange) => void;
@@ -113,6 +113,18 @@ export const SideMenu: FC<Props> = ({ selectedCategories, handleOnChange }) => {
           title="by-capacity"
           type="checkbox"
           list={capacityData}
+          handleOnChange={handleOnChange}
+          selectedCategories={selectedCategories}
+        />
+      ),
+    },
+    {
+      label: `Подарункова упаковка`,
+      children: (
+        <CategoriesList
+          title="with-package"
+          type="checkbox"
+          list={packageData}
           handleOnChange={handleOnChange}
           selectedCategories={selectedCategories}
         />

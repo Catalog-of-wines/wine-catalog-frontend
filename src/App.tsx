@@ -52,10 +52,11 @@ const App: React.FC = () => {
             <Route path="/by-wine-type/" element={<Catalog />} />
             <Route path="/by-capacity/" element={<Catalog />} />
             <Route path="/by-country/" element={<Catalog />} />
+            <Route path="/with-package/" element={<Catalog />} />
 
             <Route path="/favorites" element={<FavoritesPage />} />
             <Route path="/cart" element={<CartPage />} />
-            <Route path="/aboutus" element={<AboutUsPage />} />
+            <Route path="/about-us" element={<AboutUsPage />} />
 
             <Route path="*" element={<ErrorPage />} />
             <Route path="/home" element={<Navigate to="/" replace />} />
