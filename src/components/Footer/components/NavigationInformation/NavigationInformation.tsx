@@ -10,7 +10,7 @@ type Props = {
 export const NavigationInformation: React.FC<Props> = ({ handleSignUp, handleSignIn }) => (
   <div className={styles.navList}>
     <NavigationLinkFooter
-      to="/aboutus/"
+      to="/about-us"
       text="Про нас"
     />
 

@@ -4,3 +4,4 @@ export * from './ErrorPage';
 export * from './ItemPage';
 export * from './CartPage';
 export * from './FavoritesPage';
+export * from './AboutUsPage';

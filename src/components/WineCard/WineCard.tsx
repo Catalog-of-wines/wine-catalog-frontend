@@ -1,17 +1,10 @@
-import React, {
-  useCallback,
-  useEffect,
-  useState
-} from 'react';
-
+import React, { useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import { Image, HeartComponent } from '../../components';
 import { StarIcon } from '../icons';
-
-import styles from './WineCard.module.scss';
-import { OneComment } from '../../types/OneComment';
-import { getComments } from '../../api/commets';
 import { averageRating } from '../../utils/averageRating';
+import { useAppSelector } from '../../app/hooks';
+import styles from './WineCard.module.scss';
 
 type Props = {
   wineId: string;
@@ -21,28 +14,19 @@ type Props = {
 };
 
 export const WineCard = React.memo<Props>(({ wineId, name, price, image }) => {
-  const [comments, setComments] = useState<OneComment[]>([]);
+  const { items: activeComments } = useAppSelector(state => state.activeCommentsList);
 
-  const getAllComments = useCallback(async () => {
-    try {
-      const data = await getComments(wineId);
-
-      setComments(data);
-    } catch (error) {
-      console.log(error);
-    }
-  }, [wineId]);
-
-  useEffect(() => {
-    getAllComments();
-  }, [getAllComments, wineId]);
+  const comments = useMemo(() =>
+    activeComments.find(comment => comment[0]?.wine_id === wineId),
+    [activeComments, wineId]
+  );
 
   return (
     <div className={styles.card}>
       <div className={styles.header}>
         <div className={styles.rateGroup}>
           <StarIcon />
-          <div className={styles.rate}>{averageRating(comments) || ''}</div>
+          <div className={styles.rate}>{comments ? averageRating(comments) : ''}</div>
         </div>
 
         <HeartComponent wineId={wineId} />

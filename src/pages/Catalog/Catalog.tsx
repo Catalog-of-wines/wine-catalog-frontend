@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { useLocation, useNavigate, useSearchParams } from 'react-router-dom';
 import classNames from 'classnames';
 import * as wineActions from '../../features/activeWineList/activeWineListSlice';
+import * as commentsActions from '../../features/activeCommentsList/activeCommentsListSlice';
 import { useFilterCategory } from '../../hooks';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import {
@@ -49,6 +50,10 @@ export const Catalog: React.FC = () => {
 
     dispatch(wineActions.initActiveWineList(fullQuery));
   }, [dispatch, pathname, search]);
+
+  useEffect(() => {
+    dispatch(commentsActions.initActiveCommentsList(wines.map(wine => wine.id)));
+  }, [dispatch, wines])
 
   const handleShowMore = (): void => {
     const skip = searchParams.get('skip') || '0';

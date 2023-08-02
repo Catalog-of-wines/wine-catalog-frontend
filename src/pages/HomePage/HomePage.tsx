@@ -2,6 +2,7 @@ import React, { useCallback, useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
 import * as wineActions from '../../features/activeWineList/activeWineListSlice';
+import * as commentsActions from '../../features/activeCommentsList/activeCommentsListSlice';
 
 import { Button, Image, WineList } from "../../components";
 import { ChampagneIcon, WineIcon } from "../../components/icons";
@@ -25,13 +26,17 @@ export const HomePage: React.FC = () => {
   }, [startIndex, wines.length]);
 
   useEffect(() => {
-    dispatch(wineActions.initActiveWineList('/catalog/'));
+    dispatch(wineActions.initActiveWineList('/festive/'));
   }, [dispatch]);
+
+  useEffect(() => {
+    dispatch(commentsActions.initActiveCommentsList(wines.map(wine => wine.id)));
+  }, [dispatch, wines]);
 
   useEffect(() => {
     const interval = setInterval(() => {
       mooveRight();
-    }, 5000);
+    }, 7000);
 
     return () => {
       clearInterval(interval);
