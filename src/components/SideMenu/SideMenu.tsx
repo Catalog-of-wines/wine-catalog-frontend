@@ -47,7 +47,7 @@ export const SideMenu: FC<Props> = ({ selectedCategories, handleOnChange }) => {
       ),
     },
     {
-      label: 'Смак',
+      label: 'Аромат',
       children: (
         <CategoriesList
           title="aroma"

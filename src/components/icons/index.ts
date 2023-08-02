@@ -13,3 +13,4 @@ export * from './Minus';
 export * from './Plus';
 export * from './ChatIcon';
 export * from './Close';
+export * from './LinkedInIcon';

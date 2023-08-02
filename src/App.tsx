@@ -11,6 +11,7 @@ import {
   HomePage,
   ItemPage,
   ErrorPage,
+  AboutUsPage,
 } from './pages';
 
 import './styles/global.scss';
@@ -54,6 +55,7 @@ const App: React.FC = () => {
 
             <Route path="/favorites" element={<FavoritesPage />} />
             <Route path="/cart" element={<CartPage />} />
+            <Route path="/aboutus" element={<AboutUsPage />} />
 
             <Route path="*" element={<ErrorPage />} />
             <Route path="/home" element={<Navigate to="/" replace />} />

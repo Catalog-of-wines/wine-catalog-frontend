@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import classNames from "classnames";
-import { useAppSelector } from "../../app/hooks";
+import { useAppDispatch, useAppSelector } from "../../app/hooks";
 import { getOneWine } from "../../api/catalog";
+import * as commentsActions from '../../features/activeCommentsList/activeCommentsListSlice';
 
 import { Button, SmallPageTitle, WineList } from "../../components";
 import { Wine } from "../../types/Wine";
@@ -9,6 +10,7 @@ import { Wine } from "../../types/Wine";
 import styles from './FavoritesPage.module.scss';
 
 export const FavoritesPage: React.FC = () => {
+  const dispatch = useAppDispatch();
   const favorites: string[] = useAppSelector((state) => state.favorites);
   const [wines, setWines] = useState<Wine[]>([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -35,8 +37,11 @@ export const FavoritesPage: React.FC = () => {
 
   useEffect(() => {
     fetchData();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [startIndex]);
+
+  useEffect(() => {
+    dispatch(commentsActions.initActiveCommentsList(favorites));
+  }, [dispatch, favorites]);
 
   const handleShowMore = () => {
     setStartIndex(current => current + limit);
