@@ -1,15 +1,16 @@
 import React, { useEffect, useState } from "react";
 import { ChatIcon } from "../icons";
 import { CommentItem } from "./components/CommentItem";
-import { Button, SmallPageTitle } from "../../components";
+import { Button, Loader, SmallPageTitle } from "../../components";
 import { OneComment } from '../../types/OneComment';
 import styles from './Comments.module.scss';
 
 type Props = {
   comments: OneComment[],
+  isCommentPosting: boolean,
 }
 
-export const Comments = React.memo<Props>(({ comments }) => {
+export const Comments = React.memo<Props>(({ comments, isCommentPosting }) => {
   const [commentsToShow, setCommentsToShow] = useState<OneComment[]>([]);
 
   const handleClick = () => {
@@ -28,6 +29,10 @@ export const Comments = React.memo<Props>(({ comments }) => {
           {comments.length ? 'Відгуки' : 'Покищо немає відгуків'}
         </SmallPageTitle>
       </div>
+
+      {isCommentPosting &&
+        <Loader className={styles.loader} />
+      }
 
       {comments.length > 0 &&
         <div className={styles.commentsList}>

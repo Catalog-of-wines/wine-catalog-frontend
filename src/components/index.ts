@@ -19,3 +19,4 @@ export * from './Comments';
 export * from './Modal';
 export * from './Input';
 export * from './CreateCommentForm';
+export * from './Loader';

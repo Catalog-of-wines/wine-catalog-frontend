@@ -14,7 +14,7 @@ export const WineList = React.memo<Props>(({wines}) => (
           wineId={wine.id}
           name={wine.name}
           price={wine.price}
-          image={wine.image_url}
+          image={wine.small_image_url}
         />
       ))}
     </>

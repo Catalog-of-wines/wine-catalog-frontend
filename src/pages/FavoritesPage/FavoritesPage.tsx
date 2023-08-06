@@ -1,15 +1,19 @@
-import { useEffect, useState } from "react";
-import classNames from "classnames";
+import React, { useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
 import { getOneWine } from "../../api/catalog";
 import * as commentsActions from '../../features/activeCommentsList/activeCommentsListSlice';
+import {
+  Button,
+  Loader,
+  SmallPageTitle,
+  WineList
+} from "../../components";
 
-import { Button, SmallPageTitle, WineList } from "../../components";
 import { Wine } from "../../types/Wine";
 
 import styles from './FavoritesPage.module.scss';
 
-export const FavoritesPage: React.FC = () => {
+export const FavoritesPage = React.memo(() => {
   const dispatch = useAppDispatch();
   const favorites: string[] = useAppSelector((state) => state.favorites);
   const [wines, setWines] = useState<Wine[]>([]);
@@ -75,9 +79,7 @@ export const FavoritesPage: React.FC = () => {
           </div>
         }
 
-        {isLoading &&
-          <div className={classNames('loader', styles.loader)}></div>
-        }
+        {isLoading && <Loader className={styles.loader} />}
       </div>
 
       {favorites.length > limit &&
@@ -91,4 +93,4 @@ export const FavoritesPage: React.FC = () => {
       }
     </div>
   )
-}
+})
