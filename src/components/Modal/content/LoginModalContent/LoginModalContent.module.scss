@@ -1,4 +1,5 @@
 @import '../../../../styles/variables.scss';
+@import '../../../../styles/mixins.scss';
 
 .grid {
   display: grid;
@@ -44,4 +45,14 @@
     top: 0;
     background-image: url("../../../../images/ph_check.svg");
   }
+}
+
+.button {
+  border: 1px solid $black-color;
+  background-color: $white-color;
+  color: $black-color;
+
+  @include hover(background-color, $main-color);
+  @include hover(color, $white-color);
+  @include hover(border-color, transparent);
 }
