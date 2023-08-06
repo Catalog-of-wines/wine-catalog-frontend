@@ -14,6 +14,7 @@ export const FavoritesPage: React.FC = () => {
   const favorites: string[] = useAppSelector((state) => state.favorites);
   const [wines, setWines] = useState<Wine[]>([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [isError, setIsError] = useState(false);
   const [startIndex, setStartIndex] = useState(0);
   const hasFavorites = favorites.length !== 0;
   const limit = 6;
@@ -23,13 +24,14 @@ export const FavoritesPage: React.FC = () => {
     setIsLoading(true);
 
     try {
+      setIsError(false);
       const fetchedProducts = await Promise.all(
         favorites.slice(startIndex, skip).map(id => getOneWine(id))
       );
 
       setWines(current => [...current, ...fetchedProducts]);
-    } catch (error) {
-      console.log('error>>>', error);
+    } catch {
+      setIsError(true);
     } finally {
       setIsLoading(false);
     }
@@ -45,6 +47,14 @@ export const FavoritesPage: React.FC = () => {
 
   const handleShowMore = () => {
     setStartIndex(current => current + limit);
+  }
+
+  if (isError) {
+    return (
+      <SmallPageTitle className={styles.title}>
+        Не вдалося завантажити обране
+      </SmallPageTitle>
+    )
   }
 
   return (
