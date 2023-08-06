@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import React from 'react';
 import { Button } from '../../../index';
 import stylesModal from '../../Modal.module.scss';
 import stylesContent from './LoginModalContent.module.scss';
@@ -9,7 +9,7 @@ interface Props {
   onClose: () => void;
 }
 
-export const LoginModalContent: FC<Props> = ({ handleSignUp, onClose }) => (
+export const LoginModalContent = React.memo<Props>(({ handleSignUp, onClose }) => (
   <div className={stylesContent.grid}>
     <div className={stylesContent.form}>
       <h2 className={stylesModal.heading}>
@@ -30,9 +30,9 @@ export const LoginModalContent: FC<Props> = ({ handleSignUp, onClose }) => (
           <strong>знижки</strong>
         </li>
       </ul>
-      <Button onClick={handleSignUp} style="outlined-black">
+      <Button onClick={handleSignUp} className={stylesContent.button}>
         Створити акаунт
       </Button>
     </div>
   </div>
-);
+));

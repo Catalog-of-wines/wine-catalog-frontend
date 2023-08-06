@@ -1,25 +1,30 @@
 import React, { useState } from "react"
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { createComment } from "../../api/commets";
+import { getCurrentDate } from "../../utils/getCurrentDate";
+import { useAppDispatch, useAppSelector } from "../../app/hooks";
+import * as authActions from "../../features/auth/authSlice";
 import { StarIcon } from "../icons";
 import { OneComment } from "../../types/OneComment";
 import styles from './CreateCommentForm.module.scss';
-import { useAppDispatch, useAppSelector } from "../../app/hooks";
-import * as authActions from "../../features/auth/authSlice";
-import { getCurrentDate } from "../../utils/getCurrentDate";
 
 type Props = {
   setComments: (comments: OneComment[]) => void,
   handleSignIn: () => void,
   comments: OneComment[],
+  setIsCommentPosting: React.Dispatch<React.SetStateAction<boolean>>,
 }
 
-export const CreateCommentForm = React.memo<Props>(({ setComments, handleSignIn, comments }) => {
+export const CreateCommentForm = React.memo<Props>(({
+  setComments,
+  handleSignIn,
+  comments,
+  setIsCommentPosting
+}) => {
   const user = useAppSelector(state => state.auth);
   const [comment, setComment] = useState('');
   const [rating, setRating] = useState(0);
   const { wineId = '0' } = useParams();
-  const navigate = useNavigate();
   const dispatch = useAppDispatch();
 
   const handleChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
@@ -29,7 +34,12 @@ export const CreateCommentForm = React.memo<Props>(({ setComments, handleSignIn,
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    if (!comment.trim().length || !user) {
+    if (!comment.trim().length) {
+      return;
+    }
+
+    if (!user) {
+      handleSignIn();
       return;
     }
 
@@ -42,16 +52,18 @@ export const CreateCommentForm = React.memo<Props>(({ setComments, handleSignIn,
     }
 
     try {
+      setIsCommentPosting(true);
       const responce = await createComment(newComment, user.access_token);
 
       if (responce.statusText === 'OK') {
         setComment('');
         setComments([...comments, newComment]);
       }
-
-    } catch (error) {
+    } catch {
       dispatch(authActions.removeUser());
       handleSignIn();
+    } finally {
+      setIsCommentPosting(false);
     }
   }
 
@@ -74,7 +86,7 @@ export const CreateCommentForm = React.memo<Props>(({ setComments, handleSignIn,
           Зареєструйтесь або увійдіть, щоб залишити відгук!
           <span
             className={styles.link}
-            onClick={() => navigate('/authorization')}
+            onClick={() => handleSignIn()}
           > Увійти</span>
         </p>
 

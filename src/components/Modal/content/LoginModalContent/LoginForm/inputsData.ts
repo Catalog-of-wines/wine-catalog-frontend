@@ -1,8 +1,8 @@
 export const inputsData = [
   {
     label: 'Логін',
-    name: 'login',
-    placeholder: 'Телефон або емейл',
+    name: 'email',
+    placeholder: 'Введіть емейл',
   },
   {
     label: 'Пароль*',
@@ -13,6 +13,6 @@ export const inputsData = [
 ];
 
 export const initialValues = {
-  login: '',
+  email: '',
   password: '',
 }

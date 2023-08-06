@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import React, { useState } from 'react';
 import { signUp } from '../../../../api/registartion';
 import { useAppDispatch } from '../../../../app/hooks';
 import * as authactions from '../../../../features/auth/authSlice';
@@ -12,21 +12,21 @@ interface Props {
   onClose: () => void;
 }
 
-export const SignupModalContent: FC<Props> = ({ handleSignIn, onClose }) => {
+export const SignupModalContent = React.memo<Props>(({ handleSignIn, onClose }) => {
   const dispatch = useAppDispatch();
+  const [isError, setIsError] = useState(false);
+
   const createAccount = async (user: NewUser) => {
     try {
       const response = await signUp(user);
 
       if (response.statusText === 'OK') {
-        console.log('MYresponse>>', response);
-        
         dispatch(authactions.addUser(response.data));
         onClose();
       }
 
-    } catch (error) {
-      console.log(error);
+    } catch {
+      setIsError(true);
     }
   };
 
@@ -34,7 +34,11 @@ export const SignupModalContent: FC<Props> = ({ handleSignIn, onClose }) => {
     <>
       <h2 className={stylesModal.heading}>Створення акаунту</h2>
 
-      <SignUpForm createAccount={createAccount} />
+      <SignUpForm
+        createAccount={createAccount}
+        setIsError={setIsError}
+        isError={isError}
+      />
 
       <div className={stylesContent.loginBox}>
         <p className={stylesContent.text}>
@@ -49,4 +53,4 @@ export const SignupModalContent: FC<Props> = ({ handleSignIn, onClose }) => {
       </div>
     </>
   );
-};
+});

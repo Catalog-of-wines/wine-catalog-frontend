@@ -1,13 +1,14 @@
-import { useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { useLocation, useNavigate, useSearchParams } from 'react-router-dom';
-import classNames from 'classnames';
 import * as wineActions from '../../features/activeWineList/activeWineListSlice';
 import * as commentsActions from '../../features/activeCommentsList/activeCommentsListSlice';
 import { useFilterCategory } from '../../hooks';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
+import { scrollToTop } from '../../utils/scrollToTop';
 import {
   Button,
   ButtonGroup,
+  Loader,
   SideMenu,
   SmallPageTitle,
   WineList
@@ -15,7 +16,7 @@ import {
 
 import styles from './Catalog.module.scss';
 
-export const Catalog: React.FC = () => {
+export const Catalog = React.memo(() => {
   const dispatch = useAppDispatch();
   const { items: wines, loaded } = useAppSelector((state) => state.activeWineList);
   const [searchParams, setSearchParams] = useSearchParams();
@@ -66,6 +67,7 @@ export const Catalog: React.FC = () => {
     params.set('skip', `${+skip + 9}`)
 
     setSearchParams(params);
+    scrollToTop();
   };
 
   return (
@@ -94,9 +96,7 @@ export const Catalog: React.FC = () => {
             </SmallPageTitle>
           }
 
-          {!loaded &&
-            <div className={classNames('loader', styles.loader)}></div>
-          }
+          {!loaded && <Loader className={styles.loader} />}
         </div>
 
         {wines.length > 0 &&
@@ -109,4 +109,4 @@ export const Catalog: React.FC = () => {
       </div>
     </div >
   );
-};
+});

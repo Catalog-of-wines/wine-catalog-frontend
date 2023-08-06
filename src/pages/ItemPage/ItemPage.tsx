@@ -1,6 +1,5 @@
-import { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import classNames from 'classnames';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import * as selectedWineActions from '../../features/selectedWine/selectedWineSlice';
 import { getComments } from '../../api/commets';
@@ -11,7 +10,8 @@ import {
   Image,
   ItemHead,
   ItemInfo,
-  ItemPurchase
+  ItemPurchase,
+  Loader
 } from '../../components';
 
 import styles from './ItemPage.module.scss';
@@ -20,11 +20,12 @@ type Props = {
   handleSignIn: () => void,
 }
 
-export const ItemPage: React.FC<Props> = ({ handleSignIn }) => {
+export const ItemPage = React.memo<Props>(({ handleSignIn }) => {
   const dispatch = useAppDispatch();
   const { wineId = '0' } = useParams();
   const { item: wine, loaded } = useAppSelector((state) => state.selectedWine);
   const [comments, setComments] = useState<OneComment[]>([]);
+  const [isCommentPosting, setIsCommentPosting] = useState(false);
 
   const getAllComments = useCallback(async () => {
     try {
@@ -55,9 +56,7 @@ export const ItemPage: React.FC<Props> = ({ handleSignIn }) => {
         </div>
       </div>
 
-      {!loaded &&
-        <div className={classNames('loader', styles.loader)}></div>
-      }
+      {!loaded && <Loader className={styles.loader} />}
 
       {loaded &&
         <>
@@ -77,17 +76,18 @@ export const ItemPage: React.FC<Props> = ({ handleSignIn }) => {
                 </div>
               </div>
             </div>
-
           </div>
+
           <div className={styles.grid}>
             <div className={styles.imageGrid}>
-              <Comments comments={comments} />
+              <Comments comments={comments} isCommentPosting={isCommentPosting} />
             </div>
             <div className={styles.itemInfoGrid}>
               <CreateCommentForm
                 comments={comments}
                 setComments={setComments}
                 handleSignIn={handleSignIn}
+                setIsCommentPosting={setIsCommentPosting}
               />
             </div>
           </div>
@@ -95,4 +95,4 @@ export const ItemPage: React.FC<Props> = ({ handleSignIn }) => {
       }
     </div>
   );
-};
+});

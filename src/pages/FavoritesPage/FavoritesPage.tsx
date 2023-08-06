@@ -1,19 +1,24 @@
-import { useEffect, useState } from "react";
-import classNames from "classnames";
+import React, { useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
 import { getOneWine } from "../../api/catalog";
 import * as commentsActions from '../../features/activeCommentsList/activeCommentsListSlice';
+import {
+  Button,
+  Loader,
+  SmallPageTitle,
+  WineList
+} from "../../components";
 
-import { Button, SmallPageTitle, WineList } from "../../components";
 import { Wine } from "../../types/Wine";
 
 import styles from './FavoritesPage.module.scss';
 
-export const FavoritesPage: React.FC = () => {
+export const FavoritesPage = React.memo(() => {
   const dispatch = useAppDispatch();
   const favorites: string[] = useAppSelector((state) => state.favorites);
   const [wines, setWines] = useState<Wine[]>([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [isError, setIsError] = useState(false);
   const [startIndex, setStartIndex] = useState(0);
   const hasFavorites = favorites.length !== 0;
   const limit = 6;
@@ -23,13 +28,14 @@ export const FavoritesPage: React.FC = () => {
     setIsLoading(true);
 
     try {
+      setIsError(false);
       const fetchedProducts = await Promise.all(
         favorites.slice(startIndex, skip).map(id => getOneWine(id))
       );
 
       setWines(current => [...current, ...fetchedProducts]);
-    } catch (error) {
-      console.log('error>>>', error);
+    } catch {
+      setIsError(true);
     } finally {
       setIsLoading(false);
     }
@@ -45,6 +51,14 @@ export const FavoritesPage: React.FC = () => {
 
   const handleShowMore = () => {
     setStartIndex(current => current + limit);
+  }
+
+  if (isError) {
+    return (
+      <SmallPageTitle className={styles.title}>
+        Не вдалося завантажити обране
+      </SmallPageTitle>
+    )
   }
 
   return (
@@ -65,9 +79,7 @@ export const FavoritesPage: React.FC = () => {
           </div>
         }
 
-        {isLoading &&
-          <div className={classNames('loader', styles.loader)}></div>
-        }
+        {isLoading && <Loader className={styles.loader} />}
       </div>
 
       {favorites.length > limit &&
@@ -81,4 +93,4 @@ export const FavoritesPage: React.FC = () => {
       }
     </div>
   )
-}
+})
