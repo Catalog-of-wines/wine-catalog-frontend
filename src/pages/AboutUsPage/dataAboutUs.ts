@@ -19,4 +19,9 @@ export const aboutUsData = [
     role: '(UX-UI)',
     url: 'https://www.linkedin.com/in/irina-kravtsova-004278261/',
   },
+  {
+    name: 'Олександр Терещук',
+    role: '(QA)',
+    url: 'http://linkedin.com/in/oleksandr-tereshchuk-504646140',
+  },
 ];

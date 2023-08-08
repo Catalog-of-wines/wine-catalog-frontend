@@ -27,7 +27,7 @@ export const LoginModalContent = React.memo<Props>(({ handleSignUp, onClose }) =
         </li>
         <li className={stylesContent.item}>
           отримувати персональні <strong>рекомендації</strong> <br /> та
-          <strong>знижки</strong>
+          <strong> знижки;</strong>
         </li>
       </ul>
       <Button onClick={handleSignUp} className={stylesContent.button}>

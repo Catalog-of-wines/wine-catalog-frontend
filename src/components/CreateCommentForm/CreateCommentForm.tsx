@@ -57,7 +57,7 @@ export const CreateCommentForm = React.memo<Props>(({
 
       if (responce.statusText === 'OK') {
         setComment('');
-        setComments([...comments, newComment]);
+        setComments([newComment, ...comments]);
       }
     } catch {
       dispatch(authActions.removeUser());
@@ -72,47 +72,45 @@ export const CreateCommentForm = React.memo<Props>(({
   }
 
   return (
-    <>
-      <form onSubmit={(event) => handleSubmit(event)} className={styles.form}>
-        <textarea
-          className={styles.textarea}
-          value={comment}
-          onChange={(event) => handleChange(event)}
-          placeholder="Поділіться своїми враженнями про покупку"
-          required
-        ></textarea>
+    <form onSubmit={(event) => handleSubmit(event)} className={styles.form}>
+      <textarea
+        className={styles.textarea}
+        value={comment}
+        onChange={(event) => handleChange(event)}
+        placeholder="Поділіться своїми враженнями про покупку"
+        required
+      ></textarea>
 
-        <p className={styles.caption}>
-          Зареєструйтесь або увійдіть, щоб залишити відгук!
-          <span
-            className={styles.link}
-            onClick={() => handleSignIn()}
-          > Увійти</span>
-        </p>
+      <p className={styles.caption}>
+        Зареєструйтесь або увійдіть, щоб залишити відгук!
+        <span
+          className={styles.link}
+          onClick={() => handleSignIn()}
+        > Увійти</span>
+      </p>
 
-        <div className={styles.rateBtnGroup}>
-          <div className={styles.rateGroup}>
-            <span className={styles.rateText}>Оцінка</span>
-            <div className={styles.stars}>
-              {[1, 2, 3, 4, 5].map((star) => (
-                <div key={star} onClick={() => handleStarClick(star)}>
-                  <StarIcon
-                    className={star <= rating ? styles.choosenStar : styles.star}
-                    fill={star <= rating ? 'white' : '#B5B2B4'} />
-                </div>
-              ))}
-            </div>
+      <div className={styles.rateBtnGroup}>
+        <div className={styles.rateGroup}>
+          <span className={styles.rateText}>Оцінка</span>
+          <div className={styles.stars}>
+            {[1, 2, 3, 4, 5].map((star) => (
+              <div key={star} onClick={() => handleStarClick(star)}>
+                <StarIcon
+                  className={star <= rating ? styles.choosenStar : styles.star}
+                  fill={star <= rating ? 'white' : '#B5B2B4'} />
+              </div>
+            ))}
           </div>
-
-          <button
-            type="submit"
-            className={styles.button}
-            disabled={comment.length === 0}
-          >
-            <p className={styles.showMoreBtnText}>Надіслати</p>
-          </button>
         </div>
-      </form>
-    </>
+
+        <button
+          type="submit"
+          className={styles.button}
+          disabled={comment.length === 0}
+        >
+          <p className={styles.showMoreBtnText}>Надіслати</p>
+        </button>
+      </div>
+    </form>
   )
 })

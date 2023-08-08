@@ -31,7 +31,7 @@ export const ItemPage = React.memo<Props>(({ handleSignIn }) => {
     try {
       const data = await getComments(wineId);
 
-      setComments(data);
+      setComments(data.reverse());
     } catch (error) {
       console.log(error);
     }
