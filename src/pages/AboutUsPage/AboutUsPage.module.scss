@@ -10,15 +10,19 @@
 
 .titleGroup {
   display: flex;
-  justify-content: start;
+  justify-content: center;
   align-items: center;
+  flex-direction: column;
   gap: 50px;
   margin-bottom: 40px;
 }
 
 .title {
-  text-transform: none;
-  margin-right: 120px;
+  // text-transform: none;
+  // margin-right: 120px;
+  padding: 0 120px;
+  text-align: center;
+  line-height: 1.3;
 }
 
 .listItem {
